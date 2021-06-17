@@ -1,0 +1,154 @@
+[2021-06-07 11:07:44] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 11:07:56] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 11:14:12] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 11:14:18] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 11:27:12] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 11:27:12] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 12:41:54] live.EMERGENCY: File:/home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.phpLine:664Message:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'use_for_repair' in 'field list' (SQL: insert into `brands` (`name`, `description`, `business_id`, `created_by`, `use_for_repair`, `updated_at`, `created_at`) values (Welpro, ?, 74, 139, 0, 2021-06-07 12:41:54, 2021-06-07 12:41:54))  
+[2021-06-07 12:42:15] live.EMERGENCY: File:/home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.phpLine:664Message:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'use_for_repair' in 'field list' (SQL: insert into `brands` (`name`, `description`, `business_id`, `created_by`, `use_for_repair`, `updated_at`, `created_at`) values (Welpro, ?, 74, 139, 0, 2021-06-07 12:42:15, 2021-06-07 12:42:15))  
+[2021-06-07 12:42:44] live.EMERGENCY: File:/home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.phpLine:664Message:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'use_for_repair' in 'field list' (SQL: insert into `brands` (`name`, `description`, `business_id`, `created_by`, `use_for_repair`, `updated_at`, `created_at`) values (Welpro, ?, 74, 139, 0, 2021-06-07 12:42:44, 2021-06-07 12:42:44))  
+[2021-06-07 12:43:17] live.EMERGENCY: File:/home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.phpLine:664Message:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'use_for_repair' in 'field list' (SQL: insert into `brands` (`name`, `description`, `business_id`, `created_by`, `use_for_repair`, `updated_at`, `created_at`) values (Welpro, Welpro, 74, 139, 0, 2021-06-07 12:43:17, 2021-06-07 12:43:17))  
+[2021-06-07 12:43:33] live.EMERGENCY: File:/home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.phpLine:664Message:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'use_for_repair' in 'field list' (SQL: insert into `brands` (`name`, `description`, `business_id`, `created_by`, `use_for_repair`, `updated_at`, `created_at`) values (Welpro, ?, 74, 139, 0, 2021-06-07 12:43:33, 2021-06-07 12:43:33))  
+[2021-06-07 12:43:54] live.EMERGENCY: File:/home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.phpLine:664Message:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'use_for_repair' in 'field list' (SQL: insert into `brands` (`name`, `description`, `business_id`, `created_by`, `use_for_repair`, `updated_at`, `created_at`) values (Welpro, ?, 74, 139, 0, 2021-06-07 12:43:54, 2021-06-07 12:43:54))  
+[2021-06-07 12:44:02] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 12:44:07] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 12:44:42] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 12:57:34] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 12:57:41] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 12:57:54] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 13:12:13] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 14:03:00] live.EMERGENCY: File:/home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.phpLine:664Message:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'use_for_repair' in 'field list' (SQL: insert into `brands` (`name`, `description`, `business_id`, `created_by`, `use_for_repair`, `updated_at`, `created_at`) values (Welpro, ?, 74, 139, 0, 2021-06-07 14:03:00, 2021-06-07 14:03:00))  
+[2021-06-07 14:03:33] live.EMERGENCY: File:/home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.phpLine:664Message:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'use_for_repair' in 'field list' (SQL: insert into `brands` (`name`, `description`, `business_id`, `created_by`, `use_for_repair`, `updated_at`, `created_at`) values (Empty sale, ?, 74, 139, 0, 2021-06-07 14:03:33, 2021-06-07 14:03:33))  
+[2021-06-07 14:16:41] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: F/W Bolt 375 STP SKU: 104903 Quantity: 24 Business: STP Location: saddique Tractors  
+[2021-06-07 14:16:41] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: F/W Bolt 375 STP SKU: 104903 Quantity: 24  
+[2021-06-07 14:30:03] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: Silicone Big SKU: 104975 Quantity: 5 Business: STP Location: saddique Tractors  
+[2021-06-07 14:30:03] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: Silicone Big SKU: 104975 Quantity: 5  
+[2021-06-07 15:01:41] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 15:11:05] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 15:11:10] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 15:11:11] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 15:12:26] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 15:29:09] live.EMERGENCY: File:/home/erp/public_html/Modules/Essentials/Http/Controllers/AttendanceController.phpLine:659Message:User not found in row no. 13  
+[2021-06-07 15:43:21] live.EMERGENCY: File:/home/erp/public_html/Modules/Essentials/Http/Controllers/AttendanceController.phpLine:659Message:User not found in row no. 13  
+[2021-06-07 15:43:42] live.EMERGENCY: File:/home/erp/public_html/app/Utils/ProductUtil.phpLine:522Message:Trying to get property 'product_type' of non-object  
+[2021-06-07 16:06:42] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: Silicone Big SKU: 104975 Quantity: 10 Business: STP Location: saddique Tractors  
+[2021-06-07 16:06:42] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: Silicone Big SKU: 104975 Quantity: 10  
+[2021-06-07 16:06:48] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: Silicone Big SKU: 104975 Quantity: 10 Business: STP Location: saddique Tractors  
+[2021-06-07 16:06:48] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: Silicone Big SKU: 104975 Quantity: 10  
+[2021-06-07 16:25:22] live.EMERGENCY: File:/home/erp/public_html/Modules/Essentials/Http/Controllers/AttendanceController.phpLine:659Message:User not found in row no. 13  
+[2021-06-07 17:08:33] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: Steering Pipe Tehra 375 CNR SKU: 103423 Quantity: 1 Business: STP Location: saddique Tractors  
+[2021-06-07 17:08:33] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: Steering Pipe Tehra 375 CNR SKU: 103423 Quantity: 1  
+[2021-06-07 17:46:36] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2 Business: Sarghoda Tractor parts Location: Sarghoda Tractor parts  
+[2021-06-07 17:46:36] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2  
+[2021-06-07 17:46:44] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2 Business: Sarghoda Tractor parts Location: Sarghoda Tractor parts  
+[2021-06-07 17:46:44] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2  
+[2021-06-07 17:46:53] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2 Business: Sarghoda Tractor parts Location: Sarghoda Tractor parts  
+[2021-06-07 17:46:53] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2  
+[2021-06-07 17:46:59] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2 Business: Sarghoda Tractor parts Location: Sarghoda Tractor parts  
+[2021-06-07 17:46:59] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2  
+[2021-06-07 17:47:23] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2 Business: Sarghoda Tractor parts Location: Sarghoda Tractor parts  
+[2021-06-07 17:47:23] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2  
+[2021-06-07 17:47:39] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2 Business: Sarghoda Tractor parts Location: Sarghoda Tractor parts  
+[2021-06-07 17:47:39] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2  
+[2021-06-07 17:51:48] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2 Business: Sarghoda Tractor parts Location: Sarghoda Tractor parts  
+[2021-06-07 17:51:48] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: MAIN MF240 (MBM) 010 (ATS) SKU: 116834 Quantity: 2  
+[2021-06-07 18:05:04] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: Grease 3Kg STP SKU: 105011 Quantity: 5 Business: STP Location: saddique Tractors  
+[2021-06-07 18:05:04] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: Grease 3Kg STP SKU: 105011 Quantity: 5  
+[2021-06-07 14:26:55] live.ERROR: SQLSTATE[08004] [1040] Too many connections (SQL: select * from `system` where `key` = crm_version limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 1040): SQLSTATE[08004] [1040] Too many connections (SQL: select * from `system` where `key` = crm_version limit 1) at /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:664, PDOException(code: 1040): SQLSTATE[08004] [1040] Too many connections at /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:70)
+[stacktrace]
+#0 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(624): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(333): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#2 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2130): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#3 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2118): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2604): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2119): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#6 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(521): Illuminate\\Database\\Query\\Builder->get(Array)
+#7 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(505): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#8 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(77): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#9 /home/erp/public_html/app/System.php(39): Illuminate\\Database\\Eloquent\\Builder->first()
+#10 /home/erp/public_html/app/Utils/ModuleUtil.php(28): App\\System::getProperty('crm_version')
+#11 /home/erp/public_html/Modules/Crm/Providers/CrmServiceProvider.php(177): App\\Utils\\ModuleUtil->isModuleInstalled('Crm')
+#12 /home/erp/public_html/Modules/Crm/Providers/CrmServiceProvider.php(47): Modules\\Crm\\Providers\\CrmServiceProvider->registerScheduleCommands()
+#13 [internal function]: Modules\\Crm\\Providers\\CrmServiceProvider->boot()
+#14 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#15 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(576): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(827): Illuminate\\Container\\Container->call(Array)
+#19 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(810): Illuminate\\Foundation\\Application->bootProvider(Object(Modules\\Crm\\Providers\\CrmServiceProvider))
+#20 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Modules\\Crm\\Providers\\CrmServiceProvider), 47)
+#21 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(811): array_walk(Array, Object(Closure))
+#22 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#23 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(210): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#24 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(162): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#25 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(146): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#26 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#27 /home/erp/public_html/public/index.php(53): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#28 {main}
+"} 
+[2021-06-07 14:26:56] live.ERROR: SQLSTATE[HY000] [1040] Too many connections (SQL: select * from `system` where `key` = crm_version limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 1040): SQLSTATE[HY000] [1040] Too many connections (SQL: select * from `system` where `key` = crm_version limit 1) at /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:664, PDOException(code: 1040): SQLSTATE[HY000] [1040] Too many connections at /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:70)
+[stacktrace]
+#0 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(624): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(333): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#2 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2130): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#3 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2118): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2604): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2119): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#6 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(521): Illuminate\\Database\\Query\\Builder->get(Array)
+#7 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(505): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#8 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(77): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#9 /home/erp/public_html/app/System.php(39): Illuminate\\Database\\Eloquent\\Builder->first()
+#10 /home/erp/public_html/app/Utils/ModuleUtil.php(28): App\\System::getProperty('crm_version')
+#11 /home/erp/public_html/Modules/Crm/Providers/CrmServiceProvider.php(177): App\\Utils\\ModuleUtil->isModuleInstalled('Crm')
+#12 /home/erp/public_html/Modules/Crm/Providers/CrmServiceProvider.php(47): Modules\\Crm\\Providers\\CrmServiceProvider->registerScheduleCommands()
+#13 [internal function]: Modules\\Crm\\Providers\\CrmServiceProvider->boot()
+#14 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#15 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(576): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(827): Illuminate\\Container\\Container->call(Array)
+#19 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(810): Illuminate\\Foundation\\Application->bootProvider(Object(Modules\\Crm\\Providers\\CrmServiceProvider))
+#20 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Modules\\Crm\\Providers\\CrmServiceProvider), 47)
+#21 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(811): array_walk(Array, Object(Closure))
+#22 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#23 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(210): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#24 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(162): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#25 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(146): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#26 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#27 /home/erp/public_html/public/index.php(53): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#28 {main}
+"} 
+[2021-06-07 14:26:57] live.ERROR: SQLSTATE[08004] [1040] Too many connections (SQL: select * from `system` where `key` = crm_version limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 1040): SQLSTATE[08004] [1040] Too many connections (SQL: select * from `system` where `key` = crm_version limit 1) at /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php:664, PDOException(code: 1040): SQLSTATE[08004] [1040] Too many connections at /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:70)
+[stacktrace]
+#0 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(624): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Connection.php(333): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#2 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2130): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#3 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2118): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2604): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2119): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#6 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(521): Illuminate\\Database\\Query\\Builder->get(Array)
+#7 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(505): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#8 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(77): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#9 /home/erp/public_html/app/System.php(39): Illuminate\\Database\\Eloquent\\Builder->first()
+#10 /home/erp/public_html/app/Utils/ModuleUtil.php(28): App\\System::getProperty('crm_version')
+#11 /home/erp/public_html/Modules/Crm/Providers/CrmServiceProvider.php(177): App\\Utils\\ModuleUtil->isModuleInstalled('Crm')
+#12 /home/erp/public_html/Modules/Crm/Providers/CrmServiceProvider.php(47): Modules\\Crm\\Providers\\CrmServiceProvider->registerScheduleCommands()
+#13 [internal function]: Modules\\Crm\\Providers\\CrmServiceProvider->boot()
+#14 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#15 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#16 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(576): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(827): Illuminate\\Container\\Container->call(Array)
+#19 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(810): Illuminate\\Foundation\\Application->bootProvider(Object(Modules\\Crm\\Providers\\CrmServiceProvider))
+#20 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Modules\\Crm\\Providers\\CrmServiceProvider), 47)
+#21 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(811): array_walk(Array, Object(Closure))
+#22 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#23 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(210): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#24 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(162): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#25 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(146): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#26 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#27 /home/erp/public_html/public/index.php(53): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#28 {main}
+"} 
+[2021-06-07 19:27:34] live.EMERGENCY: ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: F/W Bolt 375 STP SKU: 104903 Quantity: 20 Business: STP Location: saddique Tractors  
+[2021-06-07 19:27:34] live.EMERGENCY: File:/home/erp/public_html/app/Utils/TransactionUtil.phpLine:2941Message:ERROR: NOT ALLOWED: Mismatch between sold and purchase quantity. Product: F/W Bolt 375 STP SKU: 104903 Quantity: 20  
