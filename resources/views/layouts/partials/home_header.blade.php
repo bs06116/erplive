@@ -2,7 +2,9 @@
  <nav class="st-nav navbar main-nav navigation fixed-top" id="main-nav">
   <div class="container">
       <ul class="st-nav-menu nav navbar-nav">
-          <li class="st-nav-section nav-item"><a href="#main" class="navbar-brand"><img src="{{asset('new/img/logo.png')}}" alt="ERP" class="logo logo-sticky d-inline-block d-md-none"> <img src="{{asset('new/img/logo.png')}}" alt="Dashcore" class="logo d-none d-md-inline-block"></a></li>
+          <li class="st-nav-section nav-item"><a href="#main" class="navbar-brand">
+              <img src="{{asset('new/img/logo.png')}}" alt="ERP" class="logo logo-sticky d-inline-block d-md-none">
+             <img src="{{asset('new/img/logo-light.png')}}" alt="Dashcore" class="logo d-none d-md-inline-block"></a></li>
           <li class="st-nav-section st-nav-primary nav-item"><a class="st-root-link nav-link active" href="/">Home</a>
               <!-- <a class="st-root-link item-products st-has-dropdown nav-link" data-dropdown="blocks">Blocks</a>
                <a class="st-root-link item-products st-has-dropdown nav-link" data-dropdown="pages">Pages</a>
