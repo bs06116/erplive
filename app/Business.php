@@ -101,6 +101,8 @@ class Business extends Model
      */
     public static function create_business($details)
     {
+        // print_r($details);
+        // die;
         $business = Business::create($details);
         return $business;
     }
@@ -120,10 +122,10 @@ class Business extends Model
         }
     }
 
-    public function getBusinessAddressAttribute() 
+    public function getBusinessAddressAttribute()
     {
         $location = $this->locations->first();
-        $address = $location->landmark . ', ' .$location->city . 
+        $address = $location->landmark . ', ' .$location->city .
         ', ' . $location->state . '<br>' . $location->country . ', ' . $location->zip_code;
 
         return $address;

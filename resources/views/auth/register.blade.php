@@ -5,9 +5,9 @@
 <div class="row">
 
     <h1 class="page-header text-center">{{ config('app.name', 'ultimatePOS') }}</h2>
-    
+
     <div class="col-md-8 col-md-offset-2">
-        
+
         <div class="box box-solid">
             <div class="box-header with-border">
                 <h3 class="box-title text-center">Register and Get Started in minutes</h3>
@@ -53,7 +53,7 @@
                         </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-4">
                         <div class="form-group">
                         {!! Form::label('country','Country:') !!}
@@ -257,13 +257,13 @@
 
                 </div>
                 <!-- /.box-body -->
-                
+
                 <div class="box-footer">
                     <button type="button" class="btn btn-success pull-right">Register</button>
                 </div>
 
             {!! Form::close() !!}
-            
+
         </div>
           <!-- /.box -->
     </div>

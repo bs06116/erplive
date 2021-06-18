@@ -1,4 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><!-- Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+    <title>@yield('title') - {{ config('app.name', 'POS') }}</title>
+
+    <link rel="stylesheet" href="{{ asset('new/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('new/css/lib.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('new/css/dashcore.min.css') }}">
+
+<body>
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    @yield('content')
+    <!-- Scripts -->
+    @include('layouts.partials.javascripts')
+    <script src="{{ asset('new/js/core.min.js') }}"></script>
+    <script src="{{ asset('new/js/lib.min.js') }}"></script>
+    <script src="{{ asset('new/js/dashcore.min.js') }}"></script>
+
+</body>
+
+</html>
+
+{{-- <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <html>
 <head>
@@ -10,7 +43,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') - {{ config('app.name', 'POS') }}</title> 
+    <title>@yield('title') - {{ config('app.name', 'POS') }}</title>
 
     @include('layouts.partials.css')
 
@@ -28,17 +61,17 @@
     <div class="container-fluid">
         <div class="row eq-height-row">
             <div class="col-md-5 col-sm-5 hidden-xs left-col eq-height-col" >
-                <div class="left-col-content login-header"> 
+                <div class="left-col-content login-header">
                     <div style="margin-top: 50%;">
                     <a href="/">
-                    @if(file_exists(public_path('uploads/logo.png')))
+                    @if (file_exists(public_path('uploads/logo.png')))
                         <img src="/uploads/logo.png" class="img-rounded" alt="Logo" width="150">
                     @else
                        {{ config('app.name', 'ultimatePOS') }}
-                    @endif 
+                    @endif
                     </a>
                     <br/>
-                    @if(!empty(config('constants.app_title')))
+                    @if (!empty(config('constants.app_title')))
                         <small>{{config('constants.app_title')}}</small>
                     @endif
                     </div>
@@ -48,11 +81,11 @@
                 <div class="row">
                 <div class="col-md-3 col-xs-4" style="text-align: left;">
                     <select class="form-control input-sm" id="change_lang" style="margin: 10px;">
-                    @foreach(config('constants.langs') as $key => $val)
-                        <option value="{{$key}}" 
-                            @if( (empty(request()->lang) && config('app.locale') == $key) 
-                            || request()->lang == $key) 
-                                selected 
+                    @foreach (config('constants.langs') as $key => $val)
+                        <option value="{{$key}}"
+                            @if( (empty(request()->lang) && config('app.locale') == $key)
+                            || request()->lang == $key)
+                                selected
                             @endif
                         >
                             {{$val['full_name']}}
@@ -61,33 +94,33 @@
                     </select>
                 </div>
                 <div class="col-md-9 col-xs-8" style="text-align: right;padding-top: 10px;">
-                    @if(!($request->segment(1) == 'business' && $request->segment(2) == 'register'))
+                    @if (!($request->segment(1) == 'business' && $request->segment(2) == 'register'))
                         <!-- Register Url -->
-                        @if(config('constants.allow_registration'))
-                            <a href="{{ route('business.getRegister') }}@if(!empty(request()->lang)){{'?lang=' . request()->lang}} @endif" class="btn bg-maroon btn-flat" ><b>{{ __('business.not_yet_registered')}}</b> {{ __('business.register_now') }}</a>
+                        @if (config('constants.allow_registration'))
+                            <a href="{{ route('business.getRegister') }}@if (!empty(request()->lang)){{'?lang=' . request()->lang}} @endif" class="btn bg-maroon btn-flat" ><b>{{ __('business.not_yet_registered')}}</b> {{ __('business.register_now') }}</a>
                             <!-- pricing url -->
-                            @if(Route::has('pricing') && config('app.env') != 'demo' && $request->segment(1) != 'pricing')
+                            @if (Route::has('pricing') && config('app.env') != 'demo' && $request->segment(1) != 'pricing')
                                 &nbsp; <a href="{{ action('\Modules\Superadmin\Http\Controllers\PricingController@index') }}">@lang('superadmin::lang.pricing')</a>
                             @endif
                         @endif
                     @endif
-                    @if($request->segment(1) != 'login')
-                        &nbsp; &nbsp;<span class="text-white">{{ __('business.already_registered')}} </span><a href="{{ action('Auth\LoginController@login') }}@if(!empty(request()->lang)){{'?lang=' . request()->lang}} @endif">{{ __('business.sign_in') }}</a>
+                    @if ($request->segment(1) != 'login')
+                        &nbsp; &nbsp;<span class="text-white">{{ __('business.already_registered')}} </span><a href="{{ action('Auth\LoginController@login') }}@if (!empty(request()->lang)){{'?lang=' . request()->lang}} @endif">{{ __('business.sign_in') }}</a>
                     @endif
                 </div>
-                
+
                 @yield('content')
                 </div>
             </div>
         </div>
     </div>
 
-    
+
     @include('layouts.partials.javascripts')
-    
+
     <!-- Scripts -->
     <script src="{{ asset('js/login.js?v=' . $asset_v) }}"></script>
-    
+
     @yield('javascript')
 
     <script type="text/javascript">
@@ -103,4 +136,6 @@
     </script>
 </body>
 
-</html>
+</html> --}}
+
+

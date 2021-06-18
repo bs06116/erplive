@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $guarded = ['id'];
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -39,7 +39,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    
+
 
     /**
      * Get the business that owns the user.
@@ -80,9 +80,9 @@ class User extends Authenticatable
     public static function create_user($details)
     {
         $user = User::create([
-                    'surname' => $details['surname'],
+                    // 'surname' => $details['surname'],
                     'first_name' => $details['first_name'],
-                    'last_name' => $details['last_name'],
+                    // 'last_name' => $details['last_name'],
                     'username' => $details['username'],
                     'email' => $details['email'],
                     'password' => Hash::make($details['password']),
@@ -126,7 +126,7 @@ class User extends Authenticatable
     public static function can_access_this_location($location_id)
     {
         $permitted_locations = auth()->user()->permitted_locations();
-        
+
         if ($permitted_locations == 'all' || in_array($location_id, $permitted_locations)) {
             return true;
         }
@@ -167,7 +167,7 @@ class User extends Authenticatable
     {
         $query = User::where('business_id', $business_id)
                     ->user();
-                    
+
         if (!$include_commission_agents) {
             $query->where('is_cmmsn_agnt', 0);
         }
@@ -188,7 +188,7 @@ class User extends Authenticatable
         if ($prepend_all) {
             $users = $users->prepend(__('lang_v1.all'), '');
         }
-        
+
         return $users;
     }
 

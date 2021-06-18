@@ -116,7 +116,7 @@
                 <div class="tab-pane fade" id="calendar-tab">
                     <div class="row gap-y align-items-center">
                         <div class="col-md-6 me-md-auto position-relative">
-                            <div class="browser shadow-box" data-aos="fade-end"><img src="{{asset('new/img/screens/dash/2.png')}}" alt="" class="img-responsive"></div><img src="img/screens/dash/2.1.png" alt="" class="absolute img-responsive shadow rounded" style="right: 0; top: 0">
+                            <div class="browser shadow-box" data-aos="fade-end"><img src="{{asset('new/img/screens/dash/2.png')}}" alt="" class="img-responsive"></div><img src="{{asset('new/img/screens/dash/2.1.png')}}" alt="" class="absolute img-responsive shadow rounded" style="right: 0; top: 0">
                         </div>
                         <div class="col-md-5">
                             <h2 class="display-4 light">Calendar</h2>
@@ -263,7 +263,7 @@
                 <div class="text-contrast"><i class="fa fa-heart fa-2x mb-3"></i>
                     <h2 class="mb-5 text-contrast">Try ERP now... Love it forever!</h2>
                     <p class="handwritten highlight font-md">Why wait? Start now!</p>
-                </div><a href="signup.html" class="btn btn-success text-contrast btn-rounded mt-4">Buy ERP on Themeforest</a>
+                </div><a href="signup.html" class="btn btn-success text-contrast btn-rounded mt-4">Buy ERP on PITS</a>
             </div>
         </div>
     </section><!-- ./CTA - Create Account -->
@@ -280,7 +280,7 @@
     <footer class="site-footer section b-t">
         <div class="container pb-3">
             <div class="row gap-y text-center text-md-start">
-                <div class="col-md-4 me-auto"><img src="img/logo.png" alt="" class="logo">
+                <div class="col-md-4 me-auto"><img src="{{asset('new/img/logo.png')}}" alt="" class="logo">
                     <p>ERP, a carefully crafted and powerful HTML5 template, it's perfect to showcase your startup or software</p>
                 </div>
                 <div class="col-md-2">

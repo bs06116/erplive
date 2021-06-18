@@ -1,4 +1,4 @@
-@if(empty($is_admin))
+{{-- @if (empty($is_admin))
     <h3>@lang('business.business')</h3>
 @endif
 {!! Form::hidden('language', request()->lang); !!}
@@ -16,7 +16,7 @@
         </div>
     </div>
 </div>
-        
+
 <div class="col-md-6">
     <div class="form-group">
     {!! Form::label('start_date', __('business.start_date') . ':') !!}
@@ -156,7 +156,7 @@
 </fieldset>
 
 <!-- tax details -->
-@if(empty($is_admin))
+@if (empty($is_admin))
     <h3>@lang('business.business_settings')</h3>
 
     <fieldset>
@@ -235,7 +235,7 @@
 @endif
 
 <!-- Owner Information -->
-@if(empty($is_admin))
+@if (empty($is_admin))
     <h3>@lang('business.owner')</h3>
 @endif
 
@@ -326,7 +326,7 @@
 </div>
 <div class="clearfix"></div>
 <div class="col-md-6">
-    @if(!empty($system_settings['superadmin_enable_register_tc']))
+    @if (!empty($system_settings['superadmin_enable_register_tc']))
         <div class="form-group">
             <label>
                 {!! Form::checkbox('accept_tc', 0, false, ['required', 'class' => 'input-icheck']); !!}
@@ -339,4 +339,28 @@
     @endif
 </div>
 <div class="clearfix"></div>
-</fieldset>
+</fieldset> --}}
+
+
+<div class="form-group has-icon"><input type="text" id="name" class="form-control form-control-rounded" value=""
+        name="name" placeholder="Business Name" required> <i class="icon fas fa-user-plus"></i></div>
+
+<div class="form-group has-icon"><input type="text" id="register_username" class="form-control form-control-rounded"
+        value="" name="username" placeholder="Desired username" required> <i class="icon fas fa-user-plus"></i></div>
+
+<div class="form-group has-icon"><input type="text" id="register_fullname" class="form-control form-control-rounded"
+        value="" name="first_name" placeholder="First name" required> <i class="icon fas fa-address-card"></i></div>
+
+<div class="form-group has-icon"><input type="text" id="register_email" class="form-control form-control-rounded"
+        value="" name="email" placeholder="Valid email" required> <i class="icon fas fa-envelope"></i></div>
+
+<div class="form-group has-icon"><input type="password" id="register_password" class="form-control form-control-rounded"
+        name="password" placeholder="Password" required> <i class="icon fas fa-lock"></i></div>
+
+<div class="form-group d-flex align-items-center justify-content-between"><button type="submit"
+        class="btn btn-primary btn-rounded ms-auto">Register <i class="fas fa-long-arrow-alt-right ms-2"></i></button>
+</div>
+<input type="hidden" value="91"  name="currency_id">
+
+
+<!-- themeforest:js -->

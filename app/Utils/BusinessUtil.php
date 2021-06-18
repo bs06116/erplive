@@ -118,7 +118,7 @@ class BusinessUtil extends Util
         //                 'is_default' => 1,
         //                 'business_id' => $business_id
         //             ]);
-        
+
         //Add Default Unit for new business
         $unit = [
                     'business_id' => $business_id,
@@ -213,7 +213,6 @@ class BusinessUtil extends Util
 
         //Disable inline tax editing
         $business_details['enable_inline_tax'] = 0;
-
         $business = Business::create_business($business_details);
 
         return $business;
@@ -257,7 +256,7 @@ class BusinessUtil extends Util
         if ($start_month == 1) {
             $end_month = 12;
         }
-        
+
         $start_year = date('Y');
         //if current month is less than start month change start year to last year
         if (date('n') < $start_month) {
@@ -289,7 +288,7 @@ class BusinessUtil extends Util
      *
      * @return location object
      */
-    public function addLocation($business_id, $location_details, $invoice_scheme_id = null, $invoice_layout_id = null)
+    public function addLocation($business_id, $location_details =null, $invoice_scheme_id = null, $invoice_layout_id = null)
     {
         if (empty($invoice_scheme_id)) {
             $layout = InvoiceLayout::where('is_default', 1)
@@ -319,12 +318,12 @@ class BusinessUtil extends Util
             ];
         }
         $location = BusinessLocation::create(['business_id' => $business_id,
-                            'name' => $location_details['name'],
-                            'landmark' => $location_details['landmark'],
-                            'city' => $location_details['city'],
-                            'state' => $location_details['state'],
-                            'zip_code' => $location_details['zip_code'],
-                            'country' => $location_details['country'],
+                            // 'name' => $location_details['name'],
+                            // 'landmark' => $location_details['landmark'],
+                            // 'city' => $location_details['city'],
+                            // 'state' => $location_details['state'],
+                            // 'zip_code' => $location_details['zip_code'],
+                            // 'country' => $location_details['country'],
                             'invoice_scheme_id' => $invoice_scheme_id,
                             'invoice_layout_id' => $invoice_layout_id,
                             'sale_invoice_layout_id' => $invoice_layout_id,
@@ -353,7 +352,7 @@ class BusinessUtil extends Util
         if (!empty($layout_id)) {
             $layout = InvoiceLayout::find($layout_id);
         }
-        
+
         //If layout is not found (deleted) then get the default layout for the business
         if (empty($layout)) {
             $layout = InvoiceLayout::where('business_id', $business_id)
