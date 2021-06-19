@@ -72,15 +72,15 @@ class ProjectController extends Controller
 
                 //if not admin get assigned project only
                 // if (!$is_admin) {
-                    $projects->where('created_by', $user_id)
-                        ->orWhereHas('members', function ($q) use ($user_id) {
-                        $q->where('user_id', $user_id);
-                    });
+                    // $projects->where('created_by', $user_id)
+                    //     ->orWhereHas('members', function ($q) use ($user_id) {
+                    //     $q->where('user_id', $user_id);
+                    // });
                 // }
 
                 // filter by status
                 if (!empty(request()->get('status'))) {
-                    $projects->where('status', request()->get('status'));
+                    $projects->where('status',request()->get('status'));
                 }
 
                 // filter by end date
@@ -114,7 +114,7 @@ class ProjectController extends Controller
 
                 if ($project_view == 'list_view') {
                     $projects = $projects->latest()
-                                ->simplePaginate(10);
+                                ->simplePaginate(12);
 
                     //check if user is lead/admin for the project
                     foreach ($projects as $key => $project) {

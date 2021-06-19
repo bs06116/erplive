@@ -41,7 +41,7 @@
 	@component('components.widget', ['title' => __('essentials::lang.todo_list'), 'icon' => '<i class="ion ion-clipboard"></i>', 'class' => 'box-solid'])
 		@slot('tool')
 			<div class="box-tools">
-				<button class="btn btn-block btn-primary btn-modal" data-href="{{action('\Modules\Essentials\Http\Controllers\ToDoController@create')}}" 
+				<button class="btn btn-block btn-primary btn-modal" data-href="{{action('\Modules\Essentials\Http\Controllers\ToDoController@create')}}"
 				data-container="#task_modal">
 					<i class="fa fa-plus"></i> @lang( 'messages.add' )</a>
 				</button>
@@ -66,7 +66,7 @@
 		</div>
 	@endcomponent
 </section>
-<div class="modal fade" id="task_modal" tabindex="-1" role="dialog" 
+<div class="modal fade" id="task_modal" tabindex="-1" role="dialog"
     	aria-labelledby="gridSystemModalLabel">
 </div>
 @include('essentials::todo.update_task_status_modal')
@@ -74,7 +74,22 @@
 
 @section('javascript')
 <script type="text/javascript">
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    return [year, month,day ].join('-');
+}
 	$(document).ready(function(){
+		var startDayYear= formatDate(moment().startOf('month'));
+		var endDayYear= formatDate(moment().endOf('month'));
 		task_table = $('#task_table').DataTable({
 	        processing: true,
 	        serverSide: true,
@@ -84,8 +99,8 @@
 	        		d.user_id = $('#user_id_filter').length ? $('#user_id_filter').val() : '';
 	        		d.priority = $('#priority_filter').val();
 	        		d.status = $('#status_filter').val();
-	        		var start = '';
-	                var end = '';
+	        		var start = startDayYear ;
+	                var end = endDayYear;
 	                if ($('#date_range_filter').val()) {
 	                    start = $('input#date_range_filter')
 	                        .data('daterangepicker')
@@ -120,14 +135,23 @@
 	    });
 
 	    $('#date_range_filter').daterangepicker(
+			// {
+            //         ranges: ranges,
+            //         autoUpdateInput: true,
+            //         startDate: moment().startOf('month'),
+            //         endDate: moment().endOf('month'),
+            //         locale: {
+            //             format: moment_date_format
+            //         }
+            //     },
         dateRangeSettings,
 	        function (start, end) {
-	            $('#date_range_filter').val(start.format(moment_date_format) + ' ~ ' + end.format(moment_date_format));
+	           $('#date_range_filter').val(start.format(moment_date_format) + ' ~ ' + end.format(moment_date_format));
 	           task_table.ajax.reload();
 	        }
 	    );
 	    $('#date_range_filter').on('cancel.daterangepicker', function(ev, picker) {
-	        $('#date_range_filter').val('');
+	       $('#date_range_filter').val('');
 	        task_table.ajax.reload();
 	    });
 
@@ -155,7 +179,7 @@
 							}
 						}
 					});
-				   }	
+				   }
 			  });
 		});
 
