@@ -7,6 +7,7 @@ return [
     'create_project' => 'Create Project',
     'lead' => 'Lead',
     'end_date' => 'End Date',
+    'search' => 'Search',
     'members' => 'Members',
     'not_started' => 'Not Started',
     'project_not_found' => 'Projects not found!',

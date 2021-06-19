@@ -8,6 +8,7 @@ return [
 "title" => "Titel",
 "start_datetime" => "Start Datetime",
 "end_datetime" => "End Datetime",
+"search" => "Search",
 "schedule_type" => "Schedule Type",
 "send_notification" => "Melding verzenden",
 "notify_via" => "Melden via",

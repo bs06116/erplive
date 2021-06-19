@@ -54,7 +54,7 @@ class ProjectController extends Controller
         $is_admin = $this->commonUtil->is_admin(auth()->user(), $business_id);
         $user_id = auth()->user()->id;
         $statuses = Project::statusDropdown();
-        
+
         //if project view is NULL, set default to list_view
         if (is_null(request()->get('project_view'))) {
             $project_view = 'list_view';
@@ -77,7 +77,7 @@ class ProjectController extends Controller
                         $q->where('user_id', $user_id);
                     });
                 // }
-                
+
                 // filter by status
                 if (!empty(request()->get('status'))) {
                     $projects->where('status', request()->get('status'));
@@ -103,6 +103,13 @@ class ProjectController extends Controller
                     $projects->whereHas('categories', function ($q) use ($category_id) {
                         $q->where('id', $category_id);
                     });
+                }
+
+                 // filter by search name
+                 if (!empty(request()->get('search_name'))) {
+                    $search_name = request()->get('search_name');
+                    $projects->where('name',  'LIKE', "%$search_name%");
+
                 }
 
                 if ($project_view == 'list_view') {
@@ -387,7 +394,7 @@ class ProjectController extends Controller
         if (!(auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'project_module'))) {
             abort(403, 'Unauthorized action.');
         }
-        
+
         $user_id = auth()->user()->id;
 
         //Get time project details.
@@ -423,7 +430,7 @@ class ProjectController extends Controller
             ->where('pjt_project_id', $id)
             ->select(DB::raw('SUM(final_total) as total'))
             ->first();
-            
+
         //check if user can create settings & task & time log
         $is_admin = $this->commonUtil->is_admin(auth()->user(), $business_id);
         $is_lead = $this->projectUtil->isProjectLead(auth()->user()->id, $id);
@@ -488,7 +495,7 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $business_id = request()->session()->get('user.business_id');
-        
+
         if (!(auth()->user()->can('superadmin') || ($this->moduleUtil->hasThePermissionInSubscription($business_id, 'project_module') && auth()->user()->can('project.edit_project')))) {
             abort(403, 'Unauthorized action.');
         }
@@ -507,7 +514,7 @@ class ProjectController extends Controller
 
             $project->update($input);
             $project_members = $project->members()->sync($members);
-            
+
             //update project category
             $categories = $request->input('category_id');
             $project->categories()->sync($categories);
@@ -520,7 +527,7 @@ class ProjectController extends Controller
                         unset($project_members['attached'][$key]);
                     }
                 }
-                
+
                 //Used for broadcast notification
                 $project['title'] = __('project::lang.project');
                 $project['body'] = __(
@@ -543,7 +550,7 @@ class ProjectController extends Controller
             ];
         } catch (Exception $e) {
             DB::rollBack();
-            
+
             \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
 
             $output = [
@@ -638,7 +645,7 @@ class ProjectController extends Controller
                 'msg' => __('messages.something_went_wrong')
             ];
         }
-        
+
         return redirect()->action(
             '\Modules\Project\Http\Controllers\ProjectController@show',
             ['id' => $project_id]
@@ -660,7 +667,7 @@ class ProjectController extends Controller
 
             $project->status = $status;
             $project->save();
-            
+
             $output = [
                 'success' => true,
                 'msg' => __('lang_v1.success')

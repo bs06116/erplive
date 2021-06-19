@@ -50,6 +50,7 @@
 							{{$project->count}}
 						</span>
 					</div>
+
 					<!-- /.info-box-content -->
 				</div>
 				<!-- /.info-box -->
@@ -101,6 +102,18 @@
 						{!! Form::select('project_categories_filter', $categories, null, ['class' => 'form-controll select2', 'placeholder' => __('messages.all'), 'style' => 'width:100%;']); !!}
 					</div>
 				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						{!! Form::label('project_categories_filter', __('project::lang.search') . ':') !!}
+						<div class="selection" >
+							<input id="project_search_filter" style="    border: 1px solid #d2d6de;
+							border-radius: 0;
+							padding: 6px 12px;
+							height: 34px;
+						}" type="text"  name="search" />
+						</div>
+					</div>
+				</div>
 			</div>
 			@if($project_view == 'list_view')
 				<div class="project_html">
@@ -119,7 +132,7 @@
 				    </div>
 				</div>
 			@endif
-		</div>			
+		</div>
 	</div>
 	<!-- /.box -->
 	<div class="modal fade" tabindex="-1" role="dialog" id="project_model"></div>
