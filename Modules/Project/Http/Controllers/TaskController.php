@@ -45,6 +45,7 @@ class TaskController extends Controller
      */
     public function index()
     {
+
         $business_id = request()->session()->get('user.business_id');
         $is_admin = $this->commonUtil->is_admin(auth()->user(), $business_id);
         $user = request()->session()->get('user');
@@ -242,6 +243,7 @@ class TaskController extends Controller
                     ->rawColumns(['action', 'project', 'subject', 'members', 'priority', 'start_date', 'due_date', 'status', 'createdBy'])
                     ->make(true);
             } elseif (request()->get('task_view') == 'kanban') {
+
                 $project_task = $project_task->get()->groupBy('status');
 
                 //sort array based on status

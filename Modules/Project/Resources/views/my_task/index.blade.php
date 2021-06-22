@@ -81,10 +81,10 @@
 		                <th>@lang('project::lang.due_date')</th>
 		                <th>@lang('sale.status')</th>
 		                <th> @lang('project::lang.assigned_by')</th>
-		                <th>@lang('project::lang.task_custom_field_1')</th>
+		                {{-- <th>@lang('project::lang.task_custom_field_1')</th>
 		                <th>@lang('project::lang.task_custom_field_2')</th>
 		                <th>@lang('project::lang.task_custom_field_3')</th>
-		                <th>@lang('project::lang.task_custom_field_4')</th>
+		                <th>@lang('project::lang.task_custom_field_4')</th> --}}
 		            </tr>
 		        </thead>
 		    </table>
