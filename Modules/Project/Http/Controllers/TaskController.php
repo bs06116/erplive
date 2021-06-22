@@ -61,12 +61,12 @@ class TaskController extends Controller
 
             //if user is not admin get assiged task only
             $user_id = $user['id'];
-            if (empty(request()->get('project_id')) && !$is_admin) {
-                $project_task->where('created_by', $auth_id)
-                        ->orWhereHas('members', function ($q) use ($user_id) {
-                    $q->where('user_id', $user_id);
-                });
-            }
+            // if (empty(request()->get('project_id')) && !$is_admin) {
+                // $project_task->where('created_by', $auth_id)
+                //         ->orWhereHas('members', function ($q) use ($user_id) {
+                //     $q->where('user_id', $user_id);
+                // });
+            // }
 
             //filter by project id
             if (!empty(request()->get('project_id'))) {

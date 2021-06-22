@@ -71,12 +71,12 @@ class ProjectController extends Controller
                 $projects = Project::with('customer', 'members', 'lead', 'categories')->where('business_id', $business_id);
 
                 //if not admin get assigned project only
-                // if (!$is_admin) {
-                    // $projects->where('created_by', $user_id)
-                    //     ->orWhereHas('members', function ($q) use ($user_id) {
-                    //     $q->where('user_id', $user_id);
-                    // });
-                // }
+                if (!$is_admin) {
+                    $projects->where('created_by', $user_id)
+                        ->orWhereHas('members', function ($q) use ($user_id) {
+                        $q->where('user_id', $user_id);
+                    });
+                }
 
                 // filter by status
                 if (!empty(request()->get('status'))) {
