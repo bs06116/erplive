@@ -5,12 +5,12 @@
 </button>
 @endif
 <div class="btn-group btn-group-toggle pull-right m-5" data-toggle="buttons">
-    <label class="btn btn-info btn-sm 
+    <label class="btn btn-info btn-sm
         @if((!empty($project->settings) && !isset($project->settings['task_view'])) || (isset($project->settings['task_view']) &&
                 $project->settings['task_view'] == 'list_view'))
             active
         @endif">
-        <input type="radio" name="task_view" value="list_view" class="task_view" 
+        <input type="radio" name="task_view" value="list_view" class="task_view"
            @if((!empty($project->settings) && !isset($project->settings['task_view'])) || (isset($project->settings['task_view']) &&
                 $project->settings['task_view'] == 'list_view'))
                 checked
@@ -22,7 +22,7 @@
         $project->settings['task_view'] == 'kanban')
             active
         @endif">
-        <input type="radio" name="task_view" value="kanban" class="task_view" 
+        <input type="radio" name="task_view" value="kanban" class="task_view"
             @if(isset($project->settings['task_view']) &&
             $project->settings['task_view'] == 'kanban')
                 checked
@@ -47,10 +47,10 @@
                 <th>@lang('project::lang.due_date')</th>
                 <th>@lang('sale.status')</th>
                 <th>@lang('project::lang.assigned_by')</th>
-                <th>@lang('project::lang.task_custom_field_1')</th>
+                {{-- <th>@lang('project::lang.task_custom_field_1')</th>
                 <th>@lang('project::lang.task_custom_field_2')</th>
                 <th>@lang('project::lang.task_custom_field_3')</th>
-                <th>@lang('project::lang.task_custom_field_4')</th>
+                <th>@lang('project::lang.task_custom_field_4')</th> --}}
             </tr>
         </thead>
     </table>

@@ -61,14 +61,14 @@
                        {!! Form::select('user_id[]', $project_members, null, ['class' => 'form-control select2', 'multiple', 'required', 'style' => 'width: 100%;']); !!}
                     </div>
                 </div>
-                <div class="col-md-4">
+                {{-- <div class="col-md-4">
                     <div class="form-group">
                         {!! Form::label('custom_field_1', __('project::lang.task_custom_field_1') . ':' )!!}
                         {!! Form::text('custom_field_1', null, ['class' => 'form-control']) !!}
                    </div>
-                </div>
+                </div> --}}
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         {!! Form::label('custom_field_2', __('project::lang.task_custom_field_2') . ':' )!!}
@@ -87,7 +87,7 @@
                         {!! Form::text('custom_field_4', null, ['class' => 'form-control']) !!}
                    </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary btn-sm ladda-button" data-style="expand-right">

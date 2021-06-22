@@ -110,7 +110,8 @@
 							border-radius: 0;
 							padding: 6px 12px;
 							height: 34px;
-						}" type="text"  name="search" />
+							width: 100%
+						" type="text"  name="search" />
 						</div>
 					</div>
 				</div>

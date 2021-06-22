@@ -49,10 +49,10 @@ $record_not_available = true;
 				    					<tr>
 				    						<td>
 				    							@if(isset($timeLog->task))
-				    								{{$timeLog->task->subject}}
+												<a href="{{'project-task'}}">{{$timeLog->task->subject}} </a>
 				    								<small>
 				    									<code>
-				    										{{$timeLog->task->task_id}}
+				    										 {{$timeLog->task->task_id}}
 				    									</code>
 				    								</small>
 				    							@endif

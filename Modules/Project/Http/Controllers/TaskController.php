@@ -49,7 +49,7 @@ class TaskController extends Controller
         $is_admin = $this->commonUtil->is_admin(auth()->user(), $business_id);
         $user = request()->session()->get('user');
         $statuses = ProjectTask::taskStatuses();
-        
+
         if (!(auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'project_module'))) {
             abort(403, 'Unauthorized action.');
         }
@@ -175,7 +175,7 @@ class TaskController extends Controller
                                 $priority
                             .'</span>';
 
-                        
+
                         return $html;
                     })
                     ->editColumn('start_date', '
@@ -344,12 +344,12 @@ class TaskController extends Controller
     {
         $project_id = request()->get('project_id');
         // $project_members = ProjectMember::projectMembersDropdown($project_id);
-   
+
         $priorities = ProjectTask::prioritiesDropdown();
         $statuses = ProjectTask::taskStatuses();
         $business_id = auth()->user()->business_id;
          $project_members = User::forDropdown($business_id, false);
-   
+
         return view('project::task.create')
             ->with(compact('project_members', 'priorities', 'project_id', 'statuses'));
     }
@@ -369,7 +369,7 @@ class TaskController extends Controller
             $input['business_id'] = request()->session()->get('user.business_id');
             $input['task_id'] = $this->projectUtil->generateTaskId($input['business_id'], $input['project_id']);
             $members = $request->input('user_id');
-            
+
             $project_task = ProjectTask::create($input);
             $task_members = $project_task->members()->sync($members);
 
@@ -456,7 +456,7 @@ class TaskController extends Controller
                             ->findOrFail($id);
         $business_id = auth()->user()->business_id;
         $project_members = User::forDropdown($business_id, false);
-   
+
         // $project_members = ProjectMember::projectMembersDropdown($project_id);
         $priorities = ProjectTask::prioritiesDropdown();
         $statuses = ProjectTask::taskStatuses();
@@ -476,7 +476,7 @@ class TaskController extends Controller
             $input['start_date'] = !empty($request->input('start_date')) ? $this->commonUtil->uf_date($request->input('start_date')) : null;
             $input['due_date'] = !empty($request->input('due_date')) ? $this->commonUtil->uf_date($request->input('due_date')) : null;
             $members = $request->input('user_id');
-            
+
             $project_id = $request->get('project_id');
             $project_task = ProjectTask::where('project_id', $project_id)
                 ->findOrFail($id);
@@ -503,7 +503,7 @@ class TaskController extends Controller
                     ]
                 ));
                 $project_task['link'] = action('\Modules\Project\Http\Controllers\ProjectController@show', ['id' => $project_task->project_id]);
-                
+
                 $this->projectUtil->notifyUsersAboutAssignedTask($task_members['attached'], $project_task);
             }
 
@@ -576,7 +576,7 @@ class TaskController extends Controller
     {
         try {
             $project_id = request()->get('project_id');
-            
+
             $project_task = ProjectTask::where('project_id', $project_id)
                 ->findOrFail($id);
 
@@ -613,7 +613,7 @@ class TaskController extends Controller
 
             $project_task->description = request()->input('description');
             $project_task->save();
-            
+
             $project_task = ProjectTask::findOrFail($id);
 
             //dynamically change description in task view
