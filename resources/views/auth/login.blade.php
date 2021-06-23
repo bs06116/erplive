@@ -1,23 +1,25 @@
 @extends('layouts.auth2')
 @section('title', __('lang_v1.login'))
-
 @section('content')
 <main>
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay overlay-primary alpha-8 image-background cover"
-                style="background-image:url(https://picsum.photos/1920/1200/?random&gravity=south)">
+            <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay"
+                style="background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover                       " >
+                <img src="/new/img/erp_logo_login.png" id="img" class="logo1">
                 <div class="content">
-                    <h2 class="display-4 display-md-3 display-lg-2 text-contrast mt-5 mt-md-0">Welcome to <span
-                            class="bold d-block">ERP Live</span></h2>
-                    <p class="lead text-contrast">Login to your account</p>
-                    <hr class="mt-md-6 w-25">
-                    <div class="d-flex flex-column">
-                        <p class="small bold text-contrast">Or sign in with</p>
-                        <nav class="nav mb-4"><a class="btn btn-circle btn-outline-contrast me-2" href="#"><i
-                                    class="fab fa-facebook-f"></i></a> <a
-                                class="btn btn-circle btn-outline-contrast me-2" href="#"><i
-                                    class="fab fa-twitter"></i></a> <a class="btn btn-circle btn-outline-contrast"
+                    <div class="option">
+                        <ol class="ol1">
+                            <li> User Management->Users->Add new</li>
+                            <li> Fill the user details, Select user role, give a unique user name.</li>
+                            <li> Sales Commission Percentage(%): Provide the commission % <br> for this user. This option gets applied its commission</li>
+                        </ol>
+                    </div>
+                    <div class="d-flex flex-column fb ">
+                        <nav class="nav mb-4"><a id="l1" class="btn btn-circle  me-2" href="#"><i
+                                    class="fab fa-facebook-f  "></i></a> <a id="l2"
+                                class="btn btn-circle me-2" href="#"><i
+                                    class="fab fa-twitter"></i></a> <a id="l3" class="btn btn-circle "
                                 href="#"><i class="fab fa-linkedin-in"></i></a></nav>
                     </div>
                 </div>
@@ -51,42 +53,38 @@
             <div class="col-md-5 col-lg-4 mx-auto">
                 <div class="login-form mt-5 mt-md-0"><img src="img/logo.png"
                         class="logo img-responsive mb-4 mb-md-6" alt="">
-                    <h1 class="text-darker bold">Login</h1>
-                    <p class="text-secondary mt-0 mb-4 mb-md-6">Don't have an account yet? <a href="{{ route('business.getRegister') }}"
-                            class="text-primary bold">Create it here</a></p>
+                    <h1 class="text-darker bold x1">Login</h1>
+                    <p  style=" margin-top: -130px;margin-bottom: 80px;margin-left: 80px;font-weight: 500"> Grow your business with us </p>
                     <form class="form cozy" action="{{ route('login') }}"   method="POST" id="login-form" data-validate-on="submit" novalidate>
                         {{ csrf_field() }}
-                        <label
-                            class="form-label">User name</label>
-                        <div class="form-group has-icon"><input type="text" id="login_username"
+
+                        <div class="form-group has-icon input5"><input type="text" id="login_username"
                             name="username" value="{{ $username }}" required class="form-control form-control-rounded"
                                 placeholder="Your registered username" required> <i class="icon fas fa-user"></i>
-
                         </div>
                         @if ($errors->has('username'))
-                                <p class="is-invalid error">{{ $errors->first('username') }}</p>
+                                <p style="margin-left: 25px;margin-top: -25px" class="is-invalid error">{{ $errors->first('username') }}</p>
                         @endif
-                        <label class="form-label">Password</label>
-                        <div class="form-group has-icon"><input type="password" id="login_password"
+                        <div class="form-group has-icon input5"><input  type="password" id="login_password"
                             name="password"
                             value="{{ $password }}" required class="form-control form-control-rounded"
                                 placeholder="Your password" required> <i class="icon fas fa-lock"></i></div>
                                 @if ($errors->has('password'))
-                                    <p class="is-invalid error">{{ $errors->first('password') }}</p>
+                                    <p style="margin-left: 25px;margin-top: -25px" class="is-invalid error">{{ $errors->first('password') }}</p>
                             @endif
                         <div class="form-group d-flex align-items-center justify-content-between"><a
-                                href="{{ route('password.request') }}" class="text-dark small">Forgot your password?</a>
+                                href="{{ route('password.request') }}"  style=" margin-left: 25px;font-size: 13px;font-weight: 500;">Forgot password?</a>
                             <div class="ajax-button">
                                 <div class="fas fa-check btn-status text-success success"></div>
-                                <div class="fas fa-times btn-status text-danger failed"></div><button type="submit"
-                                    class="btn btn-primary btn-rounded">Login <i
+                                <div class="fas fa-times btn-status text-danger failed"></div><button  type="submit"
+                                     class="btn  btn-rounded login1">Login <i
                                         class="fas fa-long-arrow-alt-right ms-2"></i></button>
                             </div>
                         </div>
+                        <p class="paragraph">Don't have an account yet? <a class="sign"  href="{{ route('business.getRegister') }}">Sign Up Now</a></p>
                     </form>
                     </div>
                  </div>
-
         </div>
     </div>
 </main>
@@ -203,19 +201,10 @@
     </div>
     @endif --}}
 @stop
+
 @section('javascript')
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#change_lang').change( function(){
-            window.location = "{{ route('login') }}?lang=" + $(this).val();
-        });
+    console.log(fetchfile("inputfile.txt"))
 
-        $('a.demo-login').click( function (e) {
-           e.preventDefault();
-           $('#username').val($(this).data('admin'));
-           $('#password').val("{{$password}}");
-           $('form#login-form').submit();
-        });
-    })
 </script>
 @endsection
