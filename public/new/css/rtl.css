@@ -1,0 +1,183 @@
+[dir="rtl"] .handwritten.highlight:before {
+  margin-right: -1.5rem;
+  margin-left: 0;
+  -webkit-transform: rotate3d(0, 1, 0, 145deg);
+          transform: rotate3d(0, 1, 0, 145deg);
+}
+
+[dir="rtl"] .icon {
+  margin-right: 5px;
+  margin-left: 15px;
+}
+
+[dir="rtl"] .st-nav .st-nav-section.st-nav-secondary {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+[dir="rtl"] .st-nav .st-dropdown-content-group {
+  text-align: right;
+}
+
+[dir="rtl"] .st-nav .st-popup-close-button {
+  right: auto;
+  left: 0;
+}
+
+@media (min-width: 768px) {
+  [dir="rtl"] .nav-tabs.nav-rounded .nav-link:first-child {
+    border-radius: 0 5rem 5rem 0;
+  }
+  [dir="rtl"] .nav-tabs.nav-rounded .nav-link:last-child {
+    border-radius: 5rem 0 0 5rem;
+  }
+}
+
+[dir="rtl"] .btn-group > .btn:not(:last-child):not(.dropdown-toggle),
+[dir="rtl"] .btn-group > .btn-group:not(:last-child) > .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+[dir="rtl"] .btn-group > .btn:not(:first-child),
+[dir="rtl"] .btn-group > .btn-group:not(:first-child) > .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+[dir="rtl"] .btn-group > .btn:first-child {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+[dir="rtl"] .btn-group > .btn:last-child {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+[dir="rtl"] .input-group-register .btn {
+  left: 15px;
+  right: auto;
+}
+
+[dir="rtl"] .divider-shape {
+  direction: rtl;
+}
+
+[dir="rtl"] #stripes {
+  background: linear-gradient(30deg, #a6ffcb 15%, #05d5ff 30%, #5533ff 86%);
+}
+
+[dir="rtl"] #stripes :nth-child(1) {
+  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 60%);
+          clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 60%);
+}
+
+[dir="rtl"] #stripes :nth-child(2) {
+  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 74%);
+          clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 74%);
+}
+
+[dir="rtl"] #stripes :nth-child(3) {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 70%, 0 5%);
+          clip-path: polygon(0 0, 100% 0, 100% 70%, 0 5%);
+}
+
+[dir="rtl"] #stripes :nth-child(4) {
+  -webkit-clip-path: polygon(0 0, 100% 23%, 100% 100%, 0% 77%);
+          clip-path: polygon(0 0, 100% 23%, 100% 100%, 0% 77%);
+}
+
+[dir="rtl"] #stripes :nth-child(5) {
+  -webkit-clip-path: polygon(0 0, 100% 23%, 100% 100%, 0% 80%);
+          clip-path: polygon(0 0, 100% 23%, 100% 100%, 0% 80%);
+}
+
+[dir="rtl"] .pricing .pricing-value .price:before {
+  left: auto;
+  right: -15px;
+}
+
+[dir="rtl"] .pricing .pricing-value .price:after {
+  position: relative;
+  content: "/mo";
+}
+
+[dir="rtl"] .pricing-table .pricing-details th:first-child {
+  text-align: right;
+}
+
+[dir="rtl"] .perspective-mockups {
+  left: 0;
+}
+
+@media (min-width: 768px) {
+  [dir="rtl"] .perspective-mockups .tablet.landscape {
+    -webkit-transform: translateX(10%);
+            transform: translateX(10%);
+  }
+}
+
+@media (min-width: 992px) {
+  [dir="rtl"] .perspective-mockups .tablet.landscape {
+    -webkit-transform: translateX(25%);
+            transform: translateX(25%);
+  }
+}
+
+@media (min-width: 1200px) {
+  [dir="rtl"] .perspective-mockups .tablet.landscape {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@media (min-width: 768px) {
+  [dir="rtl"] .perspective-mockups {
+    -webkit-transform: rotate(-12deg) translateX(-60%);
+            transform: rotate(-12deg) translateX(-60%);
+    -webkit-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  [dir="rtl"] .perspective-mockups {
+    -webkit-transform: rotate(-12deg) translateX(-30%);
+            transform: rotate(-12deg) translateX(-30%);
+  }
+}
+
+@media (min-width: 1200px) {
+  [dir="rtl"] .perspective-mockups {
+    left: 7%;
+  }
+  [dir="rtl"] .perspective-mockups .phone-small {
+    margin: 50px 0 0 50px;
+  }
+}
+
+@media (min-width: 1678px) {
+  [dir="rtl"] .perspective-mockups {
+    -webkit-transform: rotate(-12deg);
+            transform: rotate(-12deg);
+  }
+}
+
+[dir="rtl"] .shape-testimonials blockquote {
+  text-align: right;
+}
+
+[dir="rtl"] .shape-testimonials blockquote .quote {
+  left: auto;
+  right: 0;
+}
+
+@media (min-width: 768px) {
+  [dir="rtl"] .shape-testimonials .shape-wrapper .shape {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+/*# sourceMappingURL=rtl.css.map */
