@@ -3,7 +3,6 @@
 
 @section('content')
 
-
 <main class="position-relative overflow-hidden">
     <!-- ./Page header -->
     <header class="header alter2-header section parallax image-background center-bottom cover overlay overlay-primary alpha-8 text-contrast" style="background-image: url({{asset('new/img/bg/grid.jpg')}})">

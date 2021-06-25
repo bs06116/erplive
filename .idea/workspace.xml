@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="3467a5fd-5fd6-4d3f-93ad-51e61e172db3" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/public/new/css/register.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/practice/data.json" afterDir="false" />
@@ -16,6 +17,9 @@
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/auth2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/auth2.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/cache/data/85/5f/855f92484c8c414d36c1b25cb24876e30229cbbf" beforeDir="false" />
     </list>
+=======
+    <list default="true" id="3467a5fd-5fd6-4d3f-93ad-51e61e172db3" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +29,7 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
+<<<<<<< Updated upstream
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -44,6 +49,11 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+=======
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+>>>>>>> Stashed changes
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
@@ -228,8 +238,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< Updated upstream
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../practice" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blog" />
+>>>>>>> Stashed changes
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -250,6 +264,7 @@
       <workItem from="1624014510369" duration="931000" />
       <workItem from="1624016887192" duration="2151000" />
       <workItem from="1624019994173" duration="1137000" />
+<<<<<<< Updated upstream
       <workItem from="1624078498044" duration="5223000" />
       <workItem from="1624090109241" duration="742000" />
       <workItem from="1624090916746" duration="13956000" />
@@ -265,12 +280,16 @@
       <workItem from="1624597399637" duration="625000" />
       <workItem from="1624614635142" duration="538000" />
       <workItem from="1624615199878" duration="3750000" />
+=======
+      <workItem from="1624078498044" duration="981000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< Updated upstream
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -283,4 +302,6 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+=======
+>>>>>>> Stashed changes
 </project>
