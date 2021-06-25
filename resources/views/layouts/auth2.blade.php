@@ -26,9 +26,9 @@
     <script src="{{ asset('new/js/core.min.js') }}"></script>
     <script src="{{ asset('new/js/lib.min.js') }}"></script>
     <script src="{{ asset('new/js/dashcore.min.js') }}"></script>
-
+    <script type="module" src="{{asset('practice/home.js')}}"></script>
+    <script type="application/json" id="data" src="{{asset('new/data.json')}}"></script>
 </body>
-
 </html>
 
 {{-- <!DOCTYPE html>

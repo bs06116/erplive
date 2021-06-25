@@ -6,9 +6,11 @@
         <div class="row align-items-center">
             <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay"
                 style="background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover                       " >
-                <img src="/new/img/erp_logo_login.png" id="img" class="logo1">
+            <div class="img">   <img src="/new/img/erp_logo_login.png" class="logo"  alt=""></div>
+
                 <div class="content">
-                    <div class="option">
+                    <h5 class="add">How to add Users</h5>
+                    <div class="option" id="p">
                         <ol class="ol1">
                             <li> User Management->Users->Add new</li>
                             <li> Fill the user details, Select user role, give a unique user name.</li>
@@ -51,8 +53,7 @@
         @endphp
 
             <div class="col-md-5 col-lg-4 mx-auto">
-                <div class="login-form mt-5 mt-md-0"><img src="img/logo.png"
-                        class="logo img-responsive mb-4 mb-md-6" alt="">
+                <div class="login-form mt-5 mt-md-0">
                     <h1 class="text-darker bold x1">Login</h1>
                     <p  style=" margin-top: -130px;margin-bottom: 80px;margin-left: 80px;font-weight: 500"> Grow your business with us </p>
                     <form class="form cozy" action="{{ route('login') }}"   method="POST" id="login-form" data-validate-on="submit" novalidate>
@@ -76,7 +77,7 @@
                                 href="{{ route('password.request') }}"  style=" margin-left: 25px;font-size: 13px;font-weight: 500;">Forgot password?</a>
                             <div class="ajax-button">
                                 <div class="fas fa-check btn-status text-success success"></div>
-                                <div class="fas fa-times btn-status text-danger failed"></div><button  type="submit"
+                                <div class="fas fa-times btn-status text-danger failed "></div><button  type="submit"
                                      class="btn  btn-rounded login1">Login <i
                                         class="fas fa-long-arrow-alt-right ms-2"></i></button>
                             </div>

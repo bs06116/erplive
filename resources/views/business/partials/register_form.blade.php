@@ -342,22 +342,24 @@
 </fieldset> --}}
 
 
-<div class="form-group has-icon"><input type="text" id="name" class="form-control form-control-rounded" value=""
+<div class="form-group has-icon"><input  type="text" id="name" class="form-control form-control-rounded a1" value=""
         name="name" placeholder="Business Name" required> <i class="icon fas fa-user-plus"></i></div>
 
-<div class="form-group has-icon"><input type="text" id="register_username" class="form-control form-control-rounded"
+<div class="form-group has-icon"><input type="text" id="register_username" class="form-control form-control-rounded a2"
         value="" name="username" placeholder="Desired username" required> <i class="icon fas fa-user-plus"></i></div>
 
-<div class="form-group has-icon"><input type="text" id="register_fullname" class="form-control form-control-rounded"
+<div class="form-group has-icon"><input type="text" id="register_fullname" class="form-control form-control-rounded a3"
         value="" name="first_name" placeholder="First name" required> <i class="icon fas fa-address-card"></i></div>
 
-<div class="form-group has-icon"><input type="text" id="register_email" class="form-control form-control-rounded"
+<div class="form-group has-icon"><input type="text" id="register_email" class="form-control form-control-rounded a4"
         value="" name="email" placeholder="Valid email" required> <i class="icon fas fa-envelope"></i></div>
 
-<div class="form-group has-icon"><input type="password" id="register_password" class="form-control form-control-rounded"
+<div class="form-group has-icon"><input type="password" id="register_password" class="form-control form-control-rounded a5"
         name="password" placeholder="Password" required> <i class="icon fas fa-lock"></i></div>
 
-<div class="form-group d-flex align-items-center justify-content-between"><button type="submit"
+<div class="form-group d-flex align-items-center justify-content-between">
+    <p> already have account </p> <span> <a class="sign1"  href="http://127.0.0.1:8000/login">Login here</a></span>
+    <button type="submit"
         class="btn btn-primary btn-rounded ms-auto">Register <i class="fas fa-long-arrow-alt-right ms-2"></i></button>
 </div>
 <input type="hidden" value="91"  name="currency_id">

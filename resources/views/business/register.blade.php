@@ -8,31 +8,33 @@
     <main>
 
         <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay overlay-primary alpha-8 image-background cover"
-                    style="background-image:url(https://picsum.photos/1920/1200/?random&gravity=south)">
-                    <div class="content">
-                        <h2 class="display-4 display-md-3 display-lg-2 text-contrast mt-4 mt-md-0">Get started with
-                            <span class="bold d-block">ERP</span>
+            <div class="row align-items-center ">
+                <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay alpha-8 image-background cover"
+                     style=" background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover                       " >
+                    <div class="img2">   <img src="/new/img/erp_logo_login.png" class="logo-navbar" alt="Responsive image"></div>
+                    <div class="content d1">
+                        <h2 class="a7">How to add Users
                         </h2>
-                        <p class="lead text-contrast">Software That Can Think! Empowered Your Business .</p>
-                        <hr class="mt-md-6 w-25">
-                        <div class="d-flex flex-column">
-                            <p class="small bold text-contrast">Or sign up with</p>
-                            <nav class="nav mb-4"><a class="btn btn-circle btn-outline-contrast me-2" href="#"><i
-                                        class="fab fa-facebook-f"></i></a> <a
-                                    class="btn btn-circle btn-outline-contrast me-2" href="#"><i
-                                        class="fab fa-twitter"></i></a> <a class="btn btn-circle btn-outline-contrast"
+                        <div class="option2">
+                        <ol>
+                            <li> User Management->Users->Add new</li>
+                            <li> Fill the user details, Select user role, give a unique user name.</li>
+                            <li> Sales Commission Percentage(%): Provide the commission % <br> for this user. This option gets applied its commission</li>
+                        </ol>
+                        </div>
+                        <div class="d-flex flex-column fb2" style="">
+                            <nav class="nav mb-4"><a id="z1" class="btn btn-circle me-2" href="#"><i
+                                        class="fab fa-facebook-f"></i></a> <a id="z2"
+                                    class="btn btn-circle me-2" href="#"><i
+                                        class="fab fa-twitter"></i></a> <a id="z3" class="btn btn-circle"
                                     href="#"><i class="fab fa-linkedin-in"></i></a></nav>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5 col-lg-4 mx-auto">
-                    <div class="register-form mt-5 mt-md-0"><img src="img/logo.png" class="logo img-responsive mb-4 mb-md-6"
-                            alt="">
-                        <h1 class="text-darker bold">Register</h1>
-                        <p class="text-secondary mb-4 mb-md-6">Already have an account? <a href="login.html"
-                                class="text-primary bold">Login here</a></p>
+                    <div class="register-form mt-5 mt-md-0">
+                        <h1 class="text-darker bold t1">Sign Up Here</h1>
+                        <p id="t2"> Grow your business with us </p>
                                 @if($errors->any())
                                 <div class="alert alert-danger">
                                     <p><strong>Opps Something went wrong</strong></p>
@@ -47,6 +49,7 @@
                         @include('business.partials.register_form')
                         {!! Form::hidden('package_id', $package_id) !!}
                         {!! Form::close() !!}
+
                     </div>
                 </div>
             </div>
