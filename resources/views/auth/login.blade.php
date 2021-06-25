@@ -6,7 +6,7 @@
         <div class="row align-items-center">
             <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay"
                 style="background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover                       " >
-            <div class="img">   <img src="/new/img/erp_logo_login.png" class="logo"  alt=""></div>
+            <div class="img">   <img src="{{asset('new/img/erp_logo_login.png')}}" class="logo"  alt=""></div>
 
                 <div class="content">
                     <h5 class="add">How to add Users</h5>
@@ -22,7 +22,7 @@
                                     class="fab fa-facebook-f  "></i></a> <a id="l2"
                                 class="btn btn-circle me-2" href="#"><i
                                     class="fab fa-twitter"></i></a> <a id="l3" class="btn btn-circle "
-                                href="#"><i class="fab fa-linkedin-in"></i></a></nav>
+                                href="#"><i class="fab fa-linkedin"></i></a></nav>
                     </div>
                 </div>
             </div>

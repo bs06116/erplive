@@ -358,7 +358,7 @@
         name="password" placeholder="Password" required> <i class="icon fas fa-lock"></i></div>
 
 <div class="form-group d-flex align-items-center justify-content-between">
-    <p> already have account </p> <span> <a class="sign1"  href="http://127.0.0.1:8000/login">Login here</a></span>
+    <p> already have account </p> <span> <a class="sign1"  href="{{ route('login') }}">Login here</a></span>
     <button type="submit"
         class="btn btn-primary btn-rounded ms-auto">Register <i class="fas fa-long-arrow-alt-right ms-2"></i></button>
 </div>

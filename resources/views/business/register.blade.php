@@ -11,7 +11,7 @@
             <div class="row align-items-center ">
                 <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay alpha-8 image-background cover"
                      style=" background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover                       " >
-                    <div class="img2">   <img src="/new/img/erp_logo_login.png" class="logo-navbar" alt="Responsive image"></div>
+                    <div class="img2">   <img src="{{asset('new/img/erp_logo_login.png')}}" class="logo-navbar" alt="Responsive image"></div>
                     <div class="content d1">
                         <h2 class="a7">How to add Users
                         </h2>
@@ -27,7 +27,7 @@
                                         class="fab fa-facebook-f"></i></a> <a id="z2"
                                     class="btn btn-circle me-2" href="#"><i
                                         class="fab fa-twitter"></i></a> <a id="z3" class="btn btn-circle"
-                                    href="#"><i class="fab fa-linkedin-in"></i></a></nav>
+                                    href="#"><i class="fab fa-linkedin"></i></a></nav>
                         </div>
                     </div>
                 </div>
