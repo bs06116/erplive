@@ -27,7 +27,18 @@
     <script src="{{ asset('new/js/lib.min.js') }}"></script>
     <script src="{{ asset('new/js/dashcore.min.js') }}"></script>
     <script type="module" src="{{asset('practice/home.js')}}"></script>
-    <script type="application/json" id="data" src="{{asset('new/data.json')}}"></script>
+    <script>
+    $(document).ready(function(){
+        $.getJSON('/new/data.json', function(data){
+            $(".title_d").text(data.title)
+            $(".text_d").text(data.text)
+           // console.log(data.title);
+            //console.log(data.text);
+        }).fail(function(){
+            console.log("An error has occurred.");
+        });
+    });
+    </script>
 </body>
 </html>
 

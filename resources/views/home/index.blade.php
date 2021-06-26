@@ -22,26 +22,26 @@
     			<div class="btn-group pull-right" data-toggle="buttons">
     				<label class="btn btn-info active">
         				<input type="radio" name="date-filter"
-        				data-start="{{ date('Y-m-d') }}" 
+        				data-start="{{ date('Y-m-d') }}"
         				data-end="{{ date('Y-m-d') }}"
         				checked> {{ __('home.today') }}
       				</label>
       				<label class="btn btn-info">
         				<input type="radio" name="date-filter"
-        				data-start="{{ $date_filters['this_week']['start']}}" 
+        				data-start="{{ $date_filters['this_week']['start']}}"
         				data-end="{{ $date_filters['this_week']['end']}}"
         				> {{ __('home.this_week') }}
       				</label>
       				<label class="btn btn-info">
         				<input type="radio" name="date-filter"
-        				data-start="{{ $date_filters['this_month']['start']}}" 
+        				data-start="{{ $date_filters['this_month']['start']}}"
         				data-end="{{ $date_filters['this_month']['end']}}"
         				> {{ __('home.this_month') }}
       				</label>
       				<label class="btn btn-info">
-        				<input type="radio" name="date-filter" 
-        				data-start="{{ $date_filters['this_fy']['start']}}" 
-        				data-end="{{ $date_filters['this_fy']['end']}}" 
+        				<input type="radio" name="date-filter"
+        				data-start="{{ $date_filters['this_fy']['start']}}"
+        				data-end="{{ $date_filters['this_fy']['end']}}"
         				> {{ __('home.this_fy') }}
       				</label>
                 </div>
@@ -325,11 +325,11 @@
     @endif
 </section>
 <!-- /.content -->
-<div class="modal fade payment_modal" tabindex="-1" role="dialog" 
+<div class="modal fade payment_modal" tabindex="-1" role="dialog"
     aria-labelledby="gridSystemModalLabel">
 </div>
 <div class="modal fade edit_pso_status_modal" tabindex="-1" role="dialog"></div>
-<div class="modal fade edit_payment_modal" tabindex="-1" role="dialog" 
+<div class="modal fade edit_payment_modal" tabindex="-1" role="dialog"
     aria-labelledby="gridSystemModalLabel">
 </div>
 @stop
