@@ -11,8 +11,10 @@
                 <div class="content">
                     <h5 class="add title_d" >...</h5>
                     <div class="option" id="p">
-                        <p class="ol1 text_d">
-                        </p>
+                        <ol class="ol1 ">
+                                <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, w</li>
+                                <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, w</li>
+                        </ol>
                     </div>
                     <div class="d-flex flex-column fb ">
                         <nav class="nav mb-4"><a id="l1" class="btn btn-circle  me-2" href="#"><i
