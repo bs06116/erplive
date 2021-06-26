@@ -3,6 +3,7 @@
 @section('title', __('lang_v1.reset_password'))
 
 @section('content')
+
 <div class="login-form col-md-12 col-xs-12 right-col-content">
     <form method="POST" action="{{ route('password.request') }}">
         {{ csrf_field() }}

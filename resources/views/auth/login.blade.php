@@ -4,7 +4,7 @@
 <main>
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay"
+            <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay bg-img "
                 style="background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover                       " >
             <div class="img">   <img src="{{asset('new/img/erp_logo_login.png')}}" class="logo"  alt=""></div>
 
