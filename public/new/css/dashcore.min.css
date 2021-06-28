@@ -111,11 +111,31 @@ body {
   margin-bottom: 20px;
 
 }
+
 .img{
   margin-left: -90px;
   margin-bottom: 450px;
 }
-
+#email
+{
+    margin-left: 60px;
+    width: 400px;
+  border-radius: 25px;
+  background-color: #F7FAFD;
+  border: 1px solid transparent;
+}
+#email:hover
+{
+  box-shadow: 0 0 15px #E5ECFD;
+  border: 1px solid #759CF1;
+  background-color: white;
+}
+.ero
+{
+ margin-left: 70px;
+  color: red;
+  margin-bottom: 140px;
+}
 .img2
 {
  position: fixed;
@@ -169,6 +189,11 @@ body {
     padding-top: 100px;
     padding-left: 50px;
   }
+  .x5
+  {
+    padding-top: 150px;
+    padding-left: 50px;
+  }
 
   .img
   {
@@ -210,6 +235,11 @@ body {
   .x1
   {
     padding-top: 90px;
+    padding-left: 50px;
+  }
+  .x5
+  {
+    padding-top: 150px;
     padding-left: 50px;
   }
 
@@ -257,7 +287,11 @@ body {
     padding-top: 90px;
     padding-left: 50px;
   }
-
+  .x5
+  {
+    padding-top: 150px;
+    padding-left: 50px;
+  }
   .img
   {
     margin-left: 25px;
@@ -294,6 +328,11 @@ body {
   .x1
   {
     padding-top: 90px;
+    padding-left: 50px;
+  }
+  .x5
+  {
+    padding-top: 150px;
     padding-left: 50px;
   }
 
@@ -335,6 +374,11 @@ body {
   padding-top: 90px;
   padding-left: 50px;
 }
+  .x5
+  {
+    padding-top: 150px;
+    padding-left: 50px;
+  }
 
 #img
 {
@@ -368,6 +412,11 @@ p
   .x1
   {
     padding-top: 90px;
+    padding-left: 50px;
+  }
+  .x5
+  {
+    padding-top: 150px;
     padding-left: 50px;
   }
 
@@ -412,6 +461,11 @@ p
   .x1
   {
     padding-top: 90px;
+    padding-left: 50px;
+  }
+  .x5
+  {
+    padding-top: 150px;
     padding-left: 50px;
   }
 
@@ -489,6 +543,15 @@ p
   margin-top:-150px;
   margin-left: 130px;
 }
+.x5
+{
+  font-weight: 400;
+  font-size: 25px;
+  margin-bottom:150px;
+  margin-top:-190px;
+  margin-left: 100px;
+}
+
 #t2
 {
  font-weight: 500;
@@ -19326,6 +19389,18 @@ button:focus {
   width: 150px ;
   background-color:#6495ED;
   margin-right: 5px;
+  color: white;
+}
+.login2
+{
+  width: 170px;
+  background-color:#6495ED;
+  color: white;
+  margin-left: 300px;
+}
+.login2:hover
+{
+  background-color: royalblue;
   color: white;
 }
 .login1:hover

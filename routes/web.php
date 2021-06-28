@@ -50,13 +50,9 @@ Route::middleware(['setData', 'auth', 'SetSessionData', 'language', 'timezone', 
     Route::post('/user/update-password', 'UserController@updatePassword')->name('user.updatePassword');
 
     Route::resource('brands', 'BrandController');
-
     Route::resource('payment-account', 'PaymentAccountController');
-
     Route::resource('tax-rates', 'TaxRateController');
-
     Route::resource('units', 'UnitController');
-
     Route::get('/contacts/payments/{contact_id}', 'ContactController@getContactPayments');
     Route::get('/contacts/map', 'ContactController@contactMap');
     Route::get('/contacts/update-status/{id}', 'ContactController@updateStatus');
@@ -68,12 +64,9 @@ Route::middleware(['setData', 'auth', 'SetSessionData', 'language', 'timezone', 
     Route::post('/contacts/check-contact-id', 'ContactController@checkContactId');
     Route::get('/contacts/customers', 'ContactController@getCustomers');
     Route::resource('contacts', 'ContactController');
-
     Route::get('taxonomies-ajax-index-page', 'TaxonomyController@getTaxonomyIndexPage');
     Route::resource('taxonomies', 'TaxonomyController');
-
     Route::resource('variation-templates', 'VariationTemplateController');
-
     Route::get('/products/stock-history/{id}', 'ProductController@productStockHistory');
     Route::get('/delete-media/{media_id}', 'ProductController@deleteMedia');
     Route::post('/products/mass-deactivate', 'ProductController@massDeactivate');
