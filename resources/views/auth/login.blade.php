@@ -9,12 +9,11 @@
             <div class="img">   <img src="{{asset('new/img/erp_logo_login.png')}}" class="logo"  alt=""></div>
 
                 <div class="content">
-                    <h5 class="add title_d" >...</h5>
-                    <div class="option" id="p">
-                        <ol class="ol1 ">
-                                <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, w</li>
-                                <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, w</li>
-                        </ol>
+                    <h2 class="a7 title_d">
+                    </h2>
+                    <div class="option2">
+                        <p class="ol1 text_d">
+                        </p>
                     </div>
                     <div class="d-flex flex-column fb ">
                         <nav class="nav mb-4"><a id="l1" class="btn btn-circle  me-2" href="#"><i
