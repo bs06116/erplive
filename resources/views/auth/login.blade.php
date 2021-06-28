@@ -6,8 +6,7 @@
         <div class="row align-items-center">
             <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay bg-img "
                 style="background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover                       " >
-            <div class="img">   <img src="{{asset('new/img/erp_logo_login.png')}}" class="logo"  alt=""></div>
-
+            <div class="img">  <img src="{{asset('new/img/erp_logo_login.png')}}" class="logo"  alt=""></div>
                 <div class="content">
                     <h2 class="a7">
                     </h2>
@@ -80,7 +79,7 @@
                                         class="fas fa-long-arrow-alt-right ms-2"></i></button>
                             </div>
                         </div>
-                        <p class="paragraph">Don't have an account yet? <a class="sign"  href="{{ route('business.getRegister') }}">Sign Up Now</a></p>
+                        <p class="paragraph">Don't have an account yet?     <a class="sign"  href="{{ route('business.getRegister') }}">Sign Up Now</a></p>
                     </form>
                     </div>
                  </div>

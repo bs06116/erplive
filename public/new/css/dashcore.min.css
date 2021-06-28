@@ -111,10 +111,14 @@ body {
   margin-bottom: 20px;
 
 }
-
 .img{
-  margin-left: -90px;
-  margin-bottom: 450px;
+  margin-left: -213px;
+  margin-bottom: 479px;
+
+}
+.img3{
+  margin-left: -140px;
+  margin-bottom: 475px;
 }
 #email
 {
@@ -139,8 +143,8 @@ body {
 .img2
 {
  position: fixed;
-  padding-bottom: 450px;
-  margin-left: -120px;
+  margin-left: -185px;
+  margin-bottom: 475px;
 }
 #l1:hover
 {
@@ -169,11 +173,20 @@ body {
 
 
 @media (max-width: 700px)  {
-.option
+button.btn.btn-rounded.login1
+{
+ margin-right: 35px;
+}
+  .option
 {
     margin-right: 70px;
   margin-left: -20px;
 }
+  .option2
+  {
+    margin-right: 70px;
+    margin-left: -20px;
+  }
   .add
   {
     margin-left: -50px;
@@ -186,7 +199,7 @@ body {
   }
   .x1
   {
-    padding-top: 100px;
+    padding-top: 120px;
     padding-left: 50px;
   }
   .x5
@@ -198,9 +211,24 @@ body {
   .img
   {
     margin-left: 15px;
+    padding-left: 45px;
     margin-top: 25px;
     width: 15%;
 
+  }
+  .img2
+  {
+    margin-left: 15px;
+    padding-left: 72px;
+    margin-top: 45px;
+    width: 15%;
+  }
+  .img3
+  {
+    margin-left: 15px;
+    padding-left: 72px;
+    margin-top: 45px;
+    width: 15%;
   }
   p
   {
@@ -210,12 +238,23 @@ body {
   {
     margin-top: -290px;
     margin-left: -40px;
-    padding-left: 50px;
+    padding-left: 93px;
+
+  }
+  .fb2
+  {
+    margin-top: -290px;
+    margin-left: -40px;
+    padding-left: 74px;
 
   }
   .x7
   {
     margin-right: 120px;
+  }
+  .x5
+  {
+    padding-top: 155px;
   }
 }
 @media (min-width: 701px) {
@@ -520,7 +559,7 @@ p
 {
   margin-bottom: -180px;
   padding-top: 370px;
-  margin-left: -150px;
+  margin-left: -125px;
   position: relative;
   background-repeat: no-repeat;
 }
@@ -579,9 +618,11 @@ margin-left: 70px;
   width: 400px;
 }
 
-.ol1
+.text_d
 {
   color: white;
+  padding-right: 14px;
+  padding-left: 22px;
 }
 .fb2
 {
@@ -610,6 +651,7 @@ margin-left: 70px;
   color: white;
   opacity: 1;
 }
+
 li
 {
   padding-top: 5px;
@@ -702,8 +744,8 @@ li
   font-size: 22px;
   color: gold;
   font-weight: 500;
-  margin-left: 95px;
-  padding-bottom: 20px;
+  margin-left: 100px;
+  
 }
 .option2
  {
@@ -715,7 +757,7 @@ li
   font-size: 14px;
   margin-left: 20px;
   width: 400px;
-
+  margin-top: 21px;
  }
 .input5{
   margin-left: 20px;
@@ -18743,7 +18785,7 @@ textarea {
 }
 
 .icon.logo {
-  max-width: 80px;
+
 }
 
 .icon i {
@@ -24672,6 +24714,11 @@ blockquote.team-quote .quote {
   position: relative;
   z-index: 1;
 }
+.overlay > .img3{
+  position: relative;
+  z-index: 1;
+}
+
 
 .overlay.overlay-primary:after {
   background-color: rgba(85, 51, 255, 0.6);
@@ -29617,7 +29664,8 @@ p {
 }
 
 .logo {
-  max-width: 180px;
+max-width: 180px;
+  max-height: 65px;
 }
 
 hr[class*="bg"] {

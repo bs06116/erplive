@@ -62,7 +62,7 @@ class ContactController extends Controller
         $types = ['supplier', 'customer'];
 
         if (empty($type) || !in_array($type, $types)) {
-            return redirect()->back();
+            return ;
         }
 
         if (request()->ajax()) {
