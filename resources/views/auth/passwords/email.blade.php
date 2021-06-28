@@ -11,13 +11,10 @@
                     <div class="img">   <img src="/new/img/erp_logo_login.png" class="logo"  alt=""></div>
 
                     <div class="content">
-                        <h5 class="add">How to add Users</h5>
+                        <h5 class="a7"></h5>
                         <div class="option" id="p">
-                            <ol class="ol1">
-                                <li> User Management->Users->Add new</li>
-                                <li> Fill the user details, Select user role, give a unique user name.</li>
-                                <li> Sales Commission Percentage(%): Provide the commission % <br> for this user. This option gets applied its commission</li>
-                            </ol>
+                            <p class="ol1 text_d">
+                            </p>
                         </div>
                         <div class="d-flex flex-column fb ">
                             <nav class="nav mb-4"><a id="l1" class="btn btn-circle  me-2" href="#"><i

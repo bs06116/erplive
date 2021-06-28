@@ -9,7 +9,7 @@
             <div class="img">   <img src="{{asset('new/img/erp_logo_login.png')}}" class="logo"  alt=""></div>
 
                 <div class="content">
-                    <h2 class="a7 title_d">
+                    <h2 class="a7">
                     </h2>
                     <div class="option2">
                         <p class="ol1 text_d">
