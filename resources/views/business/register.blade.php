@@ -13,14 +13,11 @@
                      style=" background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover                       " >
                     <div class="img2">   <img src="{{asset('new/img/erp_logo_login.png')}}" class="logo-navbar" alt="Responsive image"></div>
                     <div class="content d1">
-                        <h2 class="a7">How to add Users
+                        <h2 class="a7">
                         </h2>
                         <div class="option2">
-                        <ol>
-                            <li> User Management->Users->Add new</li>
-                            <li> Fill the user details, Select user role, give a unique user name.</li>
-                            <li> Sales Commission Percentage(%): Provide the commission % <br> for this user. This option gets applied its commission</li>
-                        </ol>
+                            <p class="ol1 text_d">
+                            </p>
                         </div>
                         <div class="d-flex flex-column fb2" style="">
                             <nav class="nav mb-4"><a id="z1" class="btn btn-circle me-2" href="#"><i

@@ -4,7 +4,7 @@
 
 <div class="row">
 
-    <h1 class="page-header text-center"> {{ config('app.name', 'ultimatePOS') }} </h2>
+    <h1 class="page-header text-center"> {{ config('app.name', 'ultimatePOS') }} </h1>
 
     <div class="col-md-8 col-md-offset-2">
 

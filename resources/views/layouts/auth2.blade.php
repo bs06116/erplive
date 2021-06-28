@@ -30,7 +30,7 @@
     <script>
     $(document).ready(function(){
         $.getJSON('/new/data.json', function(data){
-            $(".title_d").text(data.title)
+            $(".a7").text(data.title)
             $(".text_d").text(data.text)
            // console.log(data.title);
             //console.log(data.text);

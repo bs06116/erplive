@@ -571,17 +571,17 @@ margin-left: 70px;
 .option {
   background-color: rgba(35, 191, 90, .8);
   border-radius: 15px;
-  padding-top: 10px;
-  padding-right: 10px;
+  padding-top: 5px;
+  padding-right: 3px;
   padding-bottom: 3px;
   font-size: 14px;
+  margin-left: 20px;
+  width: 400px;
 }
 
 .ol1
 {
   color: white;
-  font-size: 14px;
-  font-weight: 350;
 }
 .fb2
 {
@@ -709,12 +709,12 @@ li
  {
   background-color: rgba(35, 191, 90, .8);
   border-radius: 15px;
-  padding-top: 10px;
-  padding-right: 10px;
+  padding-top: 5px;
+  padding-right: 3px;
   padding-bottom: 3px;
   font-size: 14px;
-  color: white;
-  margin-bottom: -50px;
+  margin-left: 20px;
+  width: 400px;
 
  }
 .input5{

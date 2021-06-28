@@ -9,8 +9,9 @@
             <div class="img">   <img src="{{asset('new/img/erp_logo_login.png')}}" class="logo"  alt=""></div>
 
                 <div class="content">
-                    <h5 class="add title_d" >...</h5>
-                    <div class="option" id="p">
+                    <h2 class="a7">
+                    </h2>
+                    <div class="option2">
                         <p class="ol1 text_d">
                         </p>
                     </div>
