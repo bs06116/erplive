@@ -457,52 +457,41 @@ button.btn.btn-rounded.login1
 {
 
  .logo{
-   margin-top: -270px;
-   margin-left: -30px;
+   margin-top: 40px;
+   margin-left: -20px;
    position: relative;
  }
   .mb-4
   {
-    padding-top: 200px;
+    padding-bottom: 45px;
   }
 }
 @media all and (min-width:1500px) and (max-width: 1599px)
 {
 
   .logo{
-    margin-top: -220px;
+    margin-top: 40px;
     margin-left: -70px;
     position: relative;
   }
   .mb-4
   {
-    padding-top: 200px;
+    padding-bottom: 45px;
   }
 }
 @media all and (min-width:1600px)
 {
   .logo{
-    margin-top: -220px;
-    margin-left: -70px;
+    margin-top: 52px;
+    margin-left: -90px;
     position: relative;
   }
   .mb-4
   {
-    padding-top: 200px;
+    padding-bottom: 45px;
   }
 }
-@media all and (min-width:1360px) and (max-width: 1361px)
-{
-  .logo{
-    margin-top: -150px;
-    margin-left: -1px;
-    position: relative;
-  }
-  .mb-4
-  {
-    padding-top: 90px;
-  }
-}
+
   #a
 {
  color: white;
