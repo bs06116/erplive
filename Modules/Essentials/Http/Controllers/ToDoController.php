@@ -83,12 +83,20 @@ class ToDoController extends Controller
 
             //If not admin show only assigned task
             // if (!$is_admin) {
-                $todos->where(function ($query) use ($auth_id) {
-                    $query->where('created_by', $auth_id)
-                        ->orWhereHas('users', function ($q) use ($auth_id) {
-                            $q->where('user_id', $auth_id);
-                        });
-                });
+           // If not a super admin
+
+           $administrator_list = config('constants.administrator_usernames');
+
+           if (!in_array(auth()->user()->username, explode(',', $administrator_list))) {
+            $todos->where(function ($query) use ($auth_id) {
+                $query->where('created_by', $auth_id)
+                    ->orWhereHas('users', function ($q) use ($auth_id) {
+                        $q->where('user_id', $auth_id);
+                    });
+            });
+           }
+
+
             // }
 
             //Filter by user id.
@@ -116,7 +124,7 @@ class ToDoController extends Controller
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right" role="menu">
                             <li><a href="#" data-href="' . action('\Modules\Essentials\Http\Controllers\ToDoController@edit', [$row->id]) . '" class="btn-modal" data-container="#task_modal"><i class="glyphicon glyphicon-edit"></i> ' . __("messages.edit") . '</a></li>';
-                        
+
                         if ($is_admin || $row->created_by == $auth_id) {
                             $html .= '<li><a href="#" data-href="' . action('\Modules\Essentials\Http\Controllers\ToDoController@destroy', [$row->id]) . '" class="delete_task" ><i class="fa fa-trash"></i> ' . __("messages.delete") . '</a></li>';
                         }
@@ -165,7 +173,7 @@ class ToDoController extends Controller
                 ->rawColumns(['task', 'action', 'status'])
                 ->make(true);
         }
-        
+
         $users = [];
         if (auth()->user()->can('essentials.assign_todos')) {
             $users = User::forDropdown($business_id, false);
@@ -259,7 +267,7 @@ class ToDoController extends Controller
 
         $user_id = auth()->user()->id;
         $query = ToDo::where('business_id', $business_id);
-        
+
         //Non admin can update only assigned tasks
         $is_admin = $this->moduleUtil->is_admin(auth()->user(), $business_id);
         if (!$is_admin) {
@@ -295,7 +303,7 @@ class ToDoController extends Controller
         if (!(auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'essentials_module'))) {
             abort(403, 'Unauthorized action.');
         }
-        
+
         if (request()->ajax()) {
             try {
                 $created_by = $request->session()->get('user.id');
@@ -308,7 +316,7 @@ class ToDoController extends Controller
                     'status',
                     'end_date'
                 );
-                
+
                 $input['date'] = $this->commonUtil->uf_date($input['date']);
                 $input['end_date'] = !empty($input['end_date']) ? $this->commonUtil->uf_date($input['end_date']) : null;
                 $input['business_id'] = $business_id;
@@ -338,7 +346,7 @@ class ToDoController extends Controller
                 });
 
                 \Notification::send($users, new NewTaskNotification($to_dos));
-                
+
                 $output = [
                           'success' => true,
                           'msg' => __('lang_v1.success')
@@ -379,7 +387,7 @@ class ToDoController extends Controller
                         'status',
                         'end_date'
                     );
-                    
+
                     $input['date'] = $this->commonUtil->uf_date($input['date']);
                     $input['end_date'] = !empty($input['end_date']) ? $this->commonUtil->uf_date($input['end_date']) : null;
 
@@ -408,7 +416,7 @@ class ToDoController extends Controller
                     $users = $request->input('users');
                     $todo->users()->sync($users);
                 }
-                
+
                 $output = [
                           'success' => true,
                           'msg' => __('lang_v1.success')
