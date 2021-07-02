@@ -509,6 +509,8 @@ class ProjectController extends Controller
             $input = $request->only('name', 'description', 'contact_id', 'status', 'lead_id');
             $input['start_date'] = !empty($request->input('start_date')) ? $this->commonUtil->uf_date($request->input('start_date')) : null;
             $input['end_date'] = !empty($request->input('end_date')) ? $this->commonUtil->uf_date($request->input('end_date')) : null;
+            $input['bounce_date'] = !empty($request->input('bounce_date')) ? $this->commonUtil->uf_date($request->input('bounce_date')) : null;
+            $input['bounce'] = !empty($request->input('bounce')) ? $request->input('bounce') : null;
             $members = $request->input('user_id');
             array_push($members, $request->input('lead_id'));
 

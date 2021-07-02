@@ -129,7 +129,9 @@
 						<h4 class="box-title">
 							@lang('project::lang.bounce_total_project')
 							<small class="text-white">
+								@if($project->bounce_date))
 								{{@format_date($project->bounce_date)}}
+								@endif
 							</small>
 						</h4>
 						<!-- /.box-tools -->
