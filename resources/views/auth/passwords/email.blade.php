@@ -10,14 +10,14 @@
                      style="background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover                       " >
                     <div class="img3"><img src="/new/img/erp_logo_login.png" class="logo"  alt=""></div>
 
-                    <div class="content">
-                        <h5 class="a7"></h5>
+                    <div class="content b1">
+                        <h5 class="a7" id="b2"></h5>
                         <div class="option" id="p">
                             <p class="ol1 text_d">
                             </p>
                         </div>
-                        <div class="d-flex flex-column fb ">
-                            <nav class="nav mb-4"><a id="l1" class="btn btn-circle  me-2" href="#"><i
+                        <div class="d-flex flex-column fb3">
+                            <nav class="nav mp8"><a id="l1" class="btn btn-circle  me-2" href="#"><i
                                             class="fab fa-facebook-f  "></i></a> <a id="l2"
                                                                                     class="btn btn-circle me-2" href="#"><i
                                             class="fab fa-twitter"></i></a> <a id="l3" class="btn btn-circle "
@@ -29,8 +29,8 @@
     <form  method="POST" action="{{ route('password.email') }} ">
         {{ csrf_field() }}
         <h1 class="text-darker x5">Reset Password</h1>
-        <p  style=" margin-top: -130px;margin-bottom: 80px;margin-left: 115px;font-weight: 500"> Grow your business with us </p>
-         <div class="form-group has-icon has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
+        <p id="y1"  style=" margin-top: -140px;margin-bottom: 80px;font-weight: 500"> Grow your business with us </p>
+         <div class="form-group has-icon has-feedback {{ $errors->has('email') ? ' has-error' : '' }}  email">
             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="@lang('lang_v1.email_address')">
             <i class="icon fas fa-envelope email1 "></i>
         </div>
