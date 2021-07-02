@@ -4,9 +4,10 @@
 <main>
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay bg-img "
-                style="background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover                       " >
-            <div class="img">  <img src="{{asset('new/img/erp_logo_login.png')}}" class="logo"  alt=""></div>
+            <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay bg-img block1"
+                style="background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover  ;                     " >
+            <div class="img">
+                <img src="{{asset('new/img/erp_logo_login.png')}}" class="logo"  alt=""></div>
                 <div class="content">
                     <h2 class="a7">
                     </h2>
@@ -52,7 +53,7 @@
             <div class="col-md-5 col-lg-4 mx-auto">
                 <div class="login-form mt-5 mt-md-0">
                     <h1 class="text-darker bold x1">Login</h1>
-                    <p  style=" margin-top: -130px;margin-bottom: 80px;margin-left: 80px;font-weight: 500"> Grow your business with us </p>
+                    <p id="t5" style=" margin-top: -130px;margin-bottom: 80px;font-weight: 500"> Grow your business with us </p>
                     <form class="form cozy" action="{{ route('login') }}"   method="POST" id="login-form" data-validate-on="submit" novalidate>
                         {{ csrf_field() }}
 
@@ -70,13 +71,12 @@
                                 @if ($errors->has('password'))
                                     <p style="margin-left: 25px;margin-top: -25px" class="is-invalid error">{{ $errors->first('password') }}</p>
                             @endif
-                        <div class="form-group d-flex align-items-center justify-content-between"><a
-                                href="{{ route('password.request') }}"  style=" margin-left: 25px;font-size: 13px;font-weight: 500;">Forgot password?</a>
+                        <div class="form-group d-flex align-items-center justify-content-between"><a id="f"
+                                href="{{ route('password.request') }}"  style="font-size: 13px;font-weight: 500;">Forgot password?</a>
                             <div class="ajax-button">
                                 <div class="fas fa-check btn-status text-success success"></div>
                                 <div class="fas fa-times btn-status text-danger failed "></div><button  type="submit"
-                                     class="btn  btn-rounded login1">Login <i
-                                        class="fas fa-long-arrow-alt-right ms-2"></i></button>
+                                     class="btn  btn-rounded login1">Login </button>
                             </div>
                         </div>
                         <p class="paragraph">Don't have an account yet?     <a class="sign"  href="{{ route('business.getRegister') }}">Sign Up Now</a></p>

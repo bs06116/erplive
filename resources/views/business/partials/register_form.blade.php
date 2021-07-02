@@ -357,8 +357,8 @@
 <div class="form-group has-icon"><input type="password" id="register_password" class="form-control form-control-rounded a5"
         name="password" placeholder="Password" required> <i class="icon fas fa-lock"></i></div>
 
-<div class="form-group d-flex align-items-center justify-content-between">
-    <p> already have account </p> <span> <a class="sign1"  href="{{ route('login') }}">Login here</a></span>
+<div class="form-group d-flex align-items-center justify-content-between j1">
+    <p id="k1"> Already have account </p> <span> <a class="sign1"  href="{{ route('login') }}">Login here</a></span>
     <button type="submit"
         class="btn btn-primary btn-rounded ms-auto login3">Register <i class="fas fa-long-arrow-alt-right ms-2"></i></button>
 </div>

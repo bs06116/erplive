@@ -170,9 +170,93 @@ body {
   color: white;
   opacity: 1;
 }
+@media(max-width: 576px) {
+  button.btn.btn-rounded.login1
+  {
+    margin-right: px;
+  }
+  .option
+  {
+    margin-right: 70px;
+    margin-left: -20px;
+  }
+  .option2
+  {
+    /*margin-right: 70px;*/
+    margin-left: -20px;
+  }
+  .add
+  {
+    margin-left: -50px;
+    padding-right: 85px;
 
+  }
+  #l1
+  {
+    margin-left: 10px;
+  }
+  .x1
+  {
+    padding-top: 120px;
+    padding-left: 50px;
+  }
+  .x5
+  {
+    padding-top: 150px;
+    padding-left: 50px;
+  }
 
-@media (max-width: 700px)  {
+  .img
+  {
+    margin-left: 0px;
+
+    margin-top: 25px;
+    width: 15%;
+
+  }
+  .img2
+  {
+    margin-left: 15px;
+    padding-left: 72px;
+    margin-top: 45px;
+    width: 15%;
+  }
+  .img3
+  {
+    margin-left: 15px;
+    padding-left: 72px;
+    margin-top: 45px;
+    width: 15%;
+  }
+  p
+  {
+    padding-left: 25px;
+  }
+  .fb
+  {
+    /*margin-top: -290px;*/
+    /*margin-left: -40px;*/
+    /*padding-left: 93px;*/
+
+  }
+  .fb2
+  {
+    margin-top: -290px;
+    margin-left: -40px;
+    padding-left: 74px;
+
+  }
+  .x7
+  {
+    margin-right: 120px;
+  }
+  .x5
+  {
+    padding-top: 155px;
+  }
+}
+
+@media (max-width: 700px) and (min-width: 500px)  {
 button.btn.btn-rounded.login1
 {
  margin-right: 35px;
@@ -235,6 +319,13 @@ button.btn.btn-rounded.login1
     padding-left: 25px;
   }
   .fb
+  {
+    margin-top: -290px;
+    margin-left: -40px;
+    padding-left: 93px;
+
+  }
+  .fb3
   {
     margin-top: -290px;
     margin-left: -40px;
@@ -441,6 +532,7 @@ button.btn.btn-rounded.login1
 }
 }
 
+
 @media (max-width: 700px) {
   .fb2 {
     margin-left: 100px;
@@ -491,12 +583,978 @@ button.btn.btn-rounded.login1
     padding-bottom: 45px;
   }
 }
+@media (max-width:321px)
+{
+  input#email
+  {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+  }
+  nav.nav.mp8
+  {
+    width: 230px;
+    margin-left: 30px;
+    margin-top: 20px;
+  }
+  div.content.b1
+  {
+    width: 270px;
+  }
+  div.img3
+  {
+    margin-left: -120px;
+  }
+  p#y1
+  {
+    margin-left: 16px;
+  }
+  h1.x5
+  {
+    margin-left: 5px;
+  }
+  button.login2
+  {
+    margin-left: 150px;
+    width: 150px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
 
+  div.email
+  {
+    width: 300px;
+  }
+  h5#b2
+  {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    margin-left: 90px;
+  }
+  div.fb3
+  {
+    margin-top: 110px;
+  }
+  div.option
+  {
+    width: 200px;
+    margin-left: 75px;
+    margin-bottom: -50px;
+  }
+
+  div.img2
+  {
+    margin-left: -190px;
+    margin-top: 35px;
+  }
+  h1.t1
+  {
+    margin-left: 80px;
+    font-size: 18px;
+  }
+  p#t2
+  {
+    margin-left: 9px;
+    font-size: 10px;
+  }
+ h2#a5
+ {
+   width: 200px;
+   margin-left: 65px;
+ }
+ div.fb2
+ {
+   padding-bottom: 40px;
+   width: 230px;
+ }
+ nav.nav.am-3
+ {
+   margin-left: 0px;
+ }
+div.d2
+{
+  margin-left: 50px;
+  margin-bottom: -120px;
+}
+  div.content.d1
+  {
+    width: 170px;
+  }
+  .logo
+  {
+    width: 50px;
+    margin-left: 15px;
+  }
+  nav.nav.mb-4
+  {
+     width: 230px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    margin-left: 60px;
+    margin-top: 20px;
+  }
+
+  div.option2
+  {
+    width: 190px;
+    margin-right: 60px;
+  }
+  .fb
+  {
+    width: 230px;
+  }
+ .a7
+ {
+   width: 200px;
+   margin: 0px 0px 0px 0px;
+ }
+  p#t5
+  {
+    margin-left: 30px;
+  }
+ h1.x1
+ {
+    margin-left: 50px;
+ }
+
+}
+@media (max-width:399px) and (min-width: 322px)
+{
+  nav.nav.mp8
+  {
+    width: 230px;
+    margin-left: 30px;
+    margin-top: 20px;
+  }
+  div.content.b1
+  {
+    width: 270px;
+  }
+  div.img3
+  {
+    margin-left: -150px;
+  }
+  p#y1
+  {
+    margin-left: 51px;
+  }
+  h1.x5
+  {
+    margin-left: 40px;
+  }
+  button.login2
+  {
+    margin-left: 170px;
+    width: 150px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  div.email
+  {
+    width: 320px;
+    margin-left: -50px;
+  }
+  h5#b2
+  {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    margin-left: 90px;
+  }
+  div.fb3
+  {
+    margin-top: 110px;
+  }
+  div.option
+  {
+    width: 200px;
+    margin-left: 75px;
+    margin-bottom: -50px;
+  }
+
+  nav.nav.am-3
+  {
+    padding-bottom: 170px;
+    margin-left: -20px;
+  }
+  div.d2
+  {
+    margin-left: -1px;
+  }
+  div.img2
+  {
+    margin-top: -100px;
+    margin-left: -130px;
+  }
+  h2#a5
+  {
+    margin-top: 110px;
+    margin-left: 60px;
+  }
+  div.content.d1
+  {
+    width: 270px;
+    margin-top: 100px;
+    margin-left: 50px;
+  }
+  h1.t1
+  {
+    margin-left: 80px;
+  }
+  p#t2
+  {
+    margin-left: 40px;
+  }
+  .logo
+  {
+    width: 60px;
+    margin-left: 15px;
+  }
+.img
+{
+  width: 10px;
+  margin-left: 10px;
+}
+  div.option2
+  {
+    width: 280px;
+  }
+
+  .fb
+  {
+      margin-top: 110px;
+  }
+  nav.nav.mb-4
+  {
+    padding-left: 50px;
+    margin-left: 60px;
+  }
+  p#t5
+  {
+    margin-left: 30px;
+  }
+  .option2
+  {
+    margin-right: 50px;
+  }
+  button.btn.btn-rounded.login1
+  {
+    margin-left: 10px;
+  }
+  div.input5
+  {
+    width: 350px;
+  }
+
+}
   #a
 {
  color: white;
   opacity: .7;
 }
+@media (min-width:401px) and (max-width: 499px)
+{
+  nav.nav.mp8
+  {
+    margin-top: 140px;
+  }
+  div.content.b1
+  {
+    width: 290px;
+  }
+  div.img3
+  {
+    margin-left: -177px;
+  }
+  p#y1
+  {
+    margin-left: 16px;
+  }
+  h1.x5
+  {
+    margin-left: 40px;
+  }
+  button.login2
+  {
+    margin-left: 210px;
+    width: 150px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  div.email
+  {
+    width: 350px;
+    margin-left: -40px;
+  }
+  h5#b2
+  {
+    margin-top: 90px;
+    margin-bottom: 20px;
+    margin-left: 103px;
+  }
+  div.fb3
+  {
+  }
+  div.option
+  {
+    width: 260px;
+    margin-left: 65px;
+    margin-bottom: -50px;
+  }
+  nav.nav.am-3
+  {
+    padding-bottom: 170px;
+    margin-left: -15px;
+  }
+  div.d2
+  {
+    margin-left: -1px;
+  }
+  div.img2
+  {
+    margin-top: -100px;
+    margin-left: -130px;
+  }
+  h2#a5
+  {
+    margin-top: 110px;
+    margin-left: 60px;
+  }
+  div.content.d1
+  {
+    width: 290px;
+    margin-top: 100px;
+    margin-left: 50px;
+  }
+  h1.t1
+  {
+    margin-left: 110px;
+  }
+  p#t2
+  {
+    margin-left: 40px;
+  }
+  .logo{
+    width: 50px;
+    margin-left: 25px;
+  }
+  nav.nav.mb-4
+  {
+    padding-left: 30px;
+    margin-left: 25px;
+  }
+  div.option2
+  {
+    width: 280px;
+  }
+  .option2
+  {
+    margin-bottom: 27px;
+    margin-right: 50px;
+  }
+  .x1
+  {
+    padding-left: 70px;
+  }
+  p#t5
+  {
+    margin-left: 20px;
+  }
+
+  p
+  {
+    padding-left: 60px;
+  }
+  button.btn.btn-rounded.login1
+  {
+    margin-right: 50px;
+  }
+  div.input5
+  {
+    width: 370px;
+  }
+
+}
+@media (min-width:700px) and (max-width: 900px)
+{
+  nav.nav.mp8
+  {
+    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-right: 0px;
+  }
+  div.content.b1
+  {
+    width: 340px;
+    margin-left: -70px;
+    margin-top: 130px;
+  }
+  div.img3
+  {
+    margin-left: -30px;
+    margin-top: 20px;
+  }
+  p#y1
+  {
+    font-size: 13px;
+    margin-top: 40px;
+    margin-left: 55px;
+  }
+  h1.x5
+  {
+    margin-left: 55px;
+    margin-top: -353px;
+    font-size: 17px;
+  }
+  button.login2
+  {
+    margin-left: 170px;
+  }
+   div.fb3
+   {
+     margin-bottom: 0px;
+     margin-top: 0px;
+   }
+   input#email
+   {
+     margin-left: 0px;
+   }
+  div.email
+  {
+    width: 350px;
+  }
+  h5#b2
+  {
+    margin-top: 70px;
+    margin-left: 80px;
+    margin-bottom: 20px;
+  }
+
+  div.option
+  {
+    width: 300px;
+    margin-right: 90px;
+    margin-bottom: 70px;
+  }
+
+  div form.cozy .form-group,
+  .form.cozy .form-group
+  {
+  margin-bottom: 17px;
+}
+
+  h1.t1
+  {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 60px;
+    font-size: 22px;
+    font-weight: inherit;
+  }
+p#t2
+{
+  margin-bottom: 35px;
+  margin-top: 10px;
+  margin-left: 0px;
+}
+ div.img2
+ {
+   margin-left: -30px;
+   margin-top: 20px;
+ }
+
+  div.content.d1
+  {
+    width: 340px;
+    margin-left: -70px;
+    margin-top: 130px;
+  }
+  div.fb2
+  {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  nav.nav.am-3
+  {
+    margin-bottom: 0px;
+    margin-top: 40px;
+    margin-right: 0px;
+    margin-left: 80px;
+  }
+
+  .logo
+  {
+    width: 55px;
+    margin-left: 55px;
+  }
+ div.option2
+ {
+   width: 300px;
+   margin-right: 90px;
+   margin-bottom: 70px;
+ }
+h2.a7
+{
+  margin-left: 80px;
+
+}
+  button.btn.btn-rounded.login1
+
+{
+ margin-left: 60px;
+}
+h1.x1
+{
+
+  padding-top: 120px;
+  margin-left: 40px;
+}
+  p#t5
+  {
+    margin-left: 15px;
+  }
+ nav.nav.mb-4
+ {
+    margin-top: 350px;
+   margin-left: 60px;
+ }
+}
+@media (min-width:901px) and (max-width: 1200px)
+{
+  nav.nav.mp8
+  {
+    margin-bottom: 0px;
+    margin-top: 47px;
+    margin-right: 0px;
+    margin-left: 10px;
+  }
+  div.content.b1
+  {
+    width: 400px;
+    margin-left: -70px;
+    margin-top: 130px;
+  }
+  div.img3
+  {
+    margin-left: -170px;
+    margin-top: 30px;
+  }
+  p#y1
+  {
+    font-size: 16px;
+    margin-top: 40px;
+    margin-left: 65px;
+  }
+  h1.x5
+  {
+    margin-left: 65px;
+    margin-top: -353px;
+    font-size: 22px;
+  }
+  button.login2
+  {
+    margin-left: 200px;
+  }
+  div.fb3
+  {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  input#email
+  {
+    margin-left: 25px;
+  }
+  div.email
+  {
+    width: 350px;
+  }
+  h5#b2
+  {
+    margin-left: 165px;
+    font-size: 22px;
+    margin-bottom: -20px;
+  }
+  div.option
+  {
+    width: 400px;
+    margin-left: 75px;
+    margin-bottom: 70px;
+    margin-top: 35px;
+  }
+  div form.cozy .form-group,
+  .form.cozy .form-group
+  {
+    margin-bottom: 23px;
+  }
+  h1.t1
+  {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 60px;
+    font-size: 22px;
+    font-weight: inherit;
+  }
+  p#t2
+  {
+    margin-bottom: 35px;
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+  div.img2
+  {
+    margin-left: -150px;
+    margin-top: 20px;
+  }
+  div.option2.d2
+  {
+    width: 400px;
+    margin-left: 60px;
+  }
+  div.content.d1
+  {
+    width: 400px;
+    margin-left: -70px;
+    margin-top: 130px;
+  }
+  div.fb2
+  {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  nav.nav.am-3
+  {
+    margin-bottom: 0px;
+    margin-top: 40px;
+    margin-right: 0px;
+    margin-left: 80px;
+  }
+  h2#a5
+  {
+    margin-left: 140px;
+  }
+  .logo
+  {
+    width: 55px;
+    margin-left: 40px;
+    margin-top: 4px;
+  }
+  div.input5
+  {
+    width: 340px;
+    margin-left: -10px;
+  }
+  div.option2
+  {
+    width: 400px;
+    margin-right: 130px;
+    margin-bottom: 70px;
+    margin-top: 35px;
+  }
+  h2.a7
+  {
+    margin-left: 100px;
+    font-size: 22px;
+    margin-bottom: -20px;
+  }
+
+  h1.x1
+  {
+    margin-left: 60px;
+    padding-top: 120px;
+  }
+  p#t5
+  {
+    margin-left: 35px;
+  }
+  nav.nav.mb-4
+  {
+    margin-top: 370px;
+    margin-left: 20px;
+  }
+  button.btn.btn-rounded.login1
+  {
+   margin-right: -15px;
+  }
+  a#f
+  {
+    margin-left: 1px;
+  }
+}
+@media (min-width:1300px) and (max-width: 1600px)
+{
+  nav.nav.mp8
+  {
+    margin-bottom: 0px;
+    margin-top: 110px;
+    margin-right: 0px;
+    margin-left: -110px;
+  }
+  div.content.b1
+  {
+    width: 600px;
+    margin-left: 60px;
+    margin-top: 130px;
+  }
+  div.img3
+  {
+    margin-top: 70px;
+    margin-left: -60px;
+  }
+  p#y1
+  {
+
+    font-size: 16px;
+    margin-top: 40px;
+    margin-left: 164px;
+  }
+  h1.x5
+  {
+    margin-top: -280px;
+    margin-left: 160px;
+    font-size: 22px;
+  }
+  button.login2
+  {
+    margin-left: 340px;
+  }
+  div.fb3
+  {
+    margin-bottom: 0px;
+    margin-top: 20px;
+  }
+
+  input#email
+  {
+    margin-left: 55px;
+  }
+  div.email
+  {
+    width: 450px;
+  }
+  a#f
+  {
+    margin-left: 17px;
+  }
+  h5#b2
+  {
+    margin-left: 110px;
+    font-size: 22px;
+    margin-top: 50px;
+  }
+  div.option
+  {
+    width: 400px;
+  }
+
+  div form.cozy .form-group,
+  .form.cozy .form-group
+  {
+    margin-bottom: 25px;
+  }
+  h1.t1
+  {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 130px;
+    font-size: 22px;
+    font-weight: inherit;
+  }
+  p#t2
+  {
+    margin-bottom: 35px;
+    margin-top: 10px;
+    margin-left: 70px;
+  }
+  img.logo1
+  {
+    margin-top: 30px;
+    margin-bottom: 0px;
+    margin-left: -50px;
+    margin-right: 0px;
+  }
+  div.img2
+  {
+
+  }
+  div.option2.d2
+  {
+    width: 400px;
+    margin-bottom: 100px;
+  }
+  div.content.d1
+  {
+    width: 400px;
+  }
+  div.fb2
+  {
+    margin-bottom: 0px;
+    margin-top: 20px;
+  }
+  nav.nav.am-3
+  {
+    margin-bottom: 0px;
+    margin-top: 40px;
+    margin-right: 0px;
+    margin-left: 1px;
+  }
+  h2#a5
+  {
+    margin-top: 160px;
+    margin-left: 140px;
+  }
+  .logo
+  {
+    width: 70px;
+    margin-left: 24px;
+    margin-top: -24px;
+  }
+  div.input5
+  {
+    width: 450px;
+  }
+  div.option2
+  {
+    width: 400px;
+    margin-right: 10px;
+    margin-left: 80px;
+  }
+  h2.a7
+  {
+    margin-left: 150px;
+    font-size: 22px;
+    margin-bottom: -20px;
+    margin-top: 250px;
+    padding-bottom: 20px;
+  }
+  button.btn.btn-rounded.login1
+  {
+    margin-right: -10px;
+  }
+  h1.x1
+  {
+    margin-left: 110px;
+    padding-top: 120px;
+  }
+  p#t5
+  {
+    margin-left: 70px;
+  }
+  nav.nav.mb-4
+  {
+  }
+  div.fb
+  {
+    margin-bottom: 0px;
+    margin-top: 100px;
+  }
+}
+@media (min-width:1601px) and (max-width: 2600px)
+{
+nav.nav.mp8
+{
+  margin-bottom: 0px;
+  margin-top: 110px;
+  margin-right: 0px;
+  margin-left: -110px;
+}
+  div.content.b1
+  {
+    width: 600px;
+    margin-left: 60px;
+    margin-top: 130px;
+  }
+  div.img3
+  {
+    margin-top: 70px;
+    margin-left: -60px;
+  }
+  p#y1
+  {
+
+    font-size: 16px;
+    margin-top: 40px;
+    margin-left: 164px;
+  }
+  h1.x5
+  {
+    margin-top: -280px;
+    margin-left: 160px;
+    font-size: 22px;
+  }
+  button.login2
+  {
+    margin-left: 340px;
+  }
+  div.fb3
+  {
+    margin-bottom: 0px;
+    margin-top: 20px;
+  }
+
+  input#email
+  {
+    margin-left: 55px;
+  }
+  div.email
+  {
+    width: 450px;
+  }
+  h5#b2
+  {
+    margin-left: 110px;
+    font-size: 22px;
+    margin-top: 50px;
+  }
+  div.option
+  {
+    width: 400px;
+  }
+  p#t5
+  {
+    padding-left: 250px;
+  }
+  .logo
+  {
+    margin-top: -140px;
+  }
+  div.input5
+  {
+    width: 750px;
+  }
+  div.option2
+  {
+    width: 700px;
+    margin-right: 10px;
+    margin-left: 130px;
+  }
+
+  h2.a7
+  {
+    margin-left: 330px;
+    font-size: 22px;
+    margin-bottom: -20px;
+    margin-top: 250px;
+    padding-bottom: 20px;
+  }
+  button.btn.btn-rounded.login1
+  {
+    margin-right: 80px;
+  }
+  h1.x1
+  {
+    margin-left: 300px;
+  }
+  nav.nav.mb-4
+  {
+    margin-left: 0px;
+  }
+  div.fb
+  {
+    margin-top: 165px;
+  }
+}
+
 #a:hover
 {
   color: white;
@@ -505,7 +1563,7 @@ button.btn.btn-rounded.login1
 .fb
 {
   margin-bottom: -180px;
-  padding-top: 370px;
+  /*padding-top: 370px;*/
   margin-left: -125px;
   position: relative;
   background-repeat: no-repeat;
@@ -527,7 +1585,7 @@ button.btn.btn-rounded.login1
   font-size: 35px;
   margin-bottom:150px;
   margin-top:-150px;
-  margin-left: 130px;
+  margin-left: 71px;
 }
 .x5
 {
@@ -610,8 +1668,7 @@ li
 {
   font-size: 14px;
   font-weight: 400;
-  margin-left: 50px;
-  margin-bottom: -10px;
+  margin-left: 20px;
   padding-top: 50px;
 }
 #login_username
@@ -688,11 +1745,10 @@ li
 }
 .a7
 {
-  font-size: 22px;
+  font-size: 17px;
   color: gold;
   font-weight: 500;
-  margin-left: 100px;
-
+  margin-left: 40px;
 }
 .option2
  {
@@ -707,8 +1763,8 @@ li
   margin-top: 21px;
  }
 .input5{
-  margin-left: 20px;
-  width: 400px;
+  margin-left: 5px;
+  width: 300px;
 }
 
 
@@ -724,12 +1780,14 @@ li
   box-shadow: 0 0 15px #E5ECFD;
   border: 1px solid #759CF1;
   background-color: white;
+
 }
 #login_password
 {
    background-color: #F7FAFD;
   border: 1px solid transparent;
   height: 45px;
+  width: 50%;
 }
 
 hr {
@@ -10159,7 +11217,9 @@ fieldset:disabled .btn {
 .mb-4 {
   margin-bottom: 1.5rem !important;
 }
-
+.am-3 {
+  margin-bottom: 1.5rem !important;
+}
 .mb-5 {
   margin-bottom: 3rem !important;
 }
