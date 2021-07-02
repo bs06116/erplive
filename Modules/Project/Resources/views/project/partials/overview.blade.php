@@ -92,6 +92,7 @@
 					<!-- /.box -->
 				</div>
 			@endif
+
 		</div>
 		<div class="row">
 			@if((isset($project->settings['enable_invoice']) && $project->settings['enable_invoice']) && $is_lead_or_admin)
@@ -121,6 +122,33 @@
 					<!-- /.box -->
 				</div>
 			@endif
+			@if((isset($project->settings['enable_bounce']) && $project->settings['enable_bounce']) && $is_lead_or_admin)
+			<div class="col-md-6">
+				<div class="box box-solid box-success">
+					<div class="box-header with-border">
+						<h4 class="box-title">
+							@lang('project::lang.bounce_total_project')
+							<small class="text-white">
+								{{@format_date($project->bounce_date)}}
+							</small>
+						</h4>
+						<!-- /.box-tools -->
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body text-center">
+						<span>
+							<b>
+								<span class="subtotal display_currency" data-currency_symbol="true">
+									{{$project->bounce}}
+								</span>
+							</b>
+						</span>
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+			</div>
+		@endif
 		</div>
 		@if(!empty($project->description))
 			<div class="row">
@@ -182,7 +210,7 @@
 					@lang('category.categories'):
 					<span>
 					@foreach($project->categories as $categories)
-						
+
 						@if(!$loop->last)
 							{{$categories->name . ','}}
 						@else

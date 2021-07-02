@@ -53,10 +53,16 @@
                         {!! Form::text('start_date', '', ['class' => 'form-control datepicker', 'readonly']); !!}
                    </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="form-group">
                         {!! Form::label('end_date', __('project::lang.end_date') .':') !!}
                         {!! Form::text('end_date', '', ['class' => 'form-control datepicker', 'readonly']); !!}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        {!! Form::label('bounce_date', __('project::lang.bounce_date') .':') !!}
+                        {!! Form::text('bounce_date', '', ['class' => 'form-control datepicker', 'readonly']); !!}
                     </div>
                 </div>
             </div>
@@ -73,6 +79,15 @@
                        {!! Form::select('category_id[]', $categories, null, ['class' => 'form-control select2', 'multiple', 'style' => 'width: 100%;']); !!}
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('user_id', __('project::lang.bounce') .':') !!}
+                        {!! Form::text('bounce', '', ['class' => 'form-control' ]) !!}
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="modal-footer">

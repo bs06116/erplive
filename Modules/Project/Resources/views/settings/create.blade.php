@@ -1,6 +1,6 @@
 {!! Form::open(['url' => action('\Modules\Project\Http\Controllers\ProjectController@postSettings', ['project_id' => $project->id]), 'id' => 'settings_form', 'method' => 'put']) !!}
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<div class="checkbox">
 				<label>
 				  <input type="checkbox" name="enable_timelog" value="1" @if(isset($project->settings['enable_timelog'])
@@ -8,8 +8,8 @@
 				</label>
 			</div>
 		</div>
-		
-		<div class="col-md-4">
+
+		<div class="col-md-3">
 			<div class="checkbox">
 				<label>
 				  <input type="checkbox" name="enable_notes_documents" value="1" @if(isset($project->settings['enable_notes_documents']) && $project->settings['enable_notes_documents']) checked @endif> @lang('project::lang.enable_notes_documents')
@@ -17,10 +17,19 @@
 			</div>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<div class="checkbox">
 				<label>
 				  <input type="checkbox" name="enable_invoice" value="1" @if(isset($project->settings['enable_invoice']) && $project->settings['enable_invoice']) checked @endif> @lang('project::lang.enable_invoice')
+				</label>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="checkbox">
+				<label>
+				  <input type="checkbox" name="enable_bounce"
+				   value="1" @if(isset($project->settings['enable_bounce']) && $project->settings['enable_bounce'])
+				    checked @endif> @lang('project::lang.enable_bounce')
 				</label>
 			</div>
 		</div>
@@ -74,7 +83,7 @@
 		</div>
 		<div class="col-md-3">
 			<input type="checkbox" id="members_crud_timelog" name="members_crud_timelog" value="1" @if(isset($project->settings['members_crud_timelog'])
-		  	&& $project->settings['members_crud_timelog']) checked @endif> 
+		  	&& $project->settings['members_crud_timelog']) checked @endif>
 		</div>
 	</div>
 	<div class="row">
@@ -85,7 +94,7 @@
 		</div>
 		<div class="col-md-3">
 			<input type="checkbox" id="members_crud_note" name="members_crud_note" value="1" @if(isset($project->settings['members_crud_note'])
-		  && $project->settings['members_crud_note']) checked @endif> 
+		  && $project->settings['members_crud_note']) checked @endif>
 		</div>
 	</div>
 	<div class="row">

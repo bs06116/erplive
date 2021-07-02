@@ -312,16 +312,19 @@ class ProjectController extends Controller
         try {
             DB::beginTransaction();
 
-            $input = $request->only('name', 'description', 'contact_id', 'status', 'lead_id');
+            $input = $request->only('name', 'description','bounce', 'contact_id', 'status', 'lead_id');
             $input['start_date'] = !empty($request->input('start_date')) ? $this->commonUtil->uf_date($request->input('start_date')) : null;
             $input['end_date'] = !empty($request->input('end_date')) ? $this->commonUtil->uf_date($request->input('end_date')) : null;
             $input['business_id'] = $business_id;
             $input['created_by'] = $request->user()->id;
+            $input['bounce_date'] = !empty($request->input('bounce_date')) ? $this->commonUtil->uf_date($request->input('bounce_date')) : null;
+            $input['bounce'] = !empty($request->input('bounce')) ? $request->input('bounce') : null;
 
             // default settings for project
             $input['settings'] = [
                         'enable_timelog' => 1,
                         'enable_invoice' => 1,
+                        'enable_bounce' => 1,
                         'enable_notes_documents' => 1,
                         'members_crud_task' => 0,
                         'members_crud_note' => 0,
@@ -608,6 +611,8 @@ class ProjectController extends Controller
             $input['enable_timelog'] = !empty($request->enable_timelog) ? 1 : 0;
             $input['enable_notes_documents'] = !empty($request->enable_notes_documents) ? 1 : 0;
             $input['enable_invoice'] = !empty($request->enable_invoice) ? 1 : 0;
+            $input['enable_bounce'] = !empty($request->enable_bounce) ? 1 : 0;
+
             $input['members_crud_task'] = !empty($request->members_crud_task) ? 1 : 0;
             $input['members_crud_note'] = !empty($request->members_crud_note) ? 1 : 0;
             $input['members_crud_timelog'] = !empty($request->members_crud_timelog) ? 1 : 0;
