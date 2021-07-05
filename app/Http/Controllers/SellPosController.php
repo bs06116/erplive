@@ -244,6 +244,7 @@ class SellPosController extends Controller
 
         $invoice_schemes = InvoiceScheme::forDropdown($business_id);
         $default_invoice_schemes = InvoiceScheme::getDefault($business_id);
+        $currencies = $this->businessUtil->allCurrencies();
 
         return view('sale_pos.create')
             ->with(compact(
@@ -274,7 +275,8 @@ class SellPosController extends Controller
                 'pos_module_data',
                 'invoice_schemes',
                 'default_invoice_schemes',
-                'invoice_layouts'
+                'invoice_layouts',
+                'currencies'
             ));
     }
 
