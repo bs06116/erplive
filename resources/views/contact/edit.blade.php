@@ -159,17 +159,19 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="form-group">
-                {!! Form::label('currency_id', __('business.currency') . ':') !!}
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="fas fa-money-bill-alt"></i>
-                    </span>
-                    {!! Form::select('currency_id', $currencies,$contact->currency_id, ['class' => 'form-control select2','placeholder' => __('business.currency'), 'required']); !!}
+    @if(isset($currencies))
+    <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('currency_id', __('business.currency') . ':') !!}
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fas fa-money-bill-alt"></i>
+                        </span>
+                        {!! Form::select('currency_id', $currencies,$contact->currency_id, ['class' => 'form-control select2','placeholder' => __('business.currency'), 'required']); !!}
+                    </div>
                 </div>
             </div>
-        </div>
+            @endif
         <div class="col-sm-4">
             <div class="form-group individual">
                 {!! Form::label('dob', __('lang_v1.dob') . ':') !!}

@@ -159,6 +159,7 @@
                     </div>
                 </div>
             </div>
+            @if(isset($currencies))
             <div class="col-md-3">
                 <div class="form-group">
                     {!! Form::label('currency_id', __('business.currency') . ':') !!}
@@ -170,6 +171,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             <div class="clearfix"></div>
             <div class="col-sm-4 individual">
                 <div class="form-group">
