@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Business;
 use App\BusinessLocation;
 use App\Contact;
+use App\Currency;
 use App\CustomerGroup;
 use App\Notifications\CustomerNotification;
 use App\PurchaseLine;
@@ -21,6 +22,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use App\TransactionPayment;
 use Spatie\Activitylog\Models\Activity;
+use App\Utils\BusinessUtil;
 
 class ContactController extends Controller
 {
@@ -29,6 +31,8 @@ class ContactController extends Controller
     protected $transactionUtil;
     protected $moduleUtil;
     protected $notificationUtil;
+    protected $businessUtil;
+
 
     /**
      * Constructor
@@ -41,8 +45,10 @@ class ContactController extends Controller
         ModuleUtil $moduleUtil,
         TransactionUtil $transactionUtil,
         NotificationUtil $notificationUtil,
-        ContactUtil $contactUtil
+        ContactUtil $contactUtil,
+        BusinessUtil $businessUtil
     ) {
+        $this->businessUtil = $businessUtil;
         $this->commonUtil = $commonUtil;
         $this->contactUtil = $contactUtil;
         $this->moduleUtil = $moduleUtil;
@@ -110,7 +116,7 @@ class ContactController extends Controller
                 'action',
                 function ($row) {
                     $html = '<div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle btn-xs" 
+                    <button type="button" class="btn btn-info dropdown-toggle btn-xs"
                         data-toggle="dropdown" aria-expanded="false">' .
                         __("messages.actions") .
                         '<span class="caret"></span><span class="sr-only">Toggle Dropdown
@@ -268,7 +274,7 @@ class ContactController extends Controller
                 'action',
                 function ($row) {
                     $html = '<div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle btn-xs" 
+                    <button type="button" class="btn btn-info dropdown-toggle btn-xs"
                         data-toggle="dropdown" aria-expanded="false">' .
                         __("messages.actions") .
                         '<span class="caret"></span><span class="sr-only">Toggle Dropdown
@@ -281,7 +287,7 @@ class ContactController extends Controller
                     if ($return_due > 0) {
                         $html .= '<li><a href="' . action('TransactionPaymentController@getPayContactDue', [$row->id]) . '?type=sell_return" class="pay_purchase_due"><i class="fas fa-money-bill-alt" aria-hidden="true"></i>' . __("lang_v1.pay_sell_return_due") . '</a></li>';
                     }
-                    
+
                     if (auth()->user()->can('customer.view')) {
                         $html .= '<li><a href="' . action('ContactController@show', [$row->id]) . '"><i class="fas fa-eye" aria-hidden="true"></i>' . __("messages.view") . '</a></li>';
                     }
@@ -450,9 +456,10 @@ class ContactController extends Controller
         $selected_type = request()->type;
 
         $module_form_parts = $this->moduleUtil->getModuleData('contact_form_part');
-        
+        $currencies = $this->businessUtil->allCurrencies();
+
         return view('contact.create')
-            ->with(compact('types', 'customer_groups', 'selected_type', 'module_form_parts'));
+            ->with(compact('types', 'customer_groups', 'selected_type', 'module_form_parts','currencies'));
     }
 
     /**
@@ -475,8 +482,15 @@ class ContactController extends Controller
             }
 
             $input = $request->only(['type', 'supplier_business_name',
-                'prefix', 'first_name', 'middle_name', 'last_name', 'tax_number', 'pay_term_number', 'pay_term_type', 'mobile', 'landline', 'alternate_number', 'city', 'state', 'country', 'address_line_1', 'address_line_2', 'customer_group_id', 'zip_code', 'contact_id', 'custom_field1', 'custom_field2', 'custom_field3', 'custom_field4', 'custom_field5', 'custom_field6', 'custom_field7', 'custom_field8', 'custom_field9', 'custom_field10', 'email', 'shipping_address', 'position', 'dob', 'shipping_custom_field_details']);
-            $input['name'] = implode(' ', [$input['prefix'], $input['first_name'], $input['middle_name'], $input['last_name']]);
+                'prefix', 'first_name', 'middle_name', 'last_name', 'tax_number',
+                'pay_term_number', 'pay_term_type', 'mobile', 'landline', 'alternate_number',
+                'city', 'state', 'country', 'address_line_1', 'address_line_2', 'customer_group_id',
+                'zip_code', 'contact_id', 'custom_field1', 'custom_field2', 'custom_field3', 'custom_field4',
+                 'custom_field5', 'custom_field6', 'custom_field7', 'custom_field8', 'custom_field9',
+                 'custom_field10', 'email', 'shipping_address', 'position', 'dob', 'shipping_custom_field_details','currency_id']);
+            $input['name'] = implode(' ', [$input['prefix'], $input['first_name'],
+             $input['middle_name'], $input['last_name']]
+            );
 
             if (!empty($request->input('is_export'))) {
                 $input['is_export'] = true;
@@ -497,7 +511,7 @@ class ContactController extends Controller
 
             $input['credit_limit'] = $request->input('credit_limit') != '' ? $this->commonUtil->num_uf($request->input('credit_limit')) : null;
             $input['opening_balance'] = $this->commonUtil->num_uf($request->input('opening_balance'));
-            
+
             $output = $this->contactUtil->createNewContact($input);
 
             $this->moduleUtil->getModuleData('after_contact_saved', ['contact' => $output['data'], 'input' => $request->input()]);
@@ -506,7 +520,7 @@ class ContactController extends Controller
 
         } catch (\Exception $e) {
             \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
-            
+
             $output = ['success' => false,
                             'msg' =>__("messages.something_went_wrong")
                         ];
@@ -536,6 +550,10 @@ class ContactController extends Controller
 
         $business_locations = BusinessLocation::forDropdown($business_id, true);
 
+
+
+       // $currencies = BusinessLocation::forDropdown($business_id, true);
+
         //get contact view type : ledger, notes etc.
         $view_type = request()->get('view');
         if (is_null($view_type)) {
@@ -548,9 +566,11 @@ class ContactController extends Controller
            ->with(['causer', 'subject'])
            ->latest()
            ->get();
-        
+
         return view('contact.show')
-             ->with(compact('contact', 'reward_enabled', 'contact_dropdown', 'business_locations', 'view_type', 'contact_view_tabs', 'activities'));
+             ->with(compact('contact', 'reward_enabled', 'contact_dropdown',
+             'business_locations', 'view_type', 'contact_view_tabs',
+              'activities'));
     }
 
     /**
@@ -600,9 +620,9 @@ class ContactController extends Controller
 
                 $opening_balance = $this->commonUtil->num_f($opening_balance);
             }
-
+            $currencies = $this->businessUtil->allCurrencies();
             return view('contact.edit')
-                ->with(compact('contact', 'types', 'customer_groups', 'opening_balance'));
+                ->with(compact('contact', 'types', 'customer_groups', 'opening_balance','currencies'));
         }
     }
 
@@ -621,7 +641,7 @@ class ContactController extends Controller
 
         if (request()->ajax()) {
             try {
-                $input = $request->only(['type', 'supplier_business_name', 'prefix', 'first_name', 'middle_name', 'last_name', 'tax_number', 'pay_term_number', 'pay_term_type', 'mobile', 'address_line_1', 'address_line_2', 'zip_code', 'dob', 'alternate_number', 'city', 'state', 'country', 'landline', 'customer_group_id', 'contact_id', 'custom_field1', 'custom_field2', 'custom_field3', 'custom_field4', 'custom_field5', 'custom_field6', 'custom_field7', 'custom_field8', 'custom_field9', 'custom_field10', 'email', 'shipping_address', 'position', 'shipping_custom_field_details', 'export_custom_field_1', 'export_custom_field_2', 'export_custom_field_3', 'export_custom_field_4', 'export_custom_field_5',
+                $input = $request->only(['type', 'supplier_business_name', 'prefix', 'first_name', 'middle_name', 'last_name', 'currency_id','tax_number', 'pay_term_number', 'pay_term_type', 'mobile', 'address_line_1', 'address_line_2', 'zip_code', 'dob', 'alternate_number', 'city', 'state', 'country', 'landline', 'customer_group_id', 'contact_id', 'custom_field1', 'custom_field2', 'custom_field3', 'custom_field4', 'custom_field5', 'custom_field6', 'custom_field7', 'custom_field8', 'custom_field9', 'custom_field10', 'email', 'shipping_address', 'position', 'shipping_custom_field_details', 'export_custom_field_1', 'export_custom_field_2', 'export_custom_field_3', 'export_custom_field_4', 'export_custom_field_5',
                     'export_custom_field_6']);
 
                 $input['name'] = implode(' ', [$input['prefix'], $input['first_name'], $input['middle_name'], $input['last_name']]);
@@ -637,10 +657,11 @@ class ContactController extends Controller
                 }
 
                 $input['credit_limit'] = $request->input('credit_limit') != '' ? $this->commonUtil->num_uf($request->input('credit_limit')) : null;
-                
+
                 $business_id = $request->session()->get('user.business_id');
 
                 $input['opening_balance'] = $this->commonUtil->num_uf($request->input('opening_balance'));
+                $input['currency_id'] = $request->input('currency_id');
 
                 if (!$this->moduleUtil->isSubscribed($business_id)) {
                     return $this->moduleUtil->expiredResponse();
@@ -652,7 +673,7 @@ class ContactController extends Controller
 
             } catch (\Exception $e) {
                 \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
-            
+
                 $output = ['success' => false,
                             'msg' => __("messages.something_went_wrong")
                         ];
@@ -705,7 +726,7 @@ class ContactController extends Controller
                 }
             } catch (\Exception $e) {
                 \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
-            
+
                 $output = ['success' => false,
                             'msg' => __("messages.something_went_wrong")
                         ];
@@ -858,7 +879,7 @@ class ContactController extends Controller
             if (!empty($notAllowed)) {
                 return $notAllowed;
             }
-            
+
             //Set maximum php execution time
             ini_set('max_execution_time', 0);
 
@@ -867,7 +888,7 @@ class ContactController extends Controller
                 $parsed_array = Excel::toArray([], $file);
                 //Remove header row
                 $imported_data = array_splice($parsed_array[0], 1);
-                
+
                 $business_id = $request->session()->get('user.business_id');
                 $user_id = $request->session()->get('user.id');
 
@@ -875,7 +896,7 @@ class ContactController extends Controller
 
                 $is_valid = true;
                 $error_msg = '';
-                
+
                 DB::beginTransaction();
                 foreach ($imported_data as $key => $value) {
                     //Check if 27 no. of columns exists
@@ -911,7 +932,7 @@ class ContactController extends Controller
                         break;
                     }
 
-                    $contact_array['prefix'] = $value[1]; 
+                    $contact_array['prefix'] = $value[1];
                     //Check contact name
                     if (!empty($value[2])) {
                         $contact_array['first_name'] = $value[2];
@@ -960,7 +981,7 @@ class ContactController extends Controller
                         $count = Contact::where('business_id', $business_id)
                                     ->where('contact_id', $value[6])
                                     ->count();
-                
+
 
                         if ($count == 0) {
                             $contact_array['contact_id'] = $value[6];
@@ -1076,7 +1097,7 @@ class ContactController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
-            
+
             $output = ['success' => 0,
                             'msg' => $e->getMessage()
                         ];
@@ -1106,19 +1127,22 @@ class ContactController extends Controller
 
         $contact = Contact::find($contact_id);
 
+        $currency_symbol = Currency::where('id', $contact->currency_id)->value('symbol');
+
+
         $ledger_details = $this->transactionUtil->getLedgerDetails($contact_id, $start_date, $end_date);
 
         if (request()->input('action') == 'pdf') {
             $for_pdf = true;
             $html = view('contact.ledger')
-             ->with(compact('ledger_details', 'contact', 'for_pdf'))->render();
+             ->with(compact('ledger_details', 'contact', 'for_pdf', 'currency_symbol'))->render();
             $mpdf = $this->getMpdf();
             $mpdf->WriteHTML($html);
             $mpdf->Output();
         }
 
         return view('contact.ledger')
-             ->with(compact('ledger_details', 'contact'));
+             ->with(compact('ledger_details', 'contact','currency_symbol'));
     }
 
     public function postCustomersApi(Request $request)
@@ -1151,7 +1175,7 @@ class ContactController extends Controller
             }
         } catch (\Exception $e) {
             \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
-            
+
             return $this->respondWentWrong($e);
         }
 
@@ -1194,7 +1218,7 @@ class ContactController extends Controller
 
             //replace balance_due
             $data['email_body'] = str_replace('{balance_due}', $this->notificationUtil->num_f($ledger_details['balance_due']), $data['email_body']);
-            
+
             $data['email_settings'] = request()->session()->get('business.email_settings');
 
 
@@ -1219,7 +1243,7 @@ class ContactController extends Controller
             $output = ['success' => 1, 'msg' => __('lang_v1.notification_sent_successfully')];
         } catch (\Exception $e) {
             \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
-            
+
             $output = ['success' => 0,
                             'msg' => "File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage()
                         ];

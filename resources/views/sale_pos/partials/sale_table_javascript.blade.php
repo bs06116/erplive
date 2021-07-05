@@ -99,6 +99,14 @@ sell_table = $('#sell_table').DataTable({
             var footer_total_paid = 0;
             var footer_total_remaining = 0;
             var footer_total_sell_return_due = 0;
+           // console.info(data.length);
+            if(data.length > 0){
+                var currency =  $(data[0].final_total).data('currency-value');
+            }else{
+                var currency =  '';
+
+            }
+
             for (var r in data){
                 footer_sale_total += $(data[r].final_total).data('orig-value') ? parseFloat($(data[r].final_total).data('orig-value')) : 0;
                 footer_total_paid += $(data[r].total_paid).data('orig-value') ? parseFloat($(data[r].total_paid).data('orig-value')) : 0;
@@ -106,10 +114,10 @@ sell_table = $('#sell_table').DataTable({
                 footer_total_sell_return_due += $(data[r].return_due).find('.sell_return_due').data('orig-value') ? parseFloat($(data[r].return_due).find('.sell_return_due').data('orig-value')) : 0;
             }
 
-            $('.footer_total_sell_return_due').html(__currency_trans_from_en(footer_total_sell_return_due));
-            $('.footer_total_remaining').html(__currency_trans_from_en(footer_total_remaining));
-            $('.footer_total_paid').html(__currency_trans_from_en(footer_total_paid));
-            $('.footer_sale_total').html(__currency_trans_from_en(footer_sale_total));
+            $('.footer_total_sell_return_due').html(__currency_trans_from_contact_en(footer_total_sell_return_due,currency));
+            $('.footer_total_remaining').html(__currency_trans_from_contact_en(footer_total_remaining,currency));
+            $('.footer_total_paid').html(__currency_trans_from_contact_en(footer_total_paid,currency));
+            $('.footer_sale_total').html(__currency_trans_from_contact_en(footer_sale_total,currency));
 
             $('.footer_payment_status_count').html(__count_status(data, 'payment_status'));
             $('.service_type_count').html(__count_status(data, 'types_of_service_name'));
@@ -119,7 +127,7 @@ sell_table = $('#sell_table').DataTable({
             $( row ).find('td:eq(6)').attr('class', 'clickable_td');
         }
     });
-    
+
     $('#only_subscriptions').on('ifChanged', function(event){
         sell_table.ajax.reload();
     });

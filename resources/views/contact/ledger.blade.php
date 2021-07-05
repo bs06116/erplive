@@ -19,31 +19,31 @@
 	<table class="table table-condensed text-left align-left no-border @if(!empty($for_pdf)) table-pdf @endif">
 		<tr>
 			<td>@lang('lang_v1.opening_balance')</td>
-			<td class="align-right">@format_currency($ledger_details['beginning_balance'])</td>
+			<td class="align-right">{{contact_currency_format($ledger_details['beginning_balance'],$currency_symbol)}}</td>
 		</tr>
 	@if( $contact->type == 'supplier' || $contact->type == 'both')
 		<tr>
 			<td>@lang('report.total_purchase')</td>
-			<td class="align-right">@format_currency($ledger_details['total_purchase'])</td>
+			<td class="align-right">{{contact_currency_format($ledger_details['total_purchase'],$currency_symbol)}}</td>
 		</tr>
 	@endif
 	@if( $contact->type == 'customer' || $contact->type == 'both')
 		<tr>
 			<td>@lang('lang_v1.total_invoice')</td>
-			<td class="align-right">@format_currency($ledger_details['total_invoice'])</td>
+			<td class="align-right">{{contact_currency_format($ledger_details['total_invoice'],$currency_symbol)}}</td>
 		</tr>
 	@endif
 	<tr>
 		<td>@lang('sale.total_paid')</td>
-		<td class="align-right">@format_currency($ledger_details['total_paid'])</td>
+		<td class="align-right">{{contact_currency_format($ledger_details['total_paid'],$currency_symbol)}}</td>
 	</tr>
 	<tr>
 		<td>@lang('lang_v1.advance_balance')</td>
-		<td class="align-right">@format_currency($contact->balance)</td>
+		<td class="align-right">{{contact_currency_format($contact->balance,$currency_symbol)}}</td>
 	</tr>
 	<tr>
 		<td><strong>@lang('lang_v1.balance_due')</strong></td>
-		<td class="align-right">@format_currency($ledger_details['balance_due'])</td>
+		<td class="align-right">{{contact_currency_format($ledger_details['balance_due'],$currency_symbol)}}</td>
 	</tr>
 	</table>
 </div>
@@ -65,6 +65,7 @@
 				<th width="15%" class="text-center">@lang('report.others')</th>
 			</tr>
 		</thead>
+
 		<tbody>
 			@foreach($ledger_details['ledger'] as $data)
 				<tr @if(!empty($for_pdf) && $loop->iteration % 2 == 0) class="odd" @endif>
@@ -73,9 +74,9 @@
 					<td>{{$data['type']}}</td>
 					<td>{{$data['location']}}</td>
 					<td>{{$data['payment_status']}}</td>
-					<td class="ws-nowrap align-right">@if($data['total'] !== '') @format_currency($data['total']) @endif</td>
-					<td class="ws-nowrap align-right">@if($data['debit'] != '') @format_currency($data['debit']) @endif</td>
-					<td class="ws-nowrap align-right">@if($data['credit'] != '') @format_currency($data['credit']) @endif</td>
+					<td class="ws-nowrap align-right">@if($data['total'] !== '') {{contact_currency_format($data['total'],$currency_symbol)}} @endif</td>
+					<td class="ws-nowrap align-right">@if($data['debit'] != '') {{contact_currency_format($data['debit'],$currency_symbol)}}  @endif</td>
+					<td class="ws-nowrap align-right">@if($data['credit'] != ''){{contact_currency_format($data['credit'],$currency_symbol)}}  @endif</td>
 					<td>{{$data['payment_method']}}</td>
 					<td>{!! $data['others'] !!}</td>
 				</tr>

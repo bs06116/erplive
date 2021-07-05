@@ -75,7 +75,7 @@ class SellController extends ApiController
 
     /**
      * List sells
-     * @queryParam location_id id of the location        
+     * @queryParam location_id id of the location
      * @queryParam contact_id id of the customer
      * @queryParam payment_status payment status Example: paid
      * @queryParam start_date format:Y-m-d Example: 2018-06-25
@@ -261,7 +261,7 @@ class SellController extends ApiController
             "to": 10
         }
     }
-     * 
+     *
      */
     public function index()
     {
@@ -539,7 +539,7 @@ class SellController extends ApiController
     * @bodyParam sells.*.transaction_date string transaction date format:Y-m-d H:i:s, Example: 2020-07-22 15:48:29
     * @bodyParam sells.*.invoice_no string Invoice number
     * @bodyParam sells.*.status string sale status (final, draft) Example: final
-    * @bodyParam sells.*.tax_rate_id int id of the tax rate applicable to the sale 
+    * @bodyParam sells.*.tax_rate_id int id of the tax rate applicable to the sale
     * @bodyParam sells.*.discount_amount float discount amount applicable to the sale Example:10.00
     * @bodyParam sells.*.discount_type string  type of the discount amount (fixed, percentage) Example: fixed
     * @bodyParam sells.*.sale_note string
@@ -568,7 +568,7 @@ class SellController extends ApiController
     * @bodyParam sells.*.service_custom_field_2 string types of service custom field 2
     * @bodyParam sells.*.service_custom_field_3 string types of service custom field 3
     * @bodyParam sells.*.service_custom_field_4 string types of service custom field 4
-    * @bodyParam sells.*.round_off_amount float round off amount on total payable 
+    * @bodyParam sells.*.round_off_amount float round off amount on total payable
     * @bodyParam sells.*.table_id int id of the table
     * @bodyParam sells.*.service_staff_id int id of the service staff assigned to the sale
     * @bodyParam sells.*.change_return float Excess paid amount Example:0.0000
@@ -589,21 +589,21 @@ class SellController extends ApiController
     *
     * @bodyParam sells.*.payments.*.amount float required amount of the payment Example: 453.1300
     * @bodyParam sells.*.payments.*.method string payment methods ('cash', 'card', 'cheque', 'bank_transfer', 'other', 'custom_pay_1', 'custom_pay_2', 'custom_pay_3') Example: cash
-    * @bodyParam sells.*.payments.*.account_id int account id 
-    * @bodyParam sells.*.payments.*.card_number string 
-    * @bodyParam sells.*.payments.*.card_holder_name string 
-    * @bodyParam sells.*.payments.*.card_transaction_number string 
-    * @bodyParam sells.*.payments.*.card_type string 
-    * @bodyParam sells.*.payments.*.card_month string 
-    * @bodyParam sells.*.payments.*.card_year string 
-    * @bodyParam sells.*.payments.*.card_security string 
-    * @bodyParam sells.*.payments.*.transaction_no_1 string 
-    * @bodyParam sells.*.payments.*.transaction_no_2 string 
-    * @bodyParam sells.*.payments.*.transaction_no_3 string 
+    * @bodyParam sells.*.payments.*.account_id int account id
+    * @bodyParam sells.*.payments.*.card_number string
+    * @bodyParam sells.*.payments.*.card_holder_name string
+    * @bodyParam sells.*.payments.*.card_transaction_number string
+    * @bodyParam sells.*.payments.*.card_type string
+    * @bodyParam sells.*.payments.*.card_month string
+    * @bodyParam sells.*.payments.*.card_year string
+    * @bodyParam sells.*.payments.*.card_security string
+    * @bodyParam sells.*.payments.*.transaction_no_1 string
+    * @bodyParam sells.*.payments.*.transaction_no_2 string
+    * @bodyParam sells.*.payments.*.transaction_no_3 string
     * @bodyParam sells.*.payments.*.bank_account_number string
     * @bodyParam sells.*.payments.*.note string payment note
-    * @bodyParam sells.*.payments.*.cheque_number string 
-    * 
+    * @bodyParam sells.*.payments.*.cheque_number string
+    *
     * @response {
         "data": [
             {
@@ -772,7 +772,7 @@ class SellController extends ApiController
         //TODO::Check customer credit limit
         try {
             $sells = $request->input('sells');
-            $user = Auth::user(); 
+            $user = Auth::user();
 
             $business_id = $user->business_id;
             $business = Business::find($business_id);
@@ -785,7 +785,7 @@ class SellController extends ApiController
 
             foreach ($sells as $sell_data) {
                 try {
-                    DB::beginTransaction(); 
+                    DB::beginTransaction();
                     $sell_data['business_id'] = $user->business_id;
                     $input = $this->__formatSellData($sell_data);
 
@@ -811,7 +811,7 @@ class SellController extends ApiController
                     $change_return['amount'] = $input['change_return'];
                     $change_return['is_return'] = 1;
                     $input['payment'][] = $change_return;
-                    
+
                     if (!empty($input['payment'])) {
                         $this->transactionUtil->createOrUpdatePaymentLines($transaction, $input['payment'], $business_id, $user->id, false);
                     }
@@ -872,7 +872,7 @@ class SellController extends ApiController
                     DB::commit();
                     $output[] = $transaction;
 
-                } 
+                }
                 catch(ModelNotFoundException $e){
                     DB::rollback();
                     $output[] = $this->modelNotFoundExceptionResult($e);
@@ -897,7 +897,7 @@ class SellController extends ApiController
     * @bodyParam contact_id int id of the customer
     * @bodyParam transaction_date string transaction date format:Y-m-d H:i:s, Example: 2020-5-7 15:20:22
     * @bodyParam status string sale status (final, draft) Example:final
-    * @bodyParam tax_rate_id int id of the tax rate applicable to the sale 
+    * @bodyParam tax_rate_id int id of the tax rate applicable to the sale
     * @bodyParam discount_amount float discount amount applicable to the sale Example: 10.0000
     * @bodyParam discount_type string type of the discount amount (fixed, percentage) Example: fixed
     * @bodyParam sale_note string
@@ -911,7 +911,7 @@ class SellController extends ApiController
     * @bodyParam packing_charge float packing charge Example: 10.0000
     * @bodyParam exchange_rate float exchange rate for the currency used Example:1
     * @bodyParam selling_price_group_id int id of the selling price group
-    * @bodyParam pay_term_number int pay term value 
+    * @bodyParam pay_term_number int pay term value
     * @bodyParam pay_term_type string type of the pay term value ('days', 'months') Example: months
     * @bodyParam is_recurring int whether the invoice is recurring (0, 1) Example:0
     * @bodyParam recur_interval int value of the interval invoice will be regenerated
@@ -926,7 +926,7 @@ class SellController extends ApiController
     * @bodyParam service_custom_field_2 string types of service custom field 2
     * @bodyParam service_custom_field_3 string types of service custom field 3
     * @bodyParam service_custom_field_4 string types of service custom field 4
-    * @bodyParam round_off_amount float round off amount on total payable 
+    * @bodyParam round_off_amount float round off amount on total payable
     * @bodyParam table_id int id of the table
     * @bodyParam service_staff_id int id of the service staff assigned to the sale
     * @bodyParam change_return float Excess paid amount Example:0.0000
@@ -940,31 +940,31 @@ class SellController extends ApiController
     * @bodyParam products.*.variation_id int variation id Example: 58
     * @bodyParam products.*.quantity float quantity Example: 1
     * @bodyParam products.*.unit_price float unit selling price Example: 437.5000
-    * @bodyParam products.*.tax_rate_id int tax rate id applicable on the product 
+    * @bodyParam products.*.tax_rate_id int tax rate id applicable on the product
     * @bodyParam products.*.discount_amount float discount amount applicable on the product  Example:0.0000
     * @bodyParam products.*.discount_type string type of discount amount ('fixed', 'percentage') Example: percentage
     * @bodyParam products.*.sub_unit_id int sub unit id
     * @bodyParam products.*.note string note for the product
     *
     *
-    * @bodyParam payments.*.payment_id int payment id for existing payment line 
+    * @bodyParam payments.*.payment_id int payment id for existing payment line
     * @bodyParam payments.*.amount float amount of the payment Example:453.1300
     * @bodyParam payments.*.method string payment methods ('cash', 'card', 'cheque', 'bank_transfer', 'other', 'custom_pay_1', 'custom_pay_2', 'custom_pay_3') Example:cash
-    * @bodyParam payments.*.account_id int account id 
-    * @bodyParam payments.*.card_number string 
-    * @bodyParam payments.*.card_holder_name string 
-    * @bodyParam payments.*.card_transaction_number string 
-    * @bodyParam payments.*.card_type string 
-    * @bodyParam payments.*.card_month string 
-    * @bodyParam payments.*.card_year string 
-    * @bodyParam payments.*.card_security string 
-    * @bodyParam payments.*.transaction_no_1 string 
-    * @bodyParam payments.*.transaction_no_2 string 
-    * @bodyParam payments.*.transaction_no_3 string 
+    * @bodyParam payments.*.account_id int account id
+    * @bodyParam payments.*.card_number string
+    * @bodyParam payments.*.card_holder_name string
+    * @bodyParam payments.*.card_transaction_number string
+    * @bodyParam payments.*.card_type string
+    * @bodyParam payments.*.card_month string
+    * @bodyParam payments.*.card_year string
+    * @bodyParam payments.*.card_security string
+    * @bodyParam payments.*.transaction_no_1 string
+    * @bodyParam payments.*.transaction_no_2 string
+    * @bodyParam payments.*.transaction_no_3 string
     * @bodyParam payments.*.note string payment note
-    * @bodyParam payments.*.cheque_number string 
+    * @bodyParam payments.*.cheque_number string
     * @bodyParam payments.*.bank_account_number string
-    * 
+    *
     * @response {
         "id": 91,
         "business_id": 1,
@@ -1100,7 +1100,7 @@ class SellController extends ApiController
     public function update(Request $request, $id)
     {
         try {
-            $user = Auth::user(); 
+            $user = Auth::user();
 
             $business_id = $user->business_id;
             $business = Business::find($business_id);
@@ -1146,7 +1146,7 @@ class SellController extends ApiController
 
                $this->transactionUtil->createOrUpdatePaymentLines($transaction, $input['payment'], $business_id, $user->id, false);
             }
-            
+
             if ($business->enable_rp == 1) {
                 $this->transactionUtil->updateCustomerRewardPoints($transaction->contact_id, $transaction->rp_earned, $rp_earned_before, $transaction->rp_redeemed, $rp_redeemed_before);
             }
@@ -1224,21 +1224,21 @@ class SellController extends ApiController
             'location_id' => $location->id,
             'contact_id' => $contact->id,
             'customer_group_id' => $customer_group_id,
-            'transaction_date' => $this->__getValue('transaction_date', $data, 
+            'transaction_date' => $this->__getValue('transaction_date', $data,
                                 $transaction,  \Carbon::now()->toDateTimeString()),
             'invoice_no' => $this->__getValue('invoice_no', $data, $transaction, null, 'invoice_no'),
             'status' => $this->__getValue('status', $data, $transaction, 'final'),
             'sale_note' => $this->__getValue('sale_note', $data, $transaction),
             'staff_note' => $this->__getValue('staff_note', $data, $transaction),
-            'commission_agent' => $this->__getValue('commission_agent', 
+            'commission_agent' => $this->__getValue('commission_agent',
                                     $data, $transaction),
-            'shipping_details' => $this->__getValue('shipping_details', 
+            'shipping_details' => $this->__getValue('shipping_details',
                                     $data, $transaction),
-            'shipping_address' => $this->__getValue('shipping_address', 
+            'shipping_address' => $this->__getValue('shipping_address',
                                 $data, $transaction),
             'shipping_status' => $this->__getValue('shipping_status', $data, $transaction),
             'delivered_to' => $this->__getValue('delivered_to', $data, $transaction),
-            'shipping_charges' => $this->__getValue('shipping_charges', $data, 
+            'shipping_charges' => $this->__getValue('shipping_charges', $data,
                 $transaction, 0),
             'exchange_rate' => $this->__getValue('exchange_rate', $data, $transaction, 1),
             'selling_price_group_id' => $this->__getValue('selling_price_group_id', $data, $transaction),
@@ -1296,7 +1296,7 @@ class SellController extends ApiController
 
                 //Calculate line discount
                 $unit_price =  $this->__getValue('unit_price', $product_data, $sell_line, $variation->sell_price_inc_tax, 'unit_price_before_discount');
-                
+
                 $discount_amount = $this->__getValue('discount_amount', $product_data, $sell_line, 0, 'line_discount_amount');
 
                 $line_discount = $discount_amount;
@@ -1330,10 +1330,10 @@ class SellController extends ApiController
                     'item_tax' => $item_tax,
                     'sell_line_note' => $this->__getValue('note', $product_data, $sell_line, null, 'sell_line_note'),
                     'enable_stock' => $product->enable_stock,
-                    'quantity' => $this->__getValue('quantity', $product_data, 
+                    'quantity' => $this->__getValue('quantity', $product_data,
                                         $sell_line, 0),
                     'product_unit_id' => $product->unit_id,
-                    'sub_unit_id' => $this->__getValue('sub_unit_id', $product_data, 
+                    'sub_unit_id' => $this->__getValue('sub_unit_id', $product_data,
                                         $sell_line),
                     'unit_price_inc_tax' => $unit_price_inc_tax
                 ];
@@ -1355,7 +1355,7 @@ class SellController extends ApiController
                     foreach ($combo_variations as $key => $value) {
                         $combo_variations[$key]['quantity'] = $combo_variations[$key]['qty_required'] * $formated_sell_line['quantity'] * $formated_sell_line['base_unit_multiplier'];
                     }
-                    
+
                     $formated_sell_line['combo'] = $combo_variations;
                 }
 
@@ -1444,18 +1444,18 @@ class SellController extends ApiController
      * Delete Sell
      *
      * @urlParam sell required id of the sell to be deleted
-     * 
+     *
      */
     public function destroy($id)
     {
         try {
-            $user = Auth::user(); 
+            $user = Auth::user();
             $business_id = $user->business_id;
             //Begin transaction
             DB::beginTransaction();
 
             $output = $this->transactionUtil->deleteSale($business_id, $id);
-            
+
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
@@ -1473,12 +1473,12 @@ class SellController extends ApiController
     *
     * @bodyParam id int required id of the sale
     * @bodyParam shipping_status string ('ordered', 'packed', 'shipped', 'delivered', 'cancelled') Example:ordered
-    * @bodyParam delivered_to string Name of the consignee 
+    * @bodyParam delivered_to string Name of the consignee
     */
     public function updateSellShippingStatus(Request $request)
     {
         try {
-            $user = Auth::user(); 
+            $user = Auth::user();
             $business_id = $user->business_id;
 
             $sell_id = $request->input('id');
@@ -1493,11 +1493,11 @@ class SellController extends ApiController
             } else {
                 return $this->otherExceptions('Invalid shipping status');
             }
-            
+
             return $this->respond(['success' => 1,
                     'msg' => trans("lang_v1.updated_success")
                 ]);
-            
+
         } catch (\Exception $e) {
             return $this->otherExceptions($e);
         }

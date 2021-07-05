@@ -18,8 +18,8 @@
         @can('customer.create')
             @slot('tool')
                 <div class="box-tools">
-                    <button type="button" class="btn btn-block btn-primary btn-modal" 
-                        data-href="{{action('CustomerGroupController@create')}}" 
+                    <button type="button" class="btn btn-block btn-primary btn-modal"
+                        data-href="{{action('CustomerGroupController@create')}}"
                         data-container=".customer_groups_modal">
                         <i class="fa fa-plus"></i> @lang( 'messages.add' )</button>
                 </div>
@@ -41,7 +41,7 @@
         @endcan
     @endcomponent
 
-    <div class="modal fade customer_groups_modal" tabindex="-1" role="dialog" 
+    <div class="modal fade customer_groups_modal" tabindex="-1" role="dialog"
     	aria-labelledby="gridSystemModalLabel">
     </div>
 
@@ -60,7 +60,7 @@
         } else {
             $('.percentage-field').addClass('hide');
             $('.selling_price_group-field').removeClass('hide');
-        }   
+        }
     })
 </script>
 @endsection

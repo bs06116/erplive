@@ -29,7 +29,7 @@ class Contact extends Authenticatable
     protected $casts = [
         'shipping_custom_field_details' => 'array',
     ];
-    
+
 
     /**
     * Get the business that owns the user.
@@ -38,6 +38,10 @@ class Contact extends Authenticatable
     {
         return $this->belongsTo(\App\Business::class);
     }
+    // public function currency()
+    // {
+    //     return $this->belongsTo(\App\Currency::class);
+    // }
 
     public function scopeActive($query)
     {
@@ -87,7 +91,7 @@ class Contact extends Authenticatable
         $query = Contact::where('business_id', $business_id)
                     ->where('type', '!=', 'lead')
                     ->active();
-                    
+
         if ($exclude_default) {
             $query->where('is_default', 0);
         }
@@ -103,7 +107,7 @@ class Contact extends Authenticatable
                 DB::raw("IF (supplier_business_name IS not null, CONCAT(name, ' (', supplier_business_name, ')'), name) as supplier")
             );
         }
-        
+
         if (auth()->check() && !auth()->user()->can('supplier.view') && auth()->user()->can('supplier.view_own')) {
             $query->where('contacts.created_by', auth()->user()->id);
         }

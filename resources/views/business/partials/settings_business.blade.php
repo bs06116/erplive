@@ -14,7 +14,7 @@
                     <span class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </span>
-                    
+
                     {!! Form::text('start_date', @format_date($business->start_date), ['class' => 'form-control start-date-picker','placeholder' => __('business.start_date'), 'readonly']); !!}
                 </div>
             </div>
@@ -177,7 +177,7 @@
         <div class="col-sm-8">
             <div class="form-group">
                 <label>
-                    {!! Form::checkbox('common_settings[is_enabled_export]', true, !empty($common_settings['is_enabled_export']) ? true : false , 
+                    {!! Form::checkbox('common_settings[is_enabled_export]', true, !empty($common_settings['is_enabled_export']) ? true : false ,
                     [ 'class' => 'input-icheck']); !!} {{ __( 'lang_v1.enable_export' ) }}
                 </label>
             </div>

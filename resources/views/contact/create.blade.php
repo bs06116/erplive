@@ -26,7 +26,7 @@
     </div>
 
     <div class="modal-body">
-        <div class="row">            
+        <div class="row">
             <div class="col-md-4 contact_type_div">
                 <div class="form-group">
                     {!! Form::label('type', __('contact.contact_type') . ':*' ) !!}
@@ -113,7 +113,7 @@
                 </div>
             </div>
             <div class="clearfix"></div>
-        
+
             <div class="col-md-3">
                 <div class="form-group">
                     {!! Form::label('mobile', __('contact.mobile') . ':*') !!}
@@ -159,15 +159,26 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('currency_id', __('business.currency') . ':') !!}
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fas fa-money-bill-alt"></i>
+                        </span>
+                        {!! Form::select('currency_id', $currencies,null, ['class' => 'form-control select2','placeholder' => __('business.currency'), 'required']); !!}
+                    </div>
+                </div>
+            </div>
             <div class="clearfix"></div>
-            <div class="col-sm-4 individual" style="display: none;">
+            <div class="col-sm-4 individual">
                 <div class="form-group">
                     {!! Form::label('dob', __('lang_v1.dob') . ':') !!}
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </span>
-                        
+
                         {!! Form::text('dob', null, ['class' => 'form-control dob-date-picker','placeholder' => __('lang_v1.dob'), 'readonly']); !!}
                     </div>
                 </div>
@@ -185,7 +196,7 @@
                   </div>
               </div>
             </div>
-            
+
             <div class="col-md-4 lead_additional_div">
               <div class="form-group">
                   {!! Form::label('crm_life_stage', __('lang_v1.life_stage') . ':' ) !!}
@@ -271,11 +282,11 @@
                       <p class="help-block">@lang('lang_v1.credit_limit_help')</p>
                   </div>
                 </div>
-                
+
 
                 <div class="col-md-12"><hr/></div>
                 <div class="clearfix"></div>
-                
+
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('address_line_1', __('lang_v1.address_line_1') . ':') !!}
@@ -329,7 +340,7 @@
                     <span class="input-group-addon">
                         <i class="fa fa-map-marker"></i>
                     </span>
-                    {!! Form::text('zip_code', null, ['class' => 'form-control', 
+                    {!! Form::text('zip_code', null, ['class' => 'form-control',
                     'placeholder' => __('business.zip_code_placeholder')]); !!}
                 </div>
             </div>
@@ -355,77 +366,77 @@
           <div class="col-md-3">
             <div class="form-group">
                 {!! Form::label('custom_field1', $contact_custom_field1 . ':') !!}
-                {!! Form::text('custom_field1', null, ['class' => 'form-control', 
+                {!! Form::text('custom_field1', null, ['class' => 'form-control',
                     'placeholder' => $contact_custom_field1]); !!}
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
                 {!! Form::label('custom_field2', $contact_custom_field2 . ':') !!}
-                {!! Form::text('custom_field2', null, ['class' => 'form-control', 
+                {!! Form::text('custom_field2', null, ['class' => 'form-control',
                     'placeholder' => $contact_custom_field2]); !!}
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
                 {!! Form::label('custom_field3', $contact_custom_field3 . ':') !!}
-                {!! Form::text('custom_field3', null, ['class' => 'form-control', 
+                {!! Form::text('custom_field3', null, ['class' => 'form-control',
                     'placeholder' => $contact_custom_field3]); !!}
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
                 {!! Form::label('custom_field4', $contact_custom_field4 . ':') !!}
-                {!! Form::text('custom_field4', null, ['class' => 'form-control', 
+                {!! Form::text('custom_field4', null, ['class' => 'form-control',
                     'placeholder' => $contact_custom_field4]); !!}
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
                 {!! Form::label('custom_field5', $contact_custom_field5 . ':') !!}
-                {!! Form::text('custom_field5', null, ['class' => 'form-control', 
+                {!! Form::text('custom_field5', null, ['class' => 'form-control',
                     'placeholder' => $contact_custom_field5]); !!}
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
                 {!! Form::label('custom_field6', $contact_custom_field6 . ':') !!}
-                {!! Form::text('custom_field6', null, ['class' => 'form-control', 
+                {!! Form::text('custom_field6', null, ['class' => 'form-control',
                     'placeholder' => $contact_custom_field6]); !!}
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
                 {!! Form::label('custom_field7', $contact_custom_field7 . ':') !!}
-                {!! Form::text('custom_field7', null, ['class' => 'form-control', 
+                {!! Form::text('custom_field7', null, ['class' => 'form-control',
                     'placeholder' => $contact_custom_field7]); !!}
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
                 {!! Form::label('custom_field8', $contact_custom_field8 . ':') !!}
-                {!! Form::text('custom_field8', null, ['class' => 'form-control', 
+                {!! Form::text('custom_field8', null, ['class' => 'form-control',
                     'placeholder' => $contact_custom_field8]); !!}
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
                 {!! Form::label('custom_field9', $contact_custom_field9 . ':') !!}
-                {!! Form::text('custom_field9', null, ['class' => 'form-control', 
+                {!! Form::text('custom_field9', null, ['class' => 'form-control',
                     'placeholder' => $contact_custom_field9]); !!}
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
                 {!! Form::label('custom_field10', $contact_custom_field10 . ':') !!}
-                {!! Form::text('custom_field10', null, ['class' => 'form-control', 
+                {!! Form::text('custom_field10', null, ['class' => 'form-control',
                     'placeholder' => $contact_custom_field10]); !!}
             </div>
           </div>
           <div class="col-md-12 shipping_addr_div"><hr></div>
           <div class="col-md-8 col-md-offset-2 shipping_addr_div mb-10" >
               <strong>{{__('lang_v1.shipping_address')}}</strong><br>
-              {!! Form::text('shipping_address', null, ['class' => 'form-control', 
+              {!! Form::text('shipping_address', null, ['class' => 'form-control',
                     'placeholder' => __('lang_v1.search_address'), 'id' => 'shipping_address']); !!}
             <div class="mb-10" id="map"></div>
           </div>
@@ -524,13 +535,13 @@
         </div>
         @include('layouts.partials.module_form_part')
     </div>
-    
+
     <div class="modal-footer">
       <button type="submit" class="btn btn-primary">@lang( 'messages.save' )</button>
       <button type="button" class="btn btn-default" data-dismiss="modal">@lang( 'messages.close' )</button>
     </div>
 
     {!! Form::close() !!}
-  
+
   </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->

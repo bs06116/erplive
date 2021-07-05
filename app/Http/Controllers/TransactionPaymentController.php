@@ -9,6 +9,7 @@ use App\Events\TransactionPaymentAdded;
 use App\Events\TransactionPaymentUpdated;
 use App\Transaction;
 use App\TransactionPayment;
+use App\Currency;
 
 use App\Utils\ModuleUtil;
 use App\Utils\TransactionUtil;
@@ -118,7 +119,7 @@ class TransactionPaymentController extends Controller
                 if ($inputs['method'] == 'advance' && $inputs['amount'] > $contact_balance) {
                     throw new AdvanceBalanceNotAvailable(__('lang_v1.required_advance_balance_not_available'));
                 }
-                
+
                 if (!empty($inputs['amount'])) {
                     $tp = TransactionPayment::create($inputs);
                     $inputs['transaction_type'] = $transaction->type;
@@ -130,7 +131,7 @@ class TransactionPaymentController extends Controller
                 $transaction->payment_status = $payment_status;
 
                 $this->transactionUtil->activityLog($transaction, 'payment_edited', $transaction_before);
-                
+
                 DB::commit();
             }
 
@@ -182,7 +183,7 @@ class TransactionPaymentController extends Controller
             $payments = $payments_query->get();
             $location_id = !empty($transaction->location_id) ? $transaction->location_id : null;
             $payment_types = $this->transactionUtil->payment_types($location_id, true);
-            
+
             return view('transaction_payment.show_payments')
                     ->with(compact('transaction', 'payments', 'payment_types', 'accounts_enabled'));
         }
@@ -272,7 +273,7 @@ class TransactionPaymentController extends Controller
             if (!empty($document_name)) {
                 $inputs['document'] = $document_name;
             }
-                               
+
             DB::beginTransaction();
 
             $payment->update($inputs);
@@ -295,7 +296,7 @@ class TransactionPaymentController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
-            
+
             $output = ['success' => false,
                           'msg' => __('messages.something_went_wrong')
                       ];
@@ -326,7 +327,7 @@ class TransactionPaymentController extends Controller
                 if (!empty($payment->transaction_id)) {
                     TransactionPayment::deletePayment($payment);
                 } else { //advance payment
-                    $adjusted_payments = TransactionPayment::where('parent_id', 
+                    $adjusted_payments = TransactionPayment::where('parent_id',
                                                 $payment->id)
                                                 ->get();
 
@@ -348,7 +349,7 @@ class TransactionPaymentController extends Controller
                     //Delete advance payment
                     TransactionPayment::deletePayment($payment);
                 }
-                
+
                 DB::commit();
 
                 $output = ['success' => true,
@@ -358,7 +359,7 @@ class TransactionPaymentController extends Controller
                 DB::rollBack();
 
                 \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
-                
+
                 $output = ['success' => false,
                                 'msg' => __('messages.something_went_wrong')
                             ];
@@ -479,7 +480,11 @@ class TransactionPaymentController extends Controller
                 DB::raw("SUM(IF(t.type = 'opening_balance', (SELECT SUM(amount) FROM transaction_payments WHERE transaction_payments.transaction_id=t.id), 0)) as opening_balance_paid")
             );
             $contact_details = $query->first();
-            
+            $contact = Contact::find($contact_id);
+            $currency_symbol = Currency::where('id', $contact->currency_id)->value('symbol');
+            if(empty($currency_symbol)){
+                $currency_symbol =  session("currency")["symbol"];
+            }
             $payment_line = new TransactionPayment();
             if ($due_payment_type == 'purchase') {
                 $contact_details->total_purchase = empty($contact_details->total_purchase) ? 0 : $contact_details->total_purchase;
@@ -509,17 +514,17 @@ class TransactionPaymentController extends Controller
             $amount_formated = $this->transactionUtil->num_f($payment_line->amount);
 
             $contact_details->total_paid = empty($contact_details->total_paid) ? 0 : $contact_details->total_paid;
-            
+
             $payment_line->method = 'cash';
             $payment_line->paid_on = \Carbon::now()->toDateTimeString();
-                   
+
             $payment_types = $this->transactionUtil->payment_types(null, false, $business_id);
 
             //Accounts
             $accounts = $this->moduleUtil->accountsDropdown($business_id, true);
 
             return view('transaction_payment.pay_supplier_due_modal')
-                        ->with(compact('contact_details', 'payment_types', 'payment_line', 'due_payment_type', 'ob_due', 'amount_formated', 'accounts'));
+                        ->with(compact('contact_details', 'payment_types', 'payment_line', 'due_payment_type', 'ob_due', 'amount_formated', 'accounts','currency_symbol'));
         }
     }
 
@@ -537,7 +542,7 @@ class TransactionPaymentController extends Controller
 
         try {
             DB::beginTransaction();
-            
+
             $this->transactionUtil->payContact($request);
 
             DB::commit();
@@ -547,7 +552,7 @@ class TransactionPaymentController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
-            
+
             $output = ['success' => false,
                           'msg' => "File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage()
                       ];
@@ -586,7 +591,7 @@ class TransactionPaymentController extends Controller
             }
 
             $payment_types = $this->transactionUtil->payment_types(null, false, $business_id);
-            
+
             return view('transaction_payment.single_payment_view')
                     ->with(compact('single_payment_line', 'transaction', 'payment_types'));
         }
@@ -613,7 +618,7 @@ class TransactionPaymentController extends Controller
                                                     ->get();
 
             $payment_types = $this->transactionUtil->payment_types(null, false, $business_id);
-            
+
             return view('transaction_payment.show_child_payments')
                     ->with(compact('child_payments', 'payment_types'));
         }
@@ -657,7 +662,7 @@ class TransactionPaymentController extends Controller
             if ($permitted_locations != 'all') {
                 $query->whereIn('t.location_id', $permitted_locations);
             }
-            
+
             return Datatables::of($query)
                 ->editColumn('paid_on', '{{@format_datetime($paid_on)}}')
                 ->editColumn('method', function ($row) {
@@ -681,9 +686,9 @@ class TransactionPaymentController extends Controller
                     return '<span class="display_currency paid-amount" data-orig-value="' . $row->amount . '" data-currency_symbol = true>' . $row->amount . '</span>';
                 })
                 ->addColumn('action', '<button type="button" class="btn btn-primary btn-xs view_payment" data-href="{{ action("TransactionPaymentController@viewPayment", [$id]) }}"><i class="fas fa-eye"></i> @lang("messages.view")
-                    </button> <button type="button" class="btn btn-info btn-xs edit_payment" 
+                    </button> <button type="button" class="btn btn-info btn-xs edit_payment"
                     data-href="{{action("TransactionPaymentController@edit", [$id]) }}"><i class="glyphicon glyphicon-edit"></i> @lang("messages.edit")</button>
-                    &nbsp; <button type="button" class="btn btn-danger btn-xs delete_payment" 
+                    &nbsp; <button type="button" class="btn btn-danger btn-xs delete_payment"
                     data-href="{{ action("TransactionPaymentController@destroy", [$id]) }}"
                     ><i class="fa fa-trash" aria-hidden="true"></i> @lang("messages.delete")</button> @if(!empty($document))<a href="{{asset("/uploads/documents/" . $document)}}" class="btn btn-success btn-xs" download=""><i class="fa fa-download"></i> @lang("purchase.download_document")</a>@endif')
                 ->rawColumns(['amount', 'method', 'action'])

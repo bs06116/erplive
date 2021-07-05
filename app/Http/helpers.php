@@ -62,7 +62,7 @@ if (! function_exists('humanFilesize')) {
             $size = $size / $step;
             $i++;
         }
-        
+
         return round($size, $precision).$units[$i];
     }
 }
@@ -132,14 +132,38 @@ if (! function_exists('str_ordinal')) {
     function str_ordinal($value, $superscript = false)
     {
         $number = abs($value);
- 
+
         $indicators = ['th','st','nd','rd','th','th','th','th','th','th'];
- 
+
         $suffix = $superscript ? '<sup>' . $indicators[$number % 10] . '</sup>' : $indicators[$number % 10];
         if ($number % 100 >= 11 && $number % 100 <= 13) {
             $suffix = $superscript ? '<sup>th</sup>' : 'th';
         }
- 
+
         return number_format($number) . $suffix;
+    }
+
+    if (! function_exists('contact_currency_format')) {
+        /**
+         * Append an ordinal indicator to a numeric value.
+         *
+         * @param  string|int  $value
+         * @param  bool  $superscript
+         * @return string
+         */
+        function contact_currency_format($number,$symbol)
+        {
+
+            $formated_number = "";
+            if (session("business.currency_symbol_placement") == "before") {
+                $formated_number .= $symbol . " ";
+            }
+            $formated_number .= number_format((float) $number , config("constants.currency_precision", 2) , session("currency")["decimal_separator"], session("currency")["thousand_separator"]);
+
+            if (session("business.currency_symbol_placement") == "after") {
+                $formated_number .= " " . $symbol;
+            }
+            return $formated_number;
+        }
     }
 }
