@@ -183,11 +183,11 @@
         </div>
     </div>
 
-    <div class="modal fade payment_modal" tabindex="-1" role="dialog" 
+    <div class="modal fade payment_modal" tabindex="-1" role="dialog"
         aria-labelledby="gridSystemModalLabel">
     </div>
 
-    <div class="modal fade edit_payment_modal" tabindex="-1" role="dialog" 
+    <div class="modal fade edit_payment_modal" tabindex="-1" role="dialog"
         aria-labelledby="gridSystemModalLabel">
     </div>
 
@@ -269,7 +269,7 @@ $(document).ready( function(){
             $('#footer_total_remaining').text(sum_table_col($('#sell_table'), 'payment_due'));
 
             $('#footer_total_sell_return_due').text(sum_table_col($('#sell_table'), 'sell_return_due'));
-            
+
             $('#footer_payment_status_count').html(__sum_status_html($('#sell_table'), 'payment-status-label'));
 
             $('#footer_repair_status_count').html(__sum_status_html($('#sell_table'), 'edit_repair_status'));
@@ -337,7 +337,7 @@ $(document).ready( function(){
             $('#pending_repair_footer_total_remaining').text(sum_table_col($('#pending_repair_table'), 'payment_due'));
 
             $('#pending_repair_footer_total_sell_return_due').text(sum_table_col($('#pending_repair_table'), 'sell_return_due'));
-            
+
             $('#pending_repair_footer_payment_status_count').html(__sum_status_html($('#pending_repair_table'), 'payment-status-label'));
 
             $('#footer_pending_repair_status_count').html(__sum_status_html($('#pending_repair_table'), 'edit_repair_status'));

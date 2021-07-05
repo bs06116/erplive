@@ -9,6 +9,7 @@ use App\Utils\ModuleUtil;
 use App\Utils\TransactionUtil;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use App\Currency;
 
 class SellController extends Controller
 {
@@ -42,7 +43,7 @@ class SellController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        
+
 
         $shipping_statuses = $this->transactionUtil->shipping_statuses();
         $payment_types = $this->transactionUtil->payment_types(null, true);
@@ -76,7 +77,7 @@ class SellController extends Controller
                         'action',
                         function ($row) {
                             $html = '<div class="btn-group">
-                                    <button type="button" class="btn btn-info dropdown-toggle btn-xs" 
+                                    <button type="button" class="btn btn-info dropdown-toggle btn-xs"
                                         data-toggle="dropdown" aria-expanded="false">' .
                                         __("messages.actions") .
                                         '<span class="caret"></span><span class="sr-only">Toggle Dropdown
@@ -97,20 +98,67 @@ class SellController extends Controller
                 ->removeColumn('id')
                 ->editColumn(
                     'final_total',
-                    '<span class="display_currency final-total" data-currency_symbol="true" data-orig-value="{{$final_total}}">{{$final_total}}</span>'
-                )
+                    function ($row) {
+
+                        if (auth()->user()->crm_contact_id) {
+                            $customer_id = auth()->user()->crm_contact_id;
+                            $contact = Contact::find($customer_id);
+                            $currency_symbol = Currency::where('id', $contact->currency_id)->value('symbol');
+                        }else{
+                            $currency_symbol =  session("currency")["symbol"];
+                        }
+                    return '<span class="final-total" data-currency="'.$currency_symbol.'" data-orig-value="'.$row->final_total.'">'.contact_currency_format($row->final_total,$currency_symbol).'</span>';
+
+
+                  }
+                  )
                 ->editColumn(
                     'tax_amount',
-                    '<span class="display_currency total-tax" data-currency_symbol="true" data-orig-value="{{$tax_amount}}">{{$tax_amount}}</span>'
+                    function ($row) {
+                        if (auth()->user()->crm_contact_id) {
+                            $customer_id =auth()->user()->crm_contact_id;
+                            $contact = Contact::find($customer_id);
+                            $currency_symbol = Currency::where('id', $contact->currency_id)->value('symbol');
+                        }else{
+                            $currency_symbol =  session("currency")["symbol"];
+                        }
+                    return '<span class="tax_amount" data-orig-value="'.$row->tax_amount.'">'.contact_currency_format($row->tax_amount,$currency_symbol).'</span>';
+
+
+                  }
                 )
                 ->editColumn(
                     'total_paid',
-                    '<span class="display_currency total-paid" data-currency_symbol="true" data-orig-value="{{$total_paid}}">{{$total_paid}}</span>'
+                    function ($row) {
+                        if (auth()->user()->crm_contact_id) {
+                            $customer_id = auth()->user()->crm_contact_id;
+                            $contact = Contact::find($customer_id);
+                            $currency_symbol = Currency::where('id', $contact->currency_id)->value('symbol');
+                        }else{
+                            $currency_symbol =  session("currency")["symbol"];
+                        }
+
+                    return '<span class="total-paid" data-orig-value="'.$row->total_paid.'">'.contact_currency_format($row->total_paid,$currency_symbol).'</span>';
+
+
+                  }
                 )
                 ->editColumn(
                     'total_before_tax',
-                    '<span class="display_currency total_before_tax" data-currency_symbol="true" data-orig-value="{{$total_before_tax}}">{{$total_before_tax}}</span>'
-                )
+                    function ($row) {
+                        if (auth()->user()->crm_contact_id) {
+                            $customer_id = auth()->user()->crm_contact_id;
+                            $contact = Contact::find($customer_id);
+                            $currency_symbol = Currency::where('id', $contact->currency_id)->value('symbol');
+                        }else{
+                            $currency_symbol =  session("currency")["symbol"];
+                        }
+
+                    return '<span class="total_before_tax" data-orig-value="'.$row->total_before_tax.'">'.contact_currency_format($row->total_before_tax,$currency_symbol).'</span>';
+
+
+                  }
+                     )
                 ->editColumn(
                     'discount_amount',
                     function ($row) {
@@ -151,9 +199,19 @@ class SellController extends Controller
                 )
                 ->addColumn('total_remaining', function ($row) {
                     $total_remaining =  $row->final_total - $row->total_paid;
-                    $total_remaining_html = '<span class="display_currency payment_due" data-currency_symbol="true" data-orig-value="' . $total_remaining . '">' . $total_remaining . '</span>';
 
-                    
+                    if (auth()->user()->crm_contact_id) {
+                        $customer_id = auth()->user()->crm_contact_id;
+                        $contact = Contact::find($customer_id);
+                        $currency_symbol = Currency::where('id', $contact->currency_id)->value('symbol');
+                    }else{
+                        $currency_symbol = '';
+                    }
+                    $total_remaining_html = '<span class="payment_due" data-orig-value="' . $total_remaining . '">' .contact_currency_format($total_remaining, $currency_symbol) . '</span>';
+
+                   // $total_remaining_html = '<span class="display_currency payment_due" data-currency_symbol="true" data-orig-value="' . $total_remaining . '">' . $total_remaining . '</span>';
+
+
                     return $total_remaining_html;
                 })
                 ->addColumn('return_due', function ($row) {
@@ -186,7 +244,7 @@ class SellController extends Controller
                 ->editColumn('shipping_status', function ($row) use ($shipping_statuses) {
                     $status_color = !empty($this->shipping_status_colors[$row->shipping_status]) ? $this->shipping_status_colors[$row->shipping_status] : 'bg-gray';
                     $status = !empty($row->shipping_status) ? '<a href="#" class="btn-modal" data-href="' . action('SellController@editShipping', [$row->id]) . '" data-container=".view_modal"><span class="label ' . $status_color .'">' . $shipping_statuses[$row->shipping_status] . '</span></a>' : '';
-                     
+
                     return $status;
                 })
                 ->addColumn('payment_methods', function ($row) use ($payment_types) {
@@ -200,7 +258,7 @@ class SellController extends Controller
                     }
 
                     $html = !empty($payment_method) ? '<span class="payment-method" data-orig-value="' . $payment_method . '" data-status-name="' . $payment_method . '">' . $payment_method . '</span>' : '';
-                    
+
                     return $html;
                 })
                 ->setRowAttr([

@@ -124,9 +124,10 @@
                 { data: 'waiter', name: 'ss.first_name', @if(empty($is_service_staff_enabled)) visible: false @endif },
             ],
             "fnDrawCallback": function (oSettings) {
+                console.info($('.final-total').attr("data-currency"));
 
                 $('#footer_sale_total').text(sum_table_col($('#contact_sell_table'), 'final-total'));
-                
+
                 $('#footer_total_paid').text(sum_table_col($('#contact_sell_table'), 'total-paid'));
 
                 $('#footer_total_remaining').text(sum_table_col($('#contact_sell_table'), 'payment_due'));
@@ -138,7 +139,7 @@
                 $('#service_type_count').html(__sum_status_html($('#contact_sell_table'), 'service-type-label'));
                 $('#payment_method_count').html(__sum_status_html($('#contact_sell_table'), 'payment-method'));
 
-                __currency_convert_recursively($('#contact_sell_table'));
+                __currency_convert_recursively_new($('#contact_sell_table'),$('.final-total').attr("data-currency"));
             },
             createdRow: function( row, data, dataIndex ) {
                 $( row ).find('td:eq(3)').attr('class', 'clickable_td');
