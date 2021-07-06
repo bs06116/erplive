@@ -62,8 +62,8 @@
 		        </span>
 		        <div class="info-box-content">
 		          <span class="info-box-text fs-10">@lang('report.total_sell')</span>
-		          <span class="info-box-number display_currency" data-currency_symbol="true">
-		          	{{ $contact->total_invoice }}
+		          <span class="info-box-number">
+		          	{{ contact_currency_format($contact->total_invoice,$currency_symbol) }}
 		          </span>
 		        </div>
 		      </div>
@@ -78,8 +78,8 @@
 	              <span class="info-box-text fs-10">
 	                @lang('contact.total_sale_paid')
 	              </span>
-	              <span class="info-box-number display_currency" data-currency_symbol="true">
-	              	{{ $contact->invoice_received }}
+	              <span class="info-box-number">
+	              	{{ contact_currency_format($contact->invoice_received,$currency_symbol) }}
 	              </span>
 	            </div>
 	          </div>
@@ -95,8 +95,8 @@
 	              <span class="info-box-text fs-10">
 	                @lang('contact.total_sale_due')
 	              </span>
-	              <span class="info-box-number display_currency" data-currency_symbol="true">
-	              	{{ $contact->total_invoice - $contact->invoice_received }}
+	              <span class="info-box-number" >
+	              	{{  contact_currency_format($contact->total_invoice - $contact->invoice_received,$currency_symbol) }}
 	              </span>
 	            </div>
 	          </div>
@@ -114,7 +114,7 @@
 	                @lang('lang_v1.opening_balance')
 	              </span>
 	              <span class="info-box-number display_currency" data-currency_symbol="true">
-		            {{ $contact->opening_balance }}
+		            {{  $contact->opening_balance }}
 		           </span>
 	            </div>
 	          </div>

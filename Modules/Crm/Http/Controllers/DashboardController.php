@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Utils\ContactUtil;
 use App\Utils\ModuleUtil;
 use Illuminate\Http\Request;
+use App\Currency;
+use App\Contact;
 
 class DashboardController extends Controller
 {
@@ -35,12 +37,15 @@ class DashboardController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        $crm_contact_id = auth()->user()->crm_contact_id;
+
+       $crm_contact_id = auth()->user()->crm_contact_id;
+       $contact = Contact::find($crm_contact_id);
+       $currency_symbol = Currency::where('id', $contact->currency_id)->value('symbol');
 
         $contact = $this->contactUtil->getContactInfo($business_id, $crm_contact_id);
 
         return view('crm::dashboard.index')
-            ->with(compact('contact'));
+            ->with(compact('contact','currency_symbol'));
     }
 
     /**
