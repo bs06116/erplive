@@ -47,6 +47,12 @@
 			        {!! Form::select('due_date_filter', $due_dates, null, ['class' => 'form-control select2', 'placeholder' => __('messages.all'), 'style' => 'width: 100%;']); !!}
 			    </div>
 			</div>
+			<div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('date_range_filter', __('project::lang.date_range') . ':') !!}
+                    {!! Form::text('date_range_filter', null, ['placeholder' => __('lang_v1.select_a_date_range'), 'class' => 'form-control', 'id' => 'project_task_daterange', 'readonly']); !!}
+                </div>
+            </div>
 		</div>
 	@endcomponent
 	@php

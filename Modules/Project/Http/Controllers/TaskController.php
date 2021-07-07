@@ -15,6 +15,7 @@ use Modules\Project\Entities\ProjectMember;
 use Modules\Project\Entities\ProjectTask;
 use Modules\Project\Utils\ProjectUtil;
 use Yajra\DataTables\Facades\DataTables;
+use App\Utils\TransactionUtil;
 
 class TaskController extends Controller
 {
@@ -22,6 +23,8 @@ class TaskController extends Controller
      * All Utils instance.
      *
      */
+    protected $transactionUtil;
+
     protected $commonUtil;
     protected $projectUtil;
     protected $moduleUtil;
@@ -31,8 +34,9 @@ class TaskController extends Controller
      * @param CommonUtil, ProjectUtil, ModuleUtil
      * @return void
      */
-    public function __construct(Util $commonUtil, ProjectUtil $projectUtil, ModuleUtil $moduleUtil)
+    public function __construct(TransactionUtil $transactionUtil,Util $commonUtil, ProjectUtil $projectUtil, ModuleUtil $moduleUtil)
     {
+        $this->transactionUtil = $transactionUtil;
         $this->commonUtil = $commonUtil;
         $this->projectUtil = $projectUtil;
         $this->moduleUtil = $moduleUtil;
@@ -55,6 +59,7 @@ class TaskController extends Controller
         }
 
         if (request()->ajax()) {
+
             $project_task = ProjectTask::with(['members', 'createdBy', 'project', 'comments'])
                 ->where('business_id', $business_id)
                 ->select('*');
@@ -79,7 +84,8 @@ class TaskController extends Controller
                 $project_task->whereHas('members', function ($q) use ($user_id) {
                     $q->where('user_id', $user_id);
                 });
-            }else{
+            }else if(!(auth()->user()->can('superadmin'))){
+
                  $project_task->where('created_by', $user_id)
                         ->orWhereHas('members', function ($q) use ($user_id) {
                     $q->where('user_id', $user_id);
@@ -110,6 +116,13 @@ class TaskController extends Controller
                 }
             }
 
+            $start_date = request()->input('start_date');
+            $end_date = request()->input('end_date');
+
+            if (!empty($start_date)) {
+                $project_task->whereBetween('start_date', [$start_date, $end_date]);
+
+            }
             // check if user can crud task
             $project_id = request()->get('project_id');
             $project = Project::find($project_id);

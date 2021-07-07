@@ -568,7 +568,7 @@ $(document).on('click', '#delete_a_time_log', function(e) {
 });
 
 // project task filter related code
-$(document).on('change', "#assigned_to_filter, #status_filter, #due_date_filter, #priority_filter", function(){
+$(document).on('change', "#assigned_to_filter, #status_filter, #due_date_filter, #priority_filter, #date_range_filter", function(){
 
     if ($('.custom-kanban-board').hasClass('hide')) {
         if (typeof project_task_datatable !== 'undefined') {
@@ -596,7 +596,14 @@ $(document).on('click', '.load_more_activities', function() {
         }
     });
 });
-
+$('#project_task_daterange').daterangepicker(
+    dateRangeSettings,
+    function(start, end) {
+        $('#project_task_daterange').val(
+            start.format(moment_date_format) + ' ~ ' + end.format(moment_date_format)
+        );
+    }
+);
 // my task data table related code
 function initializeMyTaskDataTable() {
     var task_view = $("[name='task_view']:checked").val();
@@ -611,6 +618,8 @@ function initializeMyTaskDataTable() {
                         d.user_id = $('#assigned_to_filter').val();
                         d.status = $('#status_filter').val();
                         d.due_date = $('#due_date_filter').val();
+                        d.start_date = $('input#project_task_daterange').data('daterangepicker').startDate.format('YYYY-MM-DD');
+                        d.end_date = $('input#project_task_daterange').data('daterangepicker').endDate.format('YYYY-MM-DD');
                         d.priority = $('#priority_filter').val();
                         d.task_view = $("[name='task_view']:checked").val();
                     }
@@ -646,7 +655,7 @@ function initializeMyTaskDataTable() {
     }
 }
 //reload my task data table on change of filter
-$(document).on('change', "#project_id, #assigned_to_filter, #status_filter, #due_date_filter, #priority_filter", function(){
+$(document).on('change', "#project_id, #assigned_to_filter, #status_filter, #due_date_filter, #priority_filter,#project_task_daterange", function(){
     initializeMyTaskDataTable();
 });
 
@@ -865,6 +874,8 @@ function getTaskListForKanban() {
         project_id : $('#project_id').val(),
         user_id : $('#assigned_to_filter').val(),
         due_date : $('#due_date_filter').val(),
+
+        due_date : $('#due_date_filter').val(),
         priority : $('#priority_filter').val(),
         task_view : $("[name='task_view']:checked").val()
     };
@@ -918,6 +929,8 @@ function initializeProjectTaskDatatable() {
                         d.user_id = $('#assigned_to_filter').val();
                         d.status = $('#status_filter').val();
                         d.due_date = $('#due_date_filter').val();
+                        d.date_range = $('#date_range_filter').val();
+
                         d.priority = $('#priority_filter').val();
                         d.task_view = $("[name='task_view']:checked").val();
                     }
@@ -1273,6 +1286,7 @@ $('#employee_timelog_report_daterange').daterangepicker(
         );
     }
 );
+
 
 $('#employee_timelog_report_daterange').on('cancel.daterangepicker', function(ev, picker) {
     $('#employee_timelog_report_daterange').val('');

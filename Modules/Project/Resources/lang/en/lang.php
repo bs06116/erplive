@@ -81,6 +81,8 @@ return [
     'bounce' => 'Bonus',
     'bounce_date' => 'Bonus Date',
     'bounce_total_project' => 'Total Bonus',
+    'date_range' => 'Sart Date Range',
+
     'project_invoice' => 'Project Invoice',
     'delete_project' => 'Delete Project',
     'project_module' => 'Project Module',
