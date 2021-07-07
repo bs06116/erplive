@@ -130,7 +130,7 @@
 									@lang('category.categories'):
 									<span>
 									@foreach($project->categories as $categories)
-										
+
 										@if(!$loop->last)
 											{{$categories->name . ','}}
 										@else
@@ -168,6 +168,7 @@
 		</div>
 	@endif
 </div>
+
 @if($projects->nextPageUrl())
     <a data-href="{{$projects->nextPageUrl()}}" class="btn btn-block btn-sm btn-info load_more_project">
 		@lang('project::lang.load_more')

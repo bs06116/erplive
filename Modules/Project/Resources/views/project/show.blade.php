@@ -78,7 +78,7 @@
                             </a>
                         </li>
                     @endif
-                    
+
                     @if((isset($project->settings['enable_invoice']) && $project->settings['enable_invoice']) && $is_lead_or_admin)
                     <li class="
                         @if($tab_view == 'project_invoices')
@@ -106,6 +106,14 @@
                         </a>
                     </li>
                     @endif
+                    @if($is_lead_or_admin)
+                    <div class="edit-project">
+                            <a data-href="{{action('\Modules\Project\Http\Controllers\ProjectController@edit', ['id' => $project->id])}}" class="cursor-pointer edit_a_project">
+                                <i class="fa fa-edit"></i>
+                                @lang('messages.edit')
+                            </a>
+                    </div>
+                    @endif
                 </ul>
 
                 <div class="tab-content">
@@ -114,7 +122,7 @@
                             active
                         @else
                             ''
-                        @endif" id="project_overview"> 
+                        @endif" id="project_overview">
                         @includeIf('project::project.partials.overview')
                     </div>
 
@@ -221,12 +229,14 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="project_model"></div>
+
     <div class="modal fade project_task_model" tabindex="-1" role="dialog"></div>
     <div class="modal fade" tabindex="-1" role="dialog" id="time_log_model"></div>
     <div class="modal fade view_project_task_model" tabindex="-1" role="dialog"></div>
-    <div class="modal fade payment_modal" tabindex="-1" role="dialog" 
+    <div class="modal fade payment_modal" tabindex="-1" role="dialog"
     aria-labelledby="gridSystemModalLabel"></div>
-    <div class="modal fade edit_payment_modal" tabindex="-1" role="dialog" 
+    <div class="modal fade edit_payment_modal" tabindex="-1" role="dialog"
     aria-labelledby="gridSystemModalLabel"></div>
 </section>
 <link rel="stylesheet" href="{{ asset('modules/project/sass/project.css?v=' . $asset_v) }}">
