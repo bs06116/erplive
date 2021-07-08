@@ -597,12 +597,7 @@ $(document).on('click', '.load_more_activities', function() {
     });
 });
 $('#project_task_daterange').daterangepicker(
-    dateRangeSettings,
-    function(start, end) {
-        $('#project_task_daterange').val(
-            start.format(moment_date_format) + ' ~ ' + end.format(moment_date_format)
-        );
-    }
+    dateRangeSettings
 );
 // my task data table related code
 function initializeMyTaskDataTable() {
