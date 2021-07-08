@@ -1204,6 +1204,7 @@ class ContactController extends Controller
             $end_date =  request()->input('end_date');
 
             $contact = Contact::find($contact_id);
+            $currency_symbol = Currency::where('id', $contact->currency_id)->value('symbol');
 
             $ledger_details = $this->transactionUtil->getLedgerDetails($contact_id, $start_date, $end_date);
 
@@ -1224,7 +1225,7 @@ class ContactController extends Controller
 
             $for_pdf = true;
             $html = view('contact.ledger')
-             ->with(compact('ledger_details', 'contact', 'for_pdf'))->render();
+             ->with(compact('ledger_details', 'contact', 'for_pdf','currency_symbol'))->render();
             $mpdf = $this->getMpdf();
             $mpdf->WriteHTML($html);
 
