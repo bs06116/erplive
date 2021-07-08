@@ -24,6 +24,8 @@
             <button data-href="{{action('ContactController@getLedger')}}?contact_id={{$contact->id}}&action=pdf" class="btn btn-default btn-xs" id="print_ledger_pdf"><i class="fas fa-file-pdf"></i></button>
 
             <button type="button" class="btn btn-default btn-xs" id="send_ledger"><i class="fas fa-envelope"></i></button>
+            <a target="_blank" href="https://wa.me/{{str_replace("-", "", $contact->mobile)}}"><button type="button" class="btn btn-default btn-xs" ><i class="fab fa-whatsapp"></i></button></a>
+
         </div>
     </div>
     <div id="contact_ledger_div"></div>
