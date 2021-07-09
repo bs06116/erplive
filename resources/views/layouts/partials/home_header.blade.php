@@ -11,7 +11,7 @@
                <a class="st-root-link item-company st-has-dropdown nav-link" data-dropdown="components">UI Components</a>
                <a class="st-root-link item-blog st-has-dropdown nav-link" data-dropdown="blog">Blog</a>
                <a class="st-root-link item-shop st-has-dropdown nav-link" href="shop/" data-dropdown="shop">Shop</a> -->
-               <a class="st-root-link item-shop  nav-link" href="#session">Pricing Plans</a>
+               <a class="st-root-link item-shop  nav-link" href="#PricingPlans">Pricing Plans</a>
                <a class="st-root-link item-shop  nav-link" href="#">Add-ons</a>
                <a class="st-root-link item-shop  nav-link" href="#">Documentation</a>
                <a class="st-root-link item-shop  nav-link" href="#">FAQ</a>

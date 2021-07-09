@@ -139,7 +139,7 @@
             </div>
         </div>
     </section><!-- ./Single testimonial - Left -->
-    <section class="section" id="session">
+    <section class="section" id="PricingPlans">
         <div class="container">
             <div class="section-heading text-center">
                 <h2 class="c1">Pricing plans that suit all sizes of business</h2>
@@ -152,20 +152,20 @@
                         </label>
 
                         <ul class="nav-pills nav-stacked l1">
-                            <li id="s1"><a id="l1"  class="tablink" href="#session3" onclick=" myFunction(), openPage('pos')"> PITS POS Lite </a></li>
-                            <li id="s2"><a id="l2"  class="tablink" href="#session3" onclick=" aFunction(),openPage('pos2')">PITS POS Basic</a></li>
-                            <li id="s3"><a id="l3"  class="tablink" href="#session3" onclick=" bFunction(),openPage('pos3')" > PITS POS Professional</a></li>
-                            <li id="s4"><a id="l4"  class="tablink" href="#session3" onclick=" cFunction(),openPage('woo')">PITS POS with WooCommerce( 1 location)</a></li>
-                            <li id="s5"><a id="l5" class="tablink" href="#session3" onclick=" dFunction(),openPage('out')">outsource Manufacturing</a></li>
-                            <li id="s6"><a id="l6" class="tablink" href="#session3" onclick=" eFunction(),openPage('it')">Especially curated for IT Firms</a></li>
-                            <li id="s7"><a id="l7" class="tablink" href="#session3" onclick=" fFunction(),openPage('small')">ERP for small Business</a></li>
-                            <li id="s8"><a id="l8" class="tablink" href="#session3" onclick=" gFunction(),openPage('complete')">ERP Complete Suit</a></li>
+                            <li id="s1"><a id="l1"  class="tablink" href="#priceplanning" onclick=" myFunction(), openPage('pos')"> PITS POS Lite </a></li>
+                            <li id="s2"><a id="l2"  class="tablink" href="#priceplanning" onclick=" aFunction(),openPage('pos2')">PITS POS Basic</a></li>
+                            <li id="s3"><a id="l3"  class="tablink" href="#priceplanning" onclick=" bFunction(),openPage('pos3')" > PITS POS Professional</a></li>
+                            <li id="s4"><a id="l4"  class="tablink" href="#priceplanning" onclick=" cFunction(),openPage('woo')">PITS POS with WooCommerce( 1 location)</a></li>
+                            <li id="s5"><a id="l5" class="tablink" href="#priceplanning" onclick=" dFunction(),openPage('out')">outsource Manufacturing</a></li>
+                            <li id="s6"><a id="l6" class="tablink" href="#priceplanning" onclick=" eFunction(),openPage('it')">Especially curated for IT Firms</a></li>
+                            <li id="s7"><a id="l7" class="tablink" href="#priceplanning" onclick=" fFunction(),openPage('small')">ERP for small Business</a></li>
+                            <li id="s8"><a id="l8" class="tablink" href="#priceplanning" onclick=" gFunction(),openPage('complete')">ERP Complete Suit</a></li>
                         </ul>
                     </div>
 
                     <div class="col-md-7 col-lg-8 q1 tabcontent tabactive" id="year">
                         <div class="row w-101 a1">
-                            <i class="fas fa-pound-sign"> 5,000.00<span class="a2"> / Year</span></i>
+                            <i class="fas fa-pound-sign"> <span class="semi-bold q2">5,000.00 </span><span class="a2"> / Year</span></i>
                             <p class="a3">Save 20%</p>
                         </div>
                         <div class="container h">
@@ -189,12 +189,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="" class="btn btn-primary c2"> I want this </a>
+                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="pos3">
                         <div class="row w-101 a1">
-                            <i class="fas fa-pound-sign"> 1,90.000<span class="a2">  /  Year</span></i>
+                            <i class="fas fa-pound-sign"> <span class="semi-bold q2">1,90.000</span><span class="a2"> / Year</span></i>
                             <p class="a3">Save 20%</p>
                         </div>
                         <div class="container h">
@@ -213,12 +213,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="" class="btn btn-primary c2"> I want this </a>
+                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="it">
                         <div class="row w-101 a1">
-                            <i class="fas fa-pound-sign"> 2,00.000<span class="a2">  /  Year</span></i>
+                            <i class="fas fa-pound-sign"> <span class="semi-bold q2">2,00.000 </span><span class="a2"> / Year</span></i>
                             <p class="a3">Save 20%</p>
                         </div>
                         <div class="container h">
@@ -241,12 +241,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="" class="btn btn-primary c2"> I want this </a>
+                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="complete">
                         <div class="row w-101 a1">
-                            <i class="fas fa-pound-sign"> 5,000.00<span class="a2">  /  Year</span></i>
+                            <i class="fas fa-pound-sign"> <span class="semi-bold q2">5,000.00 </span><span class="a2"> / Year</span></i>
                             <p class="a3">Save 20%</p>
                         </div>
                         <div class="container h">
@@ -271,12 +271,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="" class="btn btn-primary c2"> I want this </a>
+                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="woo">
                         <div class="row w-101 a1">
-                            <i class="fas fa-pound-sign"> 2,20.000<span class="a2">  /  Year</span></i>
+                            <i class="fas fa-pound-sign"> <span class="semi-bold q2">2,20.000</span><span class="a2"> / Year</span></i>
                             <p class="a3">Save 20%</p>
                         </div>
                         <div class="container h">
@@ -296,12 +296,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="" class="btn btn-primary c2"> I want this </a>
+                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="out">
                         <div class="row w-101 a1">
-                            <i class="fas fa-pound-sign"> 1,23.000<span class="a2">  /  Year</span></i>
+                            <i class="fas fa-pound-sign"> <span class="semi-bold q2">1,23.000</span><span class="a2"> / Year</span></i>
                             <p class="a3">Save 20%</p>
                         </div>
                         <div class="container h">
@@ -321,12 +321,11 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="" class="btn btn-primary c2"> I want this </a>
+                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="small">
-                        <div class="row w-101 a1">
-                            <i class="fas fa-pound-sign"> 2,000.00<span class="a2">  /  Year</span></i>
+                        <div class="row w-101 a1"> <i class="fas fa-pound-sign"> <span class="semi-bold q2">2,000.00 </span><span class="a2"> / Year</span></i>
                             <p class="a3">Save 20%</p>
                         </div>
                         <div class="container h">
@@ -347,12 +346,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="" class="btn btn-primary c2"> I want this </a>
+                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="pos2">
                         <div class="row w-101 a1">
-                            <i class="fas fa-pound-sign"> 1,60.000<span class="a2">  /  Year</span></i>
+                            <i class="fas fa-pound-sign"> <span class="semi-bold q2">1,60.000</span><span class="a2"> / Year</span></i>
                             <p class="a3">Save 20%</p>
                         </div>
                         <div class="container h">
@@ -370,12 +369,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="" class="btn btn-primary c2"> I want this </a>
+                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="pos">
                         <div class="row w-101 a1">
-                            <i class="fas fa-pound-sign"> 1,30.000<span class="a2">  /  Year</span></i>
+                            <i class="fas fa-pound-sign"> <span class="semi-bold q2">1,30.000</span><span class="a2"> / Year</span></i>
                             <p class="a3">Save 20%</p>
                         </div>
                         <div class="container h">
@@ -393,7 +392,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="" class="btn btn-primary c2"> I want this </a>
+                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
             </div>

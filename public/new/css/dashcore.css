@@ -110,10 +110,10 @@ body {
   height: 40px;
   margin-top: 8%;
   color: white;
-  background-color: #4E80EF;
+  background-color: #027DF6;
   padding-left: 14%;
   padding-top: 3%;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 .toggle-label input[type=checkbox] {
   opacity: 0;
@@ -213,9 +213,9 @@ a#l1.tablink
 
 li#s1 {
   color: #9B9FA5;
-  padding-top: 3%;
+  padding-top: 2.4%;
   margin-bottom: 8%;
-  border-radius: 10px;
+  border-radius: 6px;
   height: 40px;
 }
 li#s1:visited
@@ -225,27 +225,27 @@ li#s1:visited
 li#s2
 {
   color: #9B9FA5;
-  padding-top: 3%;
+  padding-top: 2.6%;
   margin-bottom: 8%;
-  border-radius: 10px;
+  border-radius: 6px;
   height: 40px;
   margin-top: -7.4%;
 }
 li#s3
 {
   color: #9B9FA5;
-  padding-top: 3%;
+  padding-top: 2.4%;
   margin-bottom: 8%;
-  border-radius: 10px;
+  border-radius: 6px;
   height: 40px;
   margin-top: -7.4%;
 }
 li#s4
 {
   color: #9B9FA5;
-  padding-top: 3%;
+  padding-top: 2.6%;
   margin-bottom: 8%;
-  border-radius: 10px;
+  border-radius: 6px;
   height: 40px;
   margin-top: -7.4%;
 
@@ -253,9 +253,9 @@ li#s4
 li#s5
 {
   color: #9B9FA5;
-  padding-top: 3%;
+  padding-top: 2.6%;
   margin-bottom: 8%;
-  border-radius: 10px;
+  border-radius: 6px;
   height: 40px;
 
   margin-top: -7.4%;
@@ -264,9 +264,9 @@ li#s6
 {
 
   color: #9B9FA5;
-  padding-top: 3%;
+  padding-top: 2.6%;
   margin-bottom: 8%;
-  border-radius: 10px;
+  border-radius: 6px;
   height: 40px;
   margin-top: -7.4%;
 }
@@ -274,9 +274,9 @@ li#s7
 {
 
   color: #9B9FA5;
-  padding-top: 3%;
+  padding-top: 2.8%;
   margin-bottom: 8%;
-  border-radius: 10px;
+  border-radius: 6px;
   height: 40px;
   margin-top: -7.4%;
 }
@@ -284,9 +284,9 @@ li#s8
 {
 
   color: #8D9096;
-  padding-top: 3%;
+  padding-top: 2.8%;
   margin-bottom: 8%;
-  border-radius: 10px;
+  border-radius: 5px;
   height: 40px;
   margin-top: -7.4%;
 }
@@ -497,6 +497,8 @@ a.c2
   float: right;
   margin-right: 10%;
   margin-top: 5%;
+  background-color: #027DF6;
+  border-radius: 8px;
 }
 
 .fa-check-circle
@@ -521,13 +523,25 @@ div.container.g
 p.a3
 {
   background-color: orange;
-  width: 16%;
-  height: 20%;
-  font-weight: 600;
-  font-size: 1.09vw;
+  width: 12.7%;
+  border-radius: 5px;
+  height: 26px;
+  font-weight: 700;
+  font-size: 1.1vw;
   margin-left: 42%;
-  color: #F6CF6A;
+  color: gold;
+  margin-bottom: 5%;
   background-color: #F9ECCC;
+}
+.a3
+{
+  padding-top: 0.3%;
+  position: center;
+}
+span.q2
+{
+  font-family: "Poppins", sans-serif;
+
 }
 .q1
 {
@@ -547,15 +561,23 @@ h2.c1
 }
 .a2
 {
-  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
   color: #A9ADB8;
 }
+
 i.fa-pound-sign
 {
   color: #D6223F;
   margin-left: 35%;
   font-size: 2vw;
   margin-top: 5%;
+  margin-bottom: 3%;
+}
+.fa-pound-sign
+{
+  letter-spacing: 0.1vw;
 }
 hr {
   margin: 1rem 0;
