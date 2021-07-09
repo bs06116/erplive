@@ -8,7 +8,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay bg-img "
                      style="background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover                       " >
-                    <div class="img3"><img src="/new/img/erp_logo_login.png" class="logo"  alt=""></div>
+                    <div class="img3"><img src="/new/img/erp_logo_white_new.png" class="logo logo3"  alt=""></div>
 
                     <div class="content b1">
                         <h5 class="a7" id="b2"></h5>
@@ -21,7 +21,7 @@
                                             class="fab fa-facebook-f  "></i></a> <a id="l2"
                                                                                     class="btn btn-circle me-2" href="#"><i
                                             class="fab fa-twitter"></i></a> <a id="l3" class="btn btn-circle "
-                                                                               href="#"><i class="fab fa-linkedin-in"></i></a></nav>
+                                                                               href="#"><i class="fab fa-linkedin"></i></a></nav>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
         <p id="y1"  style=" margin-top: -140px;margin-bottom: 80px;font-weight: 500"> Grow your business with us </p>
          <div class="form-group has-icon has-feedback {{ $errors->has('email') ? ' has-error' : '' }}  email">
             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="@lang('lang_v1.email_address')">
-            <i class="icon fas fa-envelope email1 "></i>
+            <i class="icon fas fa-envelope email1 " style="margin-right: -12px"></i>
         </div>
         @if ($errors->has('email'))
             <span class="help-block ero">

@@ -3,15 +3,15 @@
   <div class="container">
       <ul class="st-nav-menu nav navbar-nav">
           <li class="st-nav-section nav-item"><a href="#main" class="navbar-brand">
-              <img src="{{asset('new/img/logo.png')}}" alt="ERP" class="logo logo-sticky d-inline-block d-md-none">
-             <img src="{{asset('new/img/logo-light.png')}}" alt="Dashcore" class="logo d-none d-md-inline-block"></a></li>
+              <img src="{{asset('new/img/erp_logo_new.png')}}" alt="ERP" class="logo logo-sticky d-inline-block d-md-none">
+             <img src="{{asset('new/img/erp_logo_white_new.png')}}" alt="Dashcore" class="logo d-none d-md-inline-block"></a></li>
              <li class="st-nav-section st-nav-primary nav-item">
               <!-- <a class="st-root-link item-products st-has-dropdown nav-link" data-dropdown="blocks">Blocks</a>
                <a class="st-root-link item-products st-has-dropdown nav-link" data-dropdown="pages">Pages</a>
                <a class="st-root-link item-company st-has-dropdown nav-link" data-dropdown="components">UI Components</a>
                <a class="st-root-link item-blog st-has-dropdown nav-link" data-dropdown="blog">Blog</a>
                <a class="st-root-link item-shop st-has-dropdown nav-link" href="shop/" data-dropdown="shop">Shop</a> -->
-               <a class="st-root-link item-shop  nav-link" href="#">Pricing Plans</a>
+               <a class="st-root-link item-shop  nav-link" href="#session">Pricing Plans</a>
                <a class="st-root-link item-shop  nav-link" href="#">Add-ons</a>
                <a class="st-root-link item-shop  nav-link" href="#">Documentation</a>
                <a class="st-root-link item-shop  nav-link" href="#">FAQ</a>

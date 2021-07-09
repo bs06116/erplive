@@ -11,7 +11,7 @@
             <div class="row align-items-center ">
                 <div class="col-md-6 col-lg-7 fullscreen-md d-flex justify-content-center align-items-center overlay alpha-8 image-background cover"
                      style=" background-image: url('{{asset('new/img/login_bg.jpg')}}');background-repeat: no-repeat;background-size:cover                       " >
-                    <div class="img2">   <img src="{{asset('new/img/erp_logo_login.png')}}" class="logo logo1" alt="Responsive image"></div>
+                    <div class="img2">   <img src="{{asset('new/img/erp_logo_white_new.png')}}" class="logo logo1" alt="Responsive image"></div>
                     <div class="content d1">
                         <h2 class="a7" id="a5">
                         </h2>
