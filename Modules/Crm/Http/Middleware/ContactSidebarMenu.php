@@ -28,14 +28,17 @@ class ContactSidebarMenu
                             ->findOrFail(auth()->user()->crm_contact_id);
 
             $menu->url(action('\Modules\Crm\Http\Controllers\DashboardController@index'), __('home.home'), ['icon' => 'fa fas fa-tachometer-alt', 'active' => request()->segment(1) == 'contact' && request()->segment(2) == 'contact-dashboard'])->order(1);
-            
+
             if (in_array($contact->type, ['supplier', 'both'])) {
                 $menu->url(action('\Modules\Crm\Http\Controllers\PurchaseController@getPurchaseList'), __('purchase.list_purchase'), ['icon' => 'fa fas fa-list', 'active' => request()->segment(1) == 'contact' && request()->segment(2) == 'contact-purchases'])->order(2);
             }
 
             if (in_array($contact->type, ['customer', 'both'])) {
+                $menu->url(action('\Modules\Project\Http\Controllers\ProjectController@index'), __('All Project'), ['icon' => 'fa fas fa-list', 'active' => request()->segment(1) == 'contact' && request()->segment(2) == 'contact-purchases'])->order(2);
+
                 $menu->url(action('\Modules\Crm\Http\Controllers\SellController@getSellList'), __('lang_v1.all_sales'), ['icon' => 'fa fas fa-list', 'active' => request()->segment(1) == 'contact' && request()->segment(2) == 'contact-sells'])->order(3);
             }
+
 
             $menu->url(action('\Modules\Crm\Http\Controllers\LedgerController@index'), __('lang_v1.ledger'), ['icon' => 'fas fa-scroll', 'active' => request()->segment(1) == 'contact' && request()->segment(2) == 'contact-ledger'])->order(3);
 
@@ -46,7 +49,7 @@ class ContactSidebarMenu
             }
         });
 
-         
+
 
         return $next($request);
     }

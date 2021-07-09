@@ -53,7 +53,10 @@ class ProjectController extends Controller
         $business_id = request()->session()->get('user.business_id');
         $is_admin = $this->commonUtil->is_admin(auth()->user(), $business_id);
         $user_id = auth()->user()->id;
+
         $statuses = Project::statusDropdown();
+        $contact = Contact::where('business_id', auth()->user()->business_id)
+        ->findOrFail(auth()->user()->crm_contact_id);
 
         //if project view is NULL, set default to list_view
         if (is_null(request()->get('project_view'))) {
@@ -72,10 +75,16 @@ class ProjectController extends Controller
 
                 //if not admin get assigned project only
                 if (!$is_admin) {
-                    $projects->where('created_by', $user_id)
-                        ->orWhereHas('members', function ($q) use ($user_id) {
-                        $q->where('user_id', $user_id);
-                    });
+                    if (isset($contact->type) && $contact->type == 'customer') {
+                        $projects->where('contact_id',auth()->user()->crm_contact_id);
+
+                    }else{
+                        $projects->where('created_by', $user_id)
+                                                ->orWhereHas('members', function ($q) use ($user_id) {
+                                                $q->where('user_id', $user_id);
+                                            });
+                    }
+
                 }
 
                 // filter by status
