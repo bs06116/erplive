@@ -50,13 +50,17 @@ class ProjectController extends Controller
      */
     public function index()
     {
+
         $business_id = request()->session()->get('user.business_id');
         $is_admin = $this->commonUtil->is_admin(auth()->user(), $business_id);
         $user_id = auth()->user()->id;
 
         $statuses = Project::statusDropdown();
-        $contact = Contact::where('business_id', auth()->user()->business_id)
-        ->findOrFail(auth()->user()->crm_contact_id);
+        if(auth()->user()->crm_contact_id){
+            $contact = Contact::where('business_id', auth()->user()->business_id)
+            ->findOrFail(auth()->user()->crm_contact_id);
+        }
+
 
         //if project view is NULL, set default to list_view
         if (is_null(request()->get('project_view'))) {
