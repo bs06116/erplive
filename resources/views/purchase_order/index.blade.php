@@ -75,7 +75,7 @@
 </section>
 <!-- /.content -->
 @stop
-@section('javascript')	
+@section('javascript')
 @includeIf('purchase_order.common_js')
 <script type="text/javascript">
     $(document).ready( function(){

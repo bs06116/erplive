@@ -139,6 +139,267 @@
             </div>
         </div>
     </section><!-- ./Single testimonial - Left -->
+    <section class="section" id="session">
+        <div class="container">
+            <div class="section-heading text-center">
+                <h2 class="c1">Pricing plans that suit all sizes of business</h2>
+            </div>
+            <div class="container g">
+                <div class="row" style="display: flex">
+                    <div class="col-md-4 section1">
+                        <label class="toggle-label">
+                   <span class=" tablink"  id="" onclick="openPage('year')"> Yearly </span>
+                        </label>
+
+                        <ul class="nav-pills nav-stacked l1">
+                            <li id="s1"><a id="l1"  class="tablink" href="#session3" onclick=" myFunction(), openPage('pos')"> PITS POS Lite </a></li>
+                            <li id="s2"><a id="l2"  class="tablink" href="#session3" onclick=" aFunction(),openPage('pos2')">PITS POS Basic</a></li>
+                            <li id="s3"><a id="l3"  class="tablink" href="#session3" onclick=" bFunction(),openPage('pos3')" > PITS POS Professional</a></li>
+                            <li id="s4"><a id="l4"  class="tablink" href="#session3" onclick=" cFunction(),openPage('woo')">PITS POS with WooCommerce( 1 location)</a></li>
+                            <li id="s5"><a id="l5" class="tablink" href="#session3" onclick=" dFunction(),openPage('out')">outsource Manufacturing</a></li>
+                            <li id="s6"><a id="l6" class="tablink" href="#session3" onclick=" eFunction(),openPage('it')">Especially curated for IT Firms</a></li>
+                            <li id="s7"><a id="l7" class="tablink" href="#session3" onclick=" fFunction(),openPage('small')">ERP for small Business</a></li>
+                            <li id="s8"><a id="l8" class="tablink" href="#session3" onclick=" gFunction(),openPage('complete')">ERP Complete Suit</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-7 col-lg-8 q1 tabcontent tabactive" id="year">
+                        <div class="row w-101 a1">
+                            <i class="fas fa-pound-sign"> 5,000.00<span class="a2"> / Year</span></i>
+                            <p class="a3">Save 20%</p>
+                        </div>
+                        <div class="container h">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <ul class="z6">
+                                        <li class="z1"> <i class="fas fa-check-circle"></i>3 Business locations</li>
+                                        <li class="z2"> <i class="fas fa-check-circle"></i>Unlimited Products</li>
+                                        <li class="z3"> <i class="fas fa-check-circle"></i>Connector Module</li>
+                                        <li class="z4"> <i class="fas fa-check-circle"></i>Essentials Module</li>
+                                        <li class="z5"> <i class="fas fa-check-circle"></i>WooCommerce Module</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm">
+                                    <ul class="z7">
+                                        <li class="x1"> <i class="fas fa-check-circle"></i>10 Users</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Unlimited Invoices</li>
+                                        <li class="x3"> <i class="fas fa-check-circle"></i>CRM Module</li>
+                                        <li class="x4"> <i class="fas fa-check-circle"></i>Manufacturing Module</li>
+                                        <li class="x5"> <i class="fas fa-check-circle"></i>30 Trail days</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="" class="btn btn-primary c2"> I want this </a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-8 q1 tabcontent " id="pos3">
+                        <div class="row w-101 a1">
+                            <i class="fas fa-pound-sign"> 1,90.000<span class="a2">  /  Year</span></i>
+                            <p class="a3">Save 20%</p>
+                        </div>
+                        <div class="container h">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <ul class="z6">
+                                        <li class="z1"> <i class="fas fa-check-circle"></i>3 Business locations</li>
+                                        <li class="z2"> <i class="fas fa-check-circle"></i>Unlimited Products</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i> 15 Trail Days</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm">
+                                    <ul class="z7">
+                                        <li class="x1"> <i class="fas fa-check-circle"></i>10 Users</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Unlimited Invoices</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="" class="btn btn-primary c2"> I want this </a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-8 q1 tabcontent " id="it">
+                        <div class="row w-101 a1">
+                            <i class="fas fa-pound-sign"> 2,00.000<span class="a2">  /  Year</span></i>
+                            <p class="a3">Save 20%</p>
+                        </div>
+                        <div class="container h">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <ul class="z6">
+                                        <li class="z1"> <i class="fas fa-check-circle"></i>Unlimited Business locations</li>
+                                        <li class="z2"> <i class="fas fa-check-circle"></i>Unlimited Products</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>CRM Module </li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i> Project Module </li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-sm">
+                                    <ul class="z7">
+                                        <li class="x1"> <i class="fas fa-check-circle"></i>1 Users</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Unlimited Invoices</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Essentails Module </li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i> 15 Trail Days</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="" class="btn btn-primary c2"> I want this </a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-8 q1 tabcontent " id="complete">
+                        <div class="row w-101 a1">
+                            <i class="fas fa-pound-sign"> 5,000.00<span class="a2">  /  Year</span></i>
+                            <p class="a3">Save 20%</p>
+                        </div>
+                        <div class="container h">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <ul class="z6">
+                                        <li class="z1"> <i class="fas fa-check-circle"></i>3 Business locations</li>
+                                        <li class="z2"> <i class="fas fa-check-circle"></i>Unlimited Products</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Connector Module </li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i> CRM Module </li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i> WooCommerce Module </li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-sm">
+                                    <ul class="z7">
+                                        <li class="x1"> <i class="fas fa-check-circle"></i>10 Users</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Unlimited Invoices</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Essentails Module </li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Manufacturing Module </li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i> 30 Trail Days</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="" class="btn btn-primary c2"> I want this </a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-8 q1 tabcontent " id="woo">
+                        <div class="row w-101 a1">
+                            <i class="fas fa-pound-sign"> 2,20.000<span class="a2">  /  Year</span></i>
+                            <p class="a3">Save 20%</p>
+                        </div>
+                        <div class="container h">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <ul class="z6">
+                                        <li class="z1"> <i class="fas fa-check-circle"></i>1 Business locations</li>
+                                        <li class="z2"> <i class="fas fa-check-circle"></i>Unlimited Products</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i> WooCommerce Module</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm">
+                                    <ul class="z7">
+                                        <li class="x1"> <i class="fas fa-check-circle"></i>2 Users</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Unlimited Invoices</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i> 30 Trail Days</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="" class="btn btn-primary c2"> I want this </a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-8 q1 tabcontent " id="out">
+                        <div class="row w-101 a1">
+                            <i class="fas fa-pound-sign"> 1,23.000<span class="a2">  /  Year</span></i>
+                            <p class="a3">Save 20%</p>
+                        </div>
+                        <div class="container h">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <ul class="z6">
+                                        <li class="z1"> <i class="fas fa-check-circle"></i>1 Business locations</li>
+                                        <li class="z2"> <i class="fas fa-check-circle"></i>Unlimited Products</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i> Manufacturing Module</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm">
+                                    <ul class="z7">
+                                        <li class="x1"> <i class="fas fa-check-circle"></i>1 Users</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Unlimited Invoices</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i> 30 Trail Days</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="" class="btn btn-primary c2"> I want this </a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-8 q1 tabcontent " id="small">
+                        <div class="row w-101 a1">
+                            <i class="fas fa-pound-sign"> 2,000.00<span class="a2">  /  Year</span></i>
+                            <p class="a3">Save 20%</p>
+                        </div>
+                        <div class="container h">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <ul class="z6">
+                                        <li class="z1"> <i class="fas fa-check-circle"></i>2 Business locations</li>
+                                        <li class="z2"> <i class="fas fa-check-circle"></i>Unlimited Products</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i> Essential Module</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i> 30 Trail Days</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm">
+                                    <ul class="z7">
+                                        <li class="x1"> <i class="fas fa-check-circle"></i>5 Users</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Unlimited Invoices</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Manufacturing Module</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="" class="btn btn-primary c2"> I want this </a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-8 q1 tabcontent " id="pos2">
+                        <div class="row w-101 a1">
+                            <i class="fas fa-pound-sign"> 1,60.000<span class="a2">  /  Year</span></i>
+                            <p class="a3">Save 20%</p>
+                        </div>
+                        <div class="container h">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <ul class="z6">
+                                        <li class="z1"> <i class="fas fa-check-circle"></i>2 Business locations</li>
+                                        <li class="z2"> <i class="fas fa-check-circle"></i>Unlimited Products</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm">
+                                    <ul class="z7">
+                                        <li class="x1"> <i class="fas fa-check-circle"></i>5 Users</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Unlimited Invoices</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="" class="btn btn-primary c2"> I want this </a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-8 q1 tabcontent " id="pos">
+                        <div class="row w-101 a1">
+                            <i class="fas fa-pound-sign"> 1,30.000<span class="a2">  /  Year</span></i>
+                            <p class="a3">Save 20%</p>
+                        </div>
+                        <div class="container h">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <ul class="z6">
+                                        <li class="z1"> <i class="fas fa-check-circle"></i>1 Business locations</li>
+                                        <li class="z2"> <i class="fas fa-check-circle"></i>Unlimited Products</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm">
+                                    <ul class="z7">
+                                        <li class="x1"> <i class="fas fa-check-circle"></i>2 Users</li>
+                                        <li class="x2"> <i class="fas fa-check-circle"></i>Unlimited Invoices</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="" class="btn btn-primary c2"> I want this </a>
+                        </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+    </section>
     <section class="singl-testimonial shadow">
         <div class="container-fluid py-0">
             <div class="row align-items-center gradient gradient-primary-dark text-contrast">
@@ -335,4 +596,166 @@
     <p class="tagline">
         {{ env('APP_TITLE', '') }}
     </p> --}}
+    <script>
+        function openPage(pageName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(pageName).style.display = "block";
+            elmnt.style.backgroundColor = color;
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+        function myFunction() {
+            document.getElementById("s1").style.backgroundColor = "#22C05A";
+            document.getElementById("l1").style.color = "#FFFFFF";
+            document.getElementById("s2").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l2").style.color = "#9B9FA5";
+            document.getElementById("s3").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l3").style.color = "#9B9FA5";
+            document.getElementById("s4").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l4").style.color = "#9B9FA5";
+            document.getElementById("s5").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l5").style.color = "#9B9FA5";
+            document.getElementById("s6").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l6").style.color = "#9B9FA5";
+            document.getElementById("s7").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l7").style.color = "#9B9FA5";
+            document.getElementById("s8").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l8").style.color = "#9B9FA5";
+        }
+        function aFunction(){
+            document.getElementById("s2").style.backgroundColor = "#22C05A";
+            document.getElementById("l2").style.color = "#FFFFFF";
+            document.getElementById("s1").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l1").style.color = "#9B9FA5";
+            document.getElementById("s3").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l3").style.color = "#9B9FA5";
+            document.getElementById("s4").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l4").style.color = "#9B9FA5";
+            document.getElementById("s5").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l5").style.color = "#9B9FA5";
+            document.getElementById("s6").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l6").style.color = "#9B9FA5";
+            document.getElementById("s7").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l7").style.color = "#9B9FA5";
+            document.getElementById("s8").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l8").style.color = "#9B9FA5";
+        }
+        function bFunction(){
+            document.getElementById("s3").style.backgroundColor = "#22C05A";
+            document.getElementById("l3").style.color = "#FFFFFF";
+            document.getElementById("s2").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l2").style.color = "#9B9FA5";
+            document.getElementById("s1").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l1").style.color = "#9B9FA5";
+            document.getElementById("s4").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l4").style.color = "#9B9FA5";
+            document.getElementById("s5").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l5").style.color = "#9B9FA5";
+            document.getElementById("s6").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l6").style.color = "#9B9FA5";
+            document.getElementById("s7").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l7").style.color = "#9B9FA5";
+            document.getElementById("s8").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l8").style.color = "#9B9FA5";
+        }
+        function cFunction(){
+            document.getElementById("s4").style.backgroundColor = "#22C05A";
+            document.getElementById("l4").style.color = "#FFFFFF";
+            document.getElementById("s2").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l2").style.color = "#9B9FA5";
+            document.getElementById("s1").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l1").style.color = "#9B9FA5";
+            document.getElementById("s3").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l3").style.color = "#9B9FA5";
+            document.getElementById("s5").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l5").style.color = "#9B9FA5";
+            document.getElementById("s6").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l6").style.color = "#9B9FA5";
+            document.getElementById("s7").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l7").style.color = "#9B9FA5";
+            document.getElementById("s8").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l8").style.color = "#9B9FA5";
+        }
+        function dFunction(){
+            document.getElementById("s5").style.backgroundColor = "#22C05A";
+            document.getElementById("l5").style.color = "#FFFFFF";
+            document.getElementById("s2").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l2").style.color = "#9B9FA5";
+            document.getElementById("s1").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l1").style.color = "#9B9FA5";
+            document.getElementById("s3").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l3").style.color = "#9B9FA5";
+            document.getElementById("s4").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l4").style.color = "#9B9FA5";
+            document.getElementById("s6").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l6").style.color = "#9B9FA5";
+            document.getElementById("s7").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l7").style.color = "#9B9FA5";
+            document.getElementById("s8").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l8").style.color = "#9B9FA5";
+        }
+        function eFunction(){
+            document.getElementById("s6").style.backgroundColor = "#22C05A";
+            document.getElementById("l6").style.color = "#FFFFFF";
+            document.getElementById("s2").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l2").style.color = "#9B9FA5";
+            document.getElementById("s1").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l1").style.color = "#9B9FA5";
+            document.getElementById("s3").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l3").style.color = "#9B9FA5";
+            document.getElementById("s4").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l4").style.color = "#9B9FA5";
+            document.getElementById("s5").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l5").style.color = "#9B9FA5";
+            document.getElementById("s7").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l7").style.color = "#9B9FA5";
+            document.getElementById("s8").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l8").style.color = "#9B9FA5";
+        }
+        function fFunction(){
+            document.getElementById("s7").style.backgroundColor = "#22C05A";
+            document.getElementById("l7").style.color = "#FFFFFF";
+            document.getElementById("s2").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l2").style.color = "#9B9FA5";
+            document.getElementById("s1").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l1").style.color = "#9B9FA5";
+            document.getElementById("s3").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l3").style.color = "#9B9FA5";
+            document.getElementById("s4").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l4").style.color = "#9B9FA5";
+            document.getElementById("s5").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l5").style.color = "#9B9FA5";
+            document.getElementById("s6").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l6").style.color = "#9B9FA5";
+            document.getElementById("s8").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l8").style.color = "#9B9FA5";
+        }
+        function gFunction(){
+            document.getElementById("s8").style.backgroundColor = "#22C05A";
+            document.getElementById("l8").style.color = "#FFFFFF";
+            document.getElementById("s2").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l2").style.color = "#9B9FA5";
+            document.getElementById("s1").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l1").style.color = "#9B9FA5";
+            document.getElementById("s3").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l3").style.color = "#9B9FA5";
+            document.getElementById("s4").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l4").style.color = "#9B9FA5";
+            document.getElementById("s5").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l5").style.color = "#9B9FA5";
+            document.getElementById("s6").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l6").style.color = "#9B9FA5";
+            document.getElementById("s7").style.backgroundColor = "#F6FAFD";
+            document.getElementById("l7").style.color = "#9B9FA5";
+        }
+    </script>
 @endsection
