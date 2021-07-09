@@ -265,19 +265,22 @@ class SellController extends ApiController
      */
     public function index()
     {
+
         //TODO::order by
         $user = Auth::user();
         $business_id = $user->business_id;
 
         $filters = request()->only(['location_id', 'contact_id', 'payment_status', 'start_date', 'end_date', 'user_id', 'service_staff_id', 'only_subscriptions', 'synced_from_woocommerce', 'per_page', 'shipping_status']);
+
         $query = Transaction::where('business_id', $business_id)
                             ->where('type', 'sell')
                             ->with(['sell_lines', 'payment_lines']);
 
-        $permitted_locations = $user->permitted_locations();
-        if ($permitted_locations != 'all') {
-            $query->whereIn('transactions.location_id', $permitted_locations);
-        }
+
+        // $permitted_locations = $user->permitted_locations();
+        // if ($permitted_locations != 'all') {
+        //     $query->whereIn('transactions.location_id', $permitted_locations);
+        // }
 
         if (!empty($filters['location_id'])) {
             if (!empty($filters['location_id'])) {
