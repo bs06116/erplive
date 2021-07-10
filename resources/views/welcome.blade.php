@@ -14,7 +14,7 @@
                 <div class="col-md-7 banner-heading">
                     <h1 class="text-contrast bold">A Software that can think </h1>
                     <p class="lead">Grow Your Business mainfolds with <br> ERP by PITS</p>
-                    <nav class="nav mt-5"><a href="#" class="me-3 btn btn btn-rounded btn-contrast"><i class="fas fa-tag me-3"></i> Plans & pricing </a><a href="#" class="btn btn-rounded btn-success text-contrast">Start now</a></nav>
+                    <nav class="nav mt-5"><a href="#PricingPlans" class="me-3 btn btn btn-rounded btn-contrast"><i class="fas fa-tag me-3"></i> Plans & pricing </a><a href="#" class="btn btn-rounded btn-success text-contrast">Start now</a></nav>
                 </div>
             </div>
         </div>
@@ -189,7 +189,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
+                            <a href="https://erp.live/business/register?package=23" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="pos3">
@@ -213,7 +213,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
+                            <a href="https://erp.live/business/register?package=19" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="it">
@@ -241,7 +241,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
+                            <a href="https://erp.live/business/register?package=17" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="complete">
@@ -271,7 +271,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
+                            <a href="https://erp.live/business/register?package=23" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="woo">
@@ -296,7 +296,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
+                            <a href="https://erp.live/business/register?package=20" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="out">
@@ -321,7 +321,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
+                            <a href="https://erp.live/business/register?package=24" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="small">
@@ -346,7 +346,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
+                            <a href="https://erp.live/business/register?package=22" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="pos2">
@@ -369,7 +369,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
+                            <a href="https://erp.live/business/register?package=18" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 q1 tabcontent " id="pos">
@@ -392,7 +392,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <a href="{{ route('business.getRegister') }}" class="btn btn-primary c2"> I want this </a>
+                            <a href="https://erp.live/business/register?package=1" class="btn btn-primary c2"> I want this </a>
                         </div>
                     </div>
             </div>

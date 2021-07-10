@@ -523,11 +523,13 @@ div.container.g
 p.a3
 {
   background-color: orange;
-  width: 12.7%;
+  width: 14%;
   border-radius: 5px;
+  padding-top: .4%;
+  padding-left: 3%;
   height: 26px;
   font-weight: 700;
-  font-size: 1.1vw;
+  font-size: 13px;
   margin-left: 42%;
   color: gold;
   margin-bottom: 5%;
@@ -535,8 +537,6 @@ p.a3
 }
 .a3
 {
-  padding-top: 0.3%;
-  position: center;
 }
 span.q2
 {
@@ -4311,14 +4311,14 @@ fieldset:disabled .btn {
 
 .btn-success {
   color: #ffffff !important;
-  background-color: #23BF5A;
-  border-color: #23BF5A;
+  background-color: #F78C19;
+  border-color: #F78C19;
 }
 
 .btn-success:hover {
   color: #ffffff;
-  background-color: #1fa14d;
-  border-color: #1fa14d;
+  background-color: #343E61;
+  border-color: #343E61;
 }
 
 .btn-check:focus + .btn-success, .btn-success:focus {
@@ -28285,14 +28285,14 @@ main {
 
 .navigation .btn-solid, .navigation.navbar-sticky .btn-solid {
   color: #ffffff;
-  background-color: #23BF5A;
-  border-color: #23BF5A;
+  background-color: #F78C19;
+  border-color: #F78C19;
 }
 
 .navigation .btn-solid:hover, .navigation.navbar-sticky .btn-solid:hover {
   color: #ffffff;
-  background-color: #1fa14d;
-  border-color: #1fa14d;
+  background-color: #F5C229;
+  border-color: #F5C229;
 }
 
 .btn-check:focus + .navigation .btn-solid, .navigation .btn-solid:focus, .btn-check:focus + .navigation.navbar-sticky .btn-solid, .navigation.navbar-sticky .btn-solid:focus {
@@ -28513,13 +28513,13 @@ main {
   }
   .navigation .btn-solid {
     color: #ffffff;
-    background-color: #23BF5A;
-    border-color: #23BF5A;
+    background-color: #F78C19;
+    border-color: #F78C19;
   }
   .navigation .btn-solid:hover {
     color: #ffffff;
-    background-color: #1fa14d;
-    border-color: #1fa14d;
+    background-color: #F5C229;
+    border-color: #F5C229;
   }
   .btn-check:focus + .navigation .btn-solid, .navigation .btn-solid:focus {
     color: #161c2d;
@@ -29434,7 +29434,7 @@ p {
 }
 
 .logo {
-  max-width: 180px;
+  max-width: 120px;
 }
 
 hr[class*="bg"] {
