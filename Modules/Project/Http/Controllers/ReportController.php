@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\View;
 use Modules\Project\Entities\Project;
 use Modules\Project\Entities\ProjectUser;
+use App\Contact;
 
 class ReportController extends Controller
 {
@@ -40,7 +41,7 @@ class ReportController extends Controller
         if (!(auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'project_module'))) {
             abort(403, 'Unauthorized action.');
         }
-        
+
         return view('project::reports.index');
     }
 
@@ -145,17 +146,21 @@ class ReportController extends Controller
      */
     public function getProjectTimeLogReport(Request $request)
     {
+        $contact_id = '';
         $business_id = request()->session()->get('user.business_id');
 
         if (!(auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'project_module'))) {
             abort(403, 'Unauthorized action.');
         }
-        
+        if(auth()->user()->crm_contact_id){
+            $contact = Contact::where('business_id', auth()->user()->business_id)
+            ->findOrFail(auth()->user()->crm_contact_id);
+        }
+
         if ($request->ajax()) {
             try {
                 $start_date = $request->input('start_date');
                 $end_date = $request->input('end_date');
-
                 $projects = Project::with([
                     'timeLogs' => function ($query) use ($start_date, $end_date) {
                         // filter by start & end date
@@ -175,7 +180,10 @@ class ReportController extends Controller
                 if (!empty($request->input('project_id'))) {
                     $projects->whereIn('id', $request->input('project_id'));
                 }
-                
+                if (isset($contact->type) && $contact->type == 'customer') {
+                    $projects->where('contact_id',auth()->user()->crm_contact_id);
+
+                }
                 $projects = $projects->get();
 
                 $timelog_report_html = View::make('project::reports.partials.project_timelog')
@@ -198,9 +206,12 @@ class ReportController extends Controller
 
             return $output;
         }
+        if(auth()->user()->crm_contact_id){
+            $contact_id = auth()->user()->crm_contact_id;
+        }
 
         //data for filters
-        $projects = Project::projectDropdown($business_id);
+        $projects = Project::projectDropdown($business_id,null, $contact_id);
 
         return view('project::reports.project_timelog')
             ->with(compact('projects'));

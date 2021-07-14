@@ -22,13 +22,13 @@
 				<span class="input-group-addon">
 					<i class="fa fa-map-marker"></i>
 				</span>
-			{!! Form::select('select_location_id', $business_locations, null, ['class' => 'form-control input-sm', 
+			{!! Form::select('select_location_id', $business_locations, null, ['class' => 'form-control input-sm',
 			'placeholder' => __('lang_v1.select_location'),
-			'id' => 'select_location_id', 
+			'id' => 'select_location_id',
 			'required', 'autofocus'], $bl_attributes); !!}
 			<span class="input-group-addon">
 					@show_tooltip(__('tooltip.sale_location'))
-				</span> 
+				</span>
 			</div>
 		</div>
 	</div>
@@ -51,7 +51,7 @@
 		<div class="col-md-12 col-sm-12">
 			@component('components.widget')
 				{!! Form::hidden('location_id', $default_location, ['id' => 'location_id', 'data-receipt_printer_type' => isset($bl_attributes[$default_location]['data-receipt_printer_type']) ? $bl_attributes[$default_location]['data-receipt_printer_type'] : 'browser']); !!}
-				
+
 				<div class="clearfix"></div>
 				<div class="col-sm-4">
 					<div class="form-group">
@@ -60,11 +60,11 @@
 							<span class="input-group-addon">
 								<i class="fa fa-user"></i>
 							</span>
-							<input type="hidden" id="default_customer_id" 
+							<input type="hidden" id="default_customer_id"
 							value="{{ $walk_in_customer['id']}}" >
-							<input type="hidden" id="default_customer_name" 
+							<input type="hidden" id="default_customer_name"
 							value="{{ $walk_in_customer['name']}}" >
-							{!! Form::select('contact_id', 
+							{!! Form::select('contact_id',
 								[], null, ['class' => 'form-control mousetrap', 'id' => 'customer_id', 'placeholder' => 'Enter Customer name / phone', 'required']); !!}
 							<span class="input-group-btn">
 								<button type="button" class="btn btn-default bg-white btn-flat add_new_customer" data-name=""><i class="fa fa-plus-circle text-primary fa-lg"></i></button>
@@ -204,7 +204,7 @@
 					<input type="hidden" name="sell_price_tax" id="sell_price_tax" value="{{$business_details->sell_price_tax}}">
 
 					<!-- Keeps count of product rows -->
-					<input type="hidden" id="product_row_count" 
+					<input type="hidden" id="product_row_count"
 						value="0">
 					@php
 						$hide_tax = '';
@@ -216,7 +216,7 @@
 					<table class="table table-condensed table-bordered table-striped table-responsive" id="pos_table">
 						<thead>
 							<tr>
-								<th class="text-center">	
+								<th class="text-center">
 									@lang('sale.product')
 								</th>
 								<th class="text-center">
@@ -277,7 +277,7 @@
 			        </div>
 			    </div>
 			    <div class="col-md-4"><br>
-			    	<b>@lang( 'sale.discount_amount' ):</b>(-) 
+			    	<b>@lang( 'sale.discount_amount' ):</b>(-)
 					<span class="display_currency" id="total_discount">0</span>
 			    </div>
 			    <div class="clearfix"></div>
@@ -314,13 +314,13 @@
 			                </span>
 			                {!! Form::select('tax_rate_id', $taxes['tax_rates'], $business_details->default_sales_tax, ['placeholder' => __('messages.please_select'), 'class' => 'form-control', 'data-default'=> $business_details->default_sales_tax], $taxes['attributes']); !!}
 
-							<input type="hidden" name="tax_calculation_amount" id="tax_calculation_amount" 
+							<input type="hidden" name="tax_calculation_amount" id="tax_calculation_amount"
 							value="@if(empty($edit)) {{@num_format($business_details->tax_calculation_amount)}} @else {{@num_format(optional($transaction->tax)->amount)}} @endif" data-default="{{$business_details->tax_calculation_amount}}">
 			            </div>
 			        </div>
 			    </div>
 			    <div class="col-md-4 col-md-offset-4">
-			    	<b>@lang( 'sale.order_tax' ):</b>(+) 
+			    	<b>@lang( 'sale.order_tax' ):</b>(+)
 					<span class="display_currency" id="order_tax">0</span>
 			    </div>
 			    <div class="clearfix"></div>
@@ -364,7 +364,7 @@
 
 		</div>
 	</div>
-	
+
 	{!! Form::close() !!}
 </section>
 
@@ -372,10 +372,10 @@
 	@include('contact.create', ['quick_add' => true])
 </div>
 <!-- /.content -->
-<div class="modal fade register_details_modal" tabindex="-1" role="dialog" 
+<div class="modal fade register_details_modal" tabindex="-1" role="dialog"
 	aria-labelledby="gridSystemModalLabel">
 </div>
-<div class="modal fade close_register_modal" tabindex="-1" role="dialog" 
+<div class="modal fade close_register_modal" tabindex="-1" role="dialog"
 	aria-labelledby="gridSystemModalLabel">
 </div>
 

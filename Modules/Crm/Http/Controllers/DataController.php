@@ -59,7 +59,7 @@ class DataController extends Controller
     {
         $business_id = session()->get('user.business_id');
         $module_util = new ModuleUtil();
-        
+
         $is_crm_enabled = (boolean)$module_util->hasThePermissionInSubscription($business_id, 'crm_module');
 
         $commonUtil = new Util();

@@ -31,10 +31,10 @@ class Project extends Model
     protected $casts = [
         'settings' => 'array',
     ];
-    
+
     protected static $logUnguarded = true;
     protected static $logOnlyDirty = true;
-    
+
     /**
      * The member that belongs to the project.
      */
@@ -73,7 +73,7 @@ class Project extends Model
     {
         return $this->hasMany('Modules\Project\Entities\ProjectTask');
     }
-    
+
     /**
      * Get all of the projects's notes & documents.
      */
@@ -117,7 +117,7 @@ class Project extends Model
     /**
      * Return the project list for dropdown.
      */
-    public static function projectDropdown($business_id, $user_id = null)
+    public static function projectDropdown($business_id, $user_id = null, $contact_id = null)
     {
         $projects = Project::where('business_id', $business_id);
 
@@ -126,6 +126,10 @@ class Project extends Model
             $projects->whereHas('members', function ($q) use ($user_id) {
                 $q->where('user_id', $user_id);
             });
+        }
+        if (!empty($contact_id)) {
+            $projects->where('contact_id',$contact_id);
+
         }
 
         $projects = $projects->pluck('name', 'id');

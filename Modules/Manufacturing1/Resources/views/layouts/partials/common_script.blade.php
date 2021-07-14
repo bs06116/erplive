@@ -9,7 +9,7 @@
 	        ajax: {
 	            url: '{{action("\Modules\Manufacturing\Http\Controllers\ProductionController@index")}}',
 	            data: function(d) {
-	                
+
 	            },
 	        },
 	        columnDefs: [
@@ -166,7 +166,7 @@
 	}
 
 	$(document).on('click', 'button.remove_ingredient', function() {
-        
+
         element = $(this).closest('tbody.ingredient-row-sortable');
 
 		$(this).closest('tr').remove();
@@ -178,7 +178,7 @@
 
 		calculateRecipeTotal();
 	});
-    
+
 	$(document).on('submit', '#recipe_form', function (e) {
 		var ingredients_length = $('.ingredients_table tbody .quantity').length;
 		if (ingredients_length < 1) {
@@ -254,7 +254,7 @@ $(document).on('click', '#mass_update_product_price', function(e){
         selected_rows[i++] = recipe_id;
         unit_prices[recipe_id] = $(this).closest('tr').find('span.unit_cost').data('unit_cost');
     });
-    
+
     if(selected_rows.length > 0){
         swal({
             title: LANG.sure,
@@ -285,7 +285,7 @@ $(document).on('click', '#mass_update_product_price', function(e){
         });
     } else{
         swal('@lang("lang_v1.no_row_selected")');
-    }    
+    }
 });
 $(document).on('click', 'button.delete_recipe', function() {
     swal({

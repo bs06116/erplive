@@ -63,11 +63,11 @@
 					{!! Form::label('status', __('purchase.purchase_status') . ':*') !!} @show_tooltip(__('tooltip.order_status'))
 					{!! Form::select('status', $orderStatuses, $default_purchase_status, ['class' => 'form-control select2', 'placeholder' => __('messages.please_select'), 'required']); !!}
 				</div>
-			</div>			
+			</div>
 			@if(count($business_locations) == 1)
-				@php 
+				@php
 					$default_location = current(array_keys($business_locations->toArray()));
-					$search_disable = false; 
+					$search_disable = false;
 				@endphp
 			@else
 				@php $default_location = null;
@@ -106,10 +106,10 @@
 		              <br/>
 		              {!! Form::number('pay_term_number', null, ['class' => 'form-control width-40 pull-left', 'placeholder' => __('contact.pay_term')]); !!}
 
-		              {!! Form::select('pay_term_type', 
-		              	['months' => __('lang_v1.months'), 
-		              		'days' => __('lang_v1.days')], 
-		              		null, 
+		              {!! Form::select('pay_term_type',
+		              	['months' => __('lang_v1.months'),
+		              		'days' => __('lang_v1.days')],
+		              		null,
 		              	['class' => 'form-control width-60 pull-left','placeholder' => __('messages.please_select'), 'id' => 'pay_term_type']); !!}
 		            </div>
 		        </div>
@@ -152,7 +152,7 @@
 			</div>
 			<div class="col-sm-2">
 				<div class="form-group">
-					<button tabindex="-1" type="button" class="btn btn-link btn-modal"data-href="{{action('ProductController@quickAdd')}}" 
+					<button tabindex="-1" type="button" class="btn btn-link btn-modal"data-href="{{action('ProductController@quickAdd')}}"
             	data-container=".quick_add_product_modal"><i class="fa fa-plus"></i> @lang( 'product.add_new_product' ) </button>
 				</div>
 			</div>
@@ -174,6 +174,7 @@
 								<th>@lang( 'purchase.purchase_quantity' )</th>
 								<th>@lang( 'lang_v1.unit_cost_before_discount' )</th>
 								<th>@lang( 'lang_v1.discount_percent' )</th>
+								<th>@lang( 'lang_v1.discount_fixed' )</th>
 								<th>@lang( 'purchase.unit_cost_before_tax' )</th>
 								<th class="{{$hide_tax}}">@lang( 'purchase.subtotal_before_tax' )</th>
 								<th class="{{$hide_tax}}">@lang( 'purchase.product_tax' )</th>
@@ -219,6 +220,14 @@
 							</td>
 						</tr>
 						<tr>
+							<th class="col-md-7 text-right">@lang( 'purchase.net_total_amount_without_discount' ):</th>
+							<td class="col-md-5 text-left">
+								<span id="total_subtotal_discount_input" class="display_currency"></span>
+								<!-- This is total before purchase tax-->
+								{{-- <input type="hidden" id="total_subtotal_discount_input" value=0  name="total_before_tax"> --}}
+							</td>
+						</tr>
+						<tr>
 							<th class="col-md-7 text-right">@lang( 'purchase.net_total_amount' ):</th>
 							<td class="col-md-5 text-left">
 								<span id="total_subtotal" class="display_currency"></span>
@@ -255,7 +264,7 @@
 						&nbsp;
 					</td>
 					<td class="col-md-3">
-						<b>@lang( 'purchase.discount' ):</b>(-) 
+						<b>@lang( 'purchase.discount' ):</b>(-)
 						<span id="discount_calculated_amount" class="display_currency">0</span>
 					</td>
 				</tr>
@@ -275,7 +284,7 @@
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>
-						<b>@lang( 'purchase.purchase_tax' ):</b>(+) 
+						<b>@lang( 'purchase.purchase_tax' ):</b>(+)
 						<span id="tax_calculated_amount" class="display_currency">0</span>
 					</td>
 				</tr>
@@ -366,7 +375,7 @@
             });
     	});
     	$(document).on('change', '.payment_types_dropdown, #location_id', function(e) {
-		    var default_accounts = $('select#location_id').length ? 
+		    var default_accounts = $('select#location_id').length ?
 		                $('select#location_id')
 		                .find(':selected')
 		                .data('default_payment_accounts') : [];
@@ -377,7 +386,7 @@
 
 	        var account_dropdown = payment_row.find('select#account_' + row_index);
 		    if (payment_type && payment_type != 'advance') {
-		        var default_account = default_accounts && default_accounts[payment_type]['account'] ? 
+		        var default_account = default_accounts && default_accounts[payment_type]['account'] ?
 		            default_accounts[payment_type]['account'] : '';
 		        if (account_dropdown.length && default_accounts) {
 		            account_dropdown.val(default_account);
@@ -392,9 +401,9 @@
 		        }
 		    } else {
 		        if (account_dropdown) {
-		            account_dropdown.prop('disabled', false); 
+		            account_dropdown.prop('disabled', false);
 		            account_dropdown.closest('.form-group').removeClass('hide');
-		        }    
+		        }
 		    }
 		});
 	</script>
