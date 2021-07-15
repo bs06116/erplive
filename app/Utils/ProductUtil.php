@@ -1196,6 +1196,7 @@ class ProductUtil extends Util
             $purchase_line->quantity = $new_quantity;
             $purchase_line->pp_without_discount = ($this->num_uf($data['pp_without_discount'], $currency_details)*$exchange_rate) / $multiplier;
             $purchase_line->discount_percent = $this->num_uf($data['discount_percent'], $currency_details);
+            $purchase_line->discount_fixed = $this->num_uf($data['discount_fixed'], $currency_details);
             $purchase_line->purchase_price = ($this->num_uf($data['purchase_price'], $currency_details)*$exchange_rate) / $multiplier;
             $purchase_line->purchase_price_inc_tax = ($this->num_uf($data['purchase_price_inc_tax'], $currency_details)*$exchange_rate) / $multiplier;
             $purchase_line->item_tax = ($this->num_uf($data['item_tax'], $currency_details)*$exchange_rate) / $multiplier;

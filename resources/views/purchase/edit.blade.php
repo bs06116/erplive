@@ -57,7 +57,7 @@
                 {!! Form::text('ref_no', $purchase->ref_no, ['class' => 'form-control', 'required']); !!}
               </div>
             </div>
-            
+
             <div class="@if(!empty($default_purchase_status)) col-sm-4 @else col-sm-3 @endif">
               <div class="form-group">
                 {!! Form::label('transaction_date', __('purchase.purchase_date') . ':*') !!}
@@ -69,7 +69,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="col-sm-3 @if(!empty($default_purchase_status)) hide @endif">
               <div class="form-group">
                 {!! Form::label('status', __('purchase.purchase_status') . ':*') !!}
@@ -109,10 +109,10 @@
                     <br/>
                     {!! Form::number('pay_term_number', $purchase->pay_term_number, ['class' => 'form-control width-40 pull-left', 'placeholder' => __('contact.pay_term')]); !!}
 
-                    {!! Form::select('pay_term_type', 
-                      ['months' => __('lang_v1.months'), 
-                        'days' => __('lang_v1.days')], 
-                        $purchase->pay_term_type, 
+                    {!! Form::select('pay_term_type',
+                      ['months' => __('lang_v1.months'),
+                        'days' => __('lang_v1.days')],
+                        $purchase->pay_term_type,
                       ['class' => 'form-control width-60 pull-left','placeholder' => __('messages.please_select'), 'id' => 'pay_term_type']); !!}
                   </div>
               </div>
@@ -153,7 +153,7 @@
             </div>
             <div class="col-sm-2">
               <div class="form-group">
-                <button tabindex="-1" type="button" class="btn btn-link btn-modal"data-href="{{action('ProductController@quickAdd')}}" 
+                <button tabindex="-1" type="button" class="btn btn-link btn-modal"data-href="{{action('ProductController@quickAdd')}}"
                       data-container=".quick_add_product_modal"><i class="fa fa-plus"></i> @lang( 'product.add_new_product' ) </button>
               </div>
             </div>
@@ -177,6 +177,14 @@
                     <td class="col-md-5 text-left">
                       <span id="total_st_before_tax" class="display_currency"></span>
                       <input type="hidden" id="st_before_tax_input" value=0>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="col-md-7 text-right">@lang( 'purchase.net_total_amount_without_discount' ):</th>
+                    <td class="col-md-5 text-left">
+                      <span id="total_subtotal_discount_input" class="display_currency"></span>
+                      <!-- This is total before purchase tax-->
+                      {{-- <input type="hidden" id="total_subtotal_discount_input" value=0  name="total_before_tax"> --}}
                     </td>
                   </tr>
                   <tr>
@@ -208,9 +216,9 @@
                     <td class="col-md-3">
                       <div class="form-group">
                       {!! Form::label('discount_amount', __( 'purchase.discount_amount' ) . ':') !!}
-                      {!! Form::text('discount_amount', 
+                      {!! Form::text('discount_amount',
 
-                      ($purchase->discount_type == 'fixed' ? 
+                      ($purchase->discount_type == 'fixed' ?
                         number_format($purchase->discount_amount/$purchase->exchange_rate, $currency_precision, $currency_details->decimal_separator, $currency_details->thousand_separator)
                       :
                         number_format($purchase->discount_amount, $currency_precision, $currency_details->decimal_separator, $currency_details->thousand_separator)
@@ -222,7 +230,7 @@
                       &nbsp;
                     </td>
                     <td class="col-md-3">
-                      <b>Discount:</b>(-) 
+                      <b>Discount:</b>(-)
                       <span id="discount_calculated_amount" class="display_currency">0</span>
                     </td>
                   </tr>
@@ -245,7 +253,7 @@
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>
-                      <b>@lang( 'purchase.purchase_tax' ):</b>(+) 
+                      <b>@lang( 'purchase.purchase_tax' ):</b>(+)
                       <span id="tax_calculated_amount" class="display_currency">0</span>
                     </td>
                   </tr>
@@ -289,7 +297,7 @@
             </div>
         </div>
     @endcomponent
-  
+
     <div class="row">
         <div class="col-sm-12">
           <button type="button" id="submit_purchase_form" class="btn btn-primary pull-right btn-flat">@lang('messages.update')</button>
