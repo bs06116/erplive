@@ -110,6 +110,21 @@
             </td>
             <td>
                 {!! Form::text('purchases[' . $loop->index . '][pp_without_discount]', number_format($purchase_line->pp_without_discount/$purchase->exchange_rate, $currency_precision, $currency_details->decimal_separator, $currency_details->thousand_separator), ['class' => 'form-control input-sm purchase_unit_cost_without_discount input_number', 'required']); !!}
+                @if(!empty($price_group))
+                <br>
+                <input type="hidden" class="variation_id" value="{{$purchase_line->variation_id }}">
+
+                <select name="purchases[{{$loop->index }}][price_group_id]" class="form-control input-sm price_group">
+                   <option>Select Price Group</option>
+                    @foreach($price_group as $key => $value)
+                        <option value="{{$value['id']}}" data-multiplier="{{$value['name']}}">
+                            {{$value['name']}}
+                        </option>
+                    @endforeach
+                </select>
+                <br>
+                <input name="purchases[{{$loop->index }}][input_group_price]" class="input_price_group"/>
+                @endif
             </td>
             <td>
                 {!! Form::text('purchases[' . $loop->index . '][discount_percent]', number_format($purchase_line->discount_percent, $currency_precision, $currency_details->decimal_separator, $currency_details->thousand_separator), ['class' => 'form-control input-sm inline_discounts input_number']); !!} <b>%</b>

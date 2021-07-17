@@ -314,6 +314,8 @@ return [
    'unit_sell_price' => 'Unit Sell Price',
    'prefixes' => 'Prefixes',
    'purchase_order' => 'Purchase Order',
+   'import_purchases' => 'Import Purchase',
+
    'stock_transfer' => 'Stock Transfer',
    'purchase_payment' =>'Purchase Payment',
    'sell_payment' =>'Sell Payment',

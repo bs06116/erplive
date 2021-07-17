@@ -23,6 +23,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use Spatie\Activitylog\Models\Activity;
+use App\SellingPriceGroup;
+use App\VariationGroupPrice;
 
 class PurchaseController extends Controller
 {
@@ -292,6 +294,7 @@ class PurchaseController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
+
         try {
             $business_id = $request->session()->get('user.business_id');
 
@@ -300,7 +303,9 @@ class PurchaseController extends Controller
                 return $this->moduleUtil->expiredResponse(action('PurchaseController@index'));
             }
 
-            $transaction_data = $request->only([ 'ref_no', 'status', 'contact_id', 'transaction_date', 'total_before_tax', 'location_id','discount_type', 'discount_amount','tax_id', 'tax_amount', 'shipping_details', 'shipping_charges', 'final_total', 'additional_notes', 'exchange_rate', 'pay_term_number', 'pay_term_type', 'purchase_order_ids']);
+            $transaction_data = $request->only([ 'ref_no', 'status', 'contact_id', 'transaction_date', 'total_before_tax', 'location_id',
+            'discount_type', 'discount_amount','tax_id', 'tax_amount', 'shipping_details', 'shipping_charges', 'final_total',
+            'additional_notes', 'exchange_rate', 'pay_term_number', 'pay_term_type', 'purchase_order_ids']);
 
             $exchange_rate = $transaction_data['exchange_rate'];
 
@@ -577,6 +582,7 @@ class PurchaseController extends Controller
                                         })
                                         ->pluck('ref_no', 'id');
         }
+        $price_group =  SellingPriceGroup::where('business_id', $business_id)->where('is_active',1)->get();
 
         return view('purchase.edit')
             ->with(compact(
@@ -591,7 +597,8 @@ class PurchaseController extends Controller
                 'types',
                 'shortcuts',
                 'purchase_orders',
-                'common_settings'
+                'common_settings',
+                'price_group'
             ));
     }
 
@@ -958,6 +965,15 @@ class PurchaseController extends Controller
             return json_encode($result);
         }
     }
+    public function getGroupPrice(Request $request){
+       $price_group_id = $request->input('group_id');
+       $variation_id = $request->input('variation_id');
+       $result = VariationGroupPrice::where('variation_id', $variation_id)->where('price_group_id', $price_group_id)->first();
+        if ($result) {
+            return 	$result->price_inc_tax;
+        }
+
+    }
 
     /**
      * Retrieves products list.
@@ -1003,7 +1019,11 @@ class PurchaseController extends Controller
                 $taxes = TaxRate::where('business_id', $business_id)
                             ->ExcludeForTaxGroup()
                             ->get();
+                 $price_group =  SellingPriceGroup::where('business_id', $business_id)->where('is_active',1)->get();
 
+                 //  $variation = Product::where('business_id', $business_id)
+                //  ->with(['variations'])
+                //  ->findOrFail($product_id);
                 return view('purchase.partials.purchase_entry_row')
                     ->with(compact(
                         'product',
@@ -1014,7 +1034,8 @@ class PurchaseController extends Controller
                         'currency_details',
                         'hide_tax',
                         'sub_units',
-                        'is_purchase_order'
+                        'is_purchase_order',
+                        'price_group'
                     ));
             }
         }

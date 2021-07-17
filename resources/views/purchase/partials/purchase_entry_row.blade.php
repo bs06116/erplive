@@ -64,6 +64,20 @@
                 {{ $product->unit->short_name }}
             @endif
         </td>
+        {{-- <td>
+
+
+            @if(!empty($price_group))
+                <select name="pricegroup[{{$row_count}}][price_group_id]" class="form-control input-sm sub_unit">
+                    @foreach($price_group as $key => $value)
+                        <option value="{{$key}}" data-multiplier="{{$value['name']}}">
+                            {{$value['name']}}
+                        </option>
+                    @endforeach
+                </select>
+
+            @endif
+        </td> --}}
         <td>
             @php
                 $pp_without_discount = !empty($purchase_order_line) ? $purchase_order_line->pp_without_discount/$purchase_order->exchange_rate : $variation->default_purchase_price;
@@ -76,6 +90,21 @@
             @endphp
             {!! Form::text('purchases[' . $row_count . '][pp_without_discount]',
             number_format($pp_without_discount, $currency_precision, $currency_details->decimal_separator, $currency_details->thousand_separator), ['class' => 'form-control input-sm purchase_unit_cost_without_discount input_number', 'required']); !!}
+             @if(!empty($price_group))
+             <br>
+             <input type="hidden" class="variation_id" value="{{$variation->id}}">
+
+             <select name="purchases[{{$row_count}}][price_group_id]" class="form-control input-sm price_group">
+                <option>Select Price Group</option>
+                 @foreach($price_group as $key => $value)
+                     <option value="{{$value['id']}}" data-multiplier="{{$value['name']}}">
+                         {{$value['name']}}
+                     </option>
+                 @endforeach
+             </select>
+             <input name="purchases[{{$row_count}}][input_group_price]" class="input_price_group"/>
+
+         @endif
         </td>
         <td>
             {!! Form::text('purchases[' . $row_count . '][discount_percent]', number_format($discount_percent, $currency_precision, $currency_details->decimal_separator, $currency_details->thousand_separator), ['class' => 'form-control input-sm inline_discounts input_number']); !!}

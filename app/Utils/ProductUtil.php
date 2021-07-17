@@ -21,6 +21,7 @@ use App\VariationLocationDetails;
 use App\VariationTemplate;
 use App\VariationValueTemplate;
 use Illuminate\Support\Facades\DB;
+use App\SellingPriceGroup;
 
 class ProductUtil extends Util
 {
@@ -1223,6 +1224,10 @@ class ProductUtil extends Util
 
             //Update purchase order line quantity received
             $this->updatePurchaseOrderLine($purchase_line->purchase_order_line_id, $purchase_line->quantity, $old_qty);
+            if(isset($data['variation_id']) && isset($data['input_group_price']) && !empty($data['input_group_price'])) {
+                DB::table('variation_group_prices')->where('variation_id', $data['variation_id'])->where('price_group_id', $data['price_group_id'])->update(['price_inc_tax' => $data['input_group_price']]);
+            }
+
         }
 
         //unset deleted purchase lines
