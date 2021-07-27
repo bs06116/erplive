@@ -20,14 +20,14 @@
                         {{ session('notification.msg') }}
                     @endif
                 </div>
-            </div>  
-        </div>     
+            </div>
+        </div>
     @endif
     @if($is_employee_allowed)
         <div class="row">
             <div class="col-md-12 text-center">
-                <button 
-                    type="button" 
+                <button
+                    type="button"
                     class="btn btn-app bg-blue clock_in_btn
                         @if(!empty($clock_in))
                             hide
@@ -38,13 +38,13 @@
                     <i class="fas fa-arrow-circle-down"></i> @lang('essentials::lang.clock_in')
                 </button>
             &nbsp;&nbsp;&nbsp;
-                <button 
-                    type="button" 
+                <button
+                    type="button"
                     class="btn btn-app bg-yellow clock_out_btn
                         @if(empty($clock_in))
                             hide
                         @endif
-                    "  
+                    "
                     data-type="clock_out"
                     >
                     <i class="fas fa-hourglass-half fa-spin"></i> @lang('essentials::lang.clock_out')
@@ -60,7 +60,7 @@
         <div class="col-md-12">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    @if($is_admin)
+                    @can('essentials.crud_all_attendance')
                         <li class="active">
                             <a href="#shifts_tab" data-toggle="tab" aria-expanded="true">
                                 <i class="fas fa-user-clock" aria-hidden="true"></i>
@@ -68,24 +68,24 @@
                                 @show_tooltip(__('essentials::lang.shift_datatable_tooltip'))
                             </a>
                         </li>
-                    @endif
-                    <li @if(!$is_admin) class="active" @endif>
+                    @endcan
+                    <li @if(!auth()->user()->can('essentials.crud_all_attendance')) class="active" @endif>
                         <a href="#attendance_tab" data-toggle="tab" aria-expanded="true"><i class="fas fa-check-square" aria-hidden="true"></i> @lang( 'essentials::lang.all_attendance' )</a>
                     </li>
+                    @can('essentials.crud_all_attendance')
                     <li>
                         <a href="#attendance_by_shift_tab" data-toggle="tab" aria-expanded="true"><i class="fas fa-user-check" aria-hidden="true"></i> @lang('essentials::lang.attendance_by_shift')</a>
                     </li>
                     <li>
                         <a href="#attendance_by_date_tab" data-toggle="tab" aria-expanded="true"><i class="fas fa-calendar" aria-hidden="true"></i> @lang('essentials::lang.attendance_by_date')</a>
                     </li>
-                    @if($is_admin)
-                        <li>
-                            <a href="#import_attendance_tab" data-toggle="tab" aria-expanded="true"><i class="fas fa-download" aria-hidden="true"></i> @lang('essentials::lang.import_attendance')</a>
-                        </li>
-                    @endif
+                    <li>
+                        <a href="#import_attendance_tab" data-toggle="tab" aria-expanded="true"><i class="fas fa-download" aria-hidden="true"></i> @lang('essentials::lang.import_attendance')</a>
+                    </li>
+                    @endcan
                 </ul>
                 <div class="tab-content">
-                    @if($is_admin)
+                    @can('essentials.crud_all_attendance')
                         <div class="tab-pane active" id="shifts_tab">
                             <button type="button" class="btn btn-primary pull-right"  data-toggle="modal" data-target="#shift_modal"> <i class="fa fa-plus"></i> @lang( 'messages.add' )</button>
                             <br>
@@ -106,31 +106,31 @@
                                 </table>
                             </div>
                         </div>
-                    @endif
-                    <div class="tab-pane @if(!$is_admin) active @endif" id="attendance_tab">
+                    @endcan
+                    <div class="tab-pane @if(!auth()->user()->can('essentials.crud_all_attendance')) active @endif" id="attendance_tab">
                         <div class="row">
-                            @if($is_admin)
+                            @can('essentials.crud_all_attendance')
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         {!! Form::label('employee_id', __('essentials::lang.employee') . ':') !!}
                                         {!! Form::select('employee_id', $employees, null, ['class' => 'form-control select2', 'style' => 'width:100%', 'placeholder' => __('lang_v1.all')]); !!}
                                     </div>
                                 </div>
-                            @endif
+                            @endcan
                             <div class="col-md-3">
                                 <div class="form-group">
                                     {!! Form::label('date_range', __('report.date_range') . ':') !!}
                                     {!! Form::text('date_range', null, ['placeholder' => __('lang_v1.select_a_date_range'), 'class' => 'form-control', 'readonly']); !!}
                                 </div>
                             </div>
-                            @if($is_admin)
+                            @can('essentials.crud_all_attendance')
                             <div class="col-md-6 spacer">
                                 <button type="button" class="btn btn-primary btn-modal pull-right" data-href="{{action('\Modules\Essentials\Http\Controllers\AttendanceController@create')}}" data-container="#attendance_modal">
                                     <i class="fa fa-plus"></i>
                                     @lang( 'essentials::lang.add_latest_attendance' )
                                 </button>
                             </div>
-                            @endif
+                            @endcan
                         </div>
                         <div id="user_attendance_summary" class="hide">
                             <h3>
@@ -140,53 +140,52 @@
                         </div>
                         <br><br>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped" id="attendance_table" style="width: 100%;">
+                            <table class="table table-bordered table-striped" id="shift_table" style="width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>@lang( 'lang_v1.date' )</th>
                                         <th>@lang('essentials::lang.employee')</th>
-                                        <th>@lang('essentials::lang.clock_in_clock_out')</th>
+                                        <th>@lang('essentials::lang.clock_in')</th>
+                                        <th>@lang('essentials::lang.clock_out')</th>
                                         <th>@lang('essentials::lang.work_duration')</th>
                                         <th>@lang('essentials::lang.ip_address')</th>
-                                        <th>@lang('essentials::lang.clock_in_note')</th>
-                                        <th>@lang('essentials::lang.clock_out_note')</th>
                                         <th>@lang('essentials::lang.shift')</th>
-                                        @if($is_admin)
+                                        @can('essentials.crud_all_attendance')
                                             <th>@lang( 'messages.action' )</th>
-                                        @endif
+                                        @endcan
                                     </tr>
                                 </thead>
                             </table>
                         </div>
                     </div>
-                    
+
                     <div class="tab-pane" id="attendance_by_shift_tab">
                         @include('essentials::attendance.attendance_by_shift')
                     </div>
                     <div class="tab-pane" id="attendance_by_date_tab">
                         @include('essentials::attendance.attendance_by_date')
                     </div>
-                    @if($is_admin)
+                    @can('essentials.crud_all_attendance')
                         <div class="tab-pane" id="import_attendance_tab">
                             @include('essentials::attendance.import_attendance')
                         </div>
-                    @endif
+                    @endcan
                 </div>
             </div>
         </div>
     </div>
-    
+
 </section>
 <!-- /.content -->
-<div class="modal fade" id="attendance_modal" tabindex="-1" role="dialog" 
+<div class="modal fade" id="attendance_modal" tabindex="-1" role="dialog"
         aria-labelledby="gridSystemModalLabel"></div>
-<div class="modal fade" id="edit_attendance_modal" tabindex="-1" role="dialog" 
+<div class="modal fade" id="edit_attendance_modal" tabindex="-1" role="dialog"
         aria-labelledby="gridSystemModalLabel"></div>
-<div class="modal fade" id="user_shift_modal" tabindex="-1" role="dialog" 
+<div class="modal fade" id="user_shift_modal" tabindex="-1" role="dialog"
         aria-labelledby="gridSystemModalLabel"></div>
-<div class="modal fade" id="edit_shift_modal" tabindex="-1" role="dialog" 
+<div class="modal fade" id="edit_shift_modal" tabindex="-1" role="dialog"
         aria-labelledby="gridSystemModalLabel"></div>
-<div class="modal fade" id="shift_modal" tabindex="-1" role="dialog" 
+<div class="modal fade" id="shift_modal" tabindex="-1" role="dialog"
         aria-labelledby="gridSystemModalLabel">
     @include('essentials::attendance.shift_modal')
 </div>
@@ -216,15 +215,14 @@
                 columns: [
                     { data: 'date', name: 'clock_in_time' },
                     { data: 'user', name: 'user' },
-                    { data: 'clock_in_clock_out', name: 'clock_in_time' },
+                    { data: 'clock_in', name: 'clock_in', orderable: false, searchable: false},
+                    { data: 'clock_out', name: 'clock_out', orderable: false, searchable: false},
                     { data: 'work_duration', name: 'work_duration', orderable: false, searchable: false},
                     { data: 'ip_address', name: 'ip_address'},
-                    { data: 'clock_in_note', name: 'clock_in_note'},
-                    { data: 'clock_out_note', name: 'clock_out_note'},
                     { data: 'shift_name', name: 'es.name'},
-                    @if($is_admin)
+                    @can('essentials.crud_all_attendance')
                         { data: 'action', name: 'action', orderable: false, searchable: false},
-                    @endif
+                    @endcan
                 ],
             });
 
@@ -271,7 +269,7 @@
                 get_attendance_summary();
             });
 
-            @if(!$is_admin)
+            @if(!auth()->user()->can('essentials.crud_all_attendance'))
                 get_attendance_summary();
             @endif
 
@@ -320,12 +318,37 @@
                         $('div.time_div').fadeOut();
                     }
                 });
+
+                //toggle auto clockout
+                if($('#is_allowed_auto_clockout').is(':checked')) {
+                    $("div.enable_auto_clock_out_time").show();
+                } else {
+                    $("div.enable_auto_clock_out_time").hide();
+                }
+
+                $('#is_allowed_auto_clockout').on('change', function(){
+                    if ($(this).is(':checked')) {
+                        $("div.enable_auto_clock_out_time").show();
+                    } else {
+                       $("div.enable_auto_clock_out_time").hide();
+                    }
+                });
+
+                $('#shift_modal #auto_clockout_time, #edit_shift_modal #auto_clockout_time').datetimepicker({
+                    format: moment_time_format,
+                    stepping: 30,
+                    ignoreReadonly: true,
+                });
             });
             $('#shift_modal, #edit_shift_modal').on('hidden.bs.modal', function(e) {
                 $('#shift_modal #start_time').data("DateTimePicker").destroy();
                 $('#shift_modal #end_time').data("DateTimePicker").destroy();
                 $('#add_shift_form')[0].reset();
                 $('#add_shift_form').find('button[type="submit"]').attr('disabled', false);
+
+                $('#is_allowed_auto_clockout').attr('checked', false);
+                $('#auto_clockout_time').data("DateTimePicker").destroy();
+                $("div.enable_auto_clock_out_time").hide();
             });
             $('#user_shift_modal').on('shown.bs.modal', function(e) {
                 $('#user_shift_modal').find('.date_picker').each( function(){
@@ -336,7 +359,7 @@
                 });
             });
 
-            @if($is_admin)
+            @can('essentials.crud_all_attendance')
                 get_attendance_by_shift();
                 $('#attendance_by_shift_date_filter').datetimepicker({
                     format: moment_date_format,
@@ -355,7 +378,7 @@
                 $(document).on('change', '#attendance_by_date_filter', function(){
                     get_attendance_by_date();
                 });
-            @endif
+            @endcan
 
             $('a[href="#attendance_tab"]').click(function(){
                 attendance_table.ajax.reload();
@@ -456,7 +479,7 @@
         function get_attendance_summary() {
             $('#user_attendance_summary').addClass('hide');
             var user_id = $('#employee_id').length ? $('#employee_id').val() : '';
-            
+
             var start = $('#date_range').data('daterangepicker').startDate.format('YYYY-MM-DD');
             var end = $('#date_range').data('daterangepicker').endDate.format('YYYY-MM-DD');
             $.ajax({
@@ -492,7 +515,7 @@
                     if ($('div#edit_shift_modal').hasClass('in')) {
                         $('div#edit_shift_modal').modal("hide");
                     } else if ($('div#shift_modal').hasClass('in')) {
-                        $('div#shift_modal').modal('hide');    
+                        $('div#shift_modal').modal('hide');
                     }
                     toastr.success(result.msg);
                     shift_table.ajax.reload();
@@ -561,7 +584,7 @@
                 count++;
             }
         });
-        
+
         if (user_id && count == 0) {
             $.ajax({
                 url: "/hrm/get-attendance-row/" + user_id,
