@@ -59,7 +59,6 @@ class InstallController extends Controller
     {
         config(['app.debug' => true]);
         Artisan::call('config:clear');
-        Artisan::call('cache:clear');
     }
 
     //Updating

@@ -11,73 +11,160 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-        @component('components.filters', ['title' => __('report.filters'), 'class' => 'box-solid'])
-            @if($is_admin)
-            <div class="col-md-3">
-                <div class="form-group">
-                    {!! Form::label('user_id_filter', __('essentials::lang.employee') . ':') !!}
-                    {!! Form::select('user_id_filter', $employees, null, ['class' => 'form-control select2', 'style' => 'width:100%', 'placeholder' => __('lang_v1.all')]); !!}
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    {!! Form::label('department_id', __('essentials::lang.department') . ':') !!}
-                    {!! Form::select('department_id', $departments, null, ['class' => 'form-control select2', 'style' => 'width:100%', 'placeholder' => __('lang_v1.all')]); !!}
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    {!! Form::label('designation_id', __('essentials::lang.designation') . ':') !!}
-                    {!! Form::select('designation_id', $designations, null, ['class' => 'form-control select2', 'style' => 'width:100%', 'placeholder' => __('lang_v1.all')]); !!}
-                </div>
-            </div>
-            @endif
-            <div class="col-md-3">
-                <div class="form-group">
-                    {!! Form::label('month_year_filter', __( 'essentials::lang.month_year' ) . ':') !!}
-                    <div class="input-group">
-                        {!! Form::text('month_year_filter', null, ['class' => 'form-control', 'placeholder' => __( 'essentials::lang.month_year' ) ]); !!}
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                    </div>
-                </div>
-            </div>
-        @endcomponent
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            @component('components.widget', ['class' => 'box-solid', 'title' => __( 'essentials::lang.all_payrolls' )])
-                @if($is_admin)
-                    @slot('tool')
-                        <div class="box-tools">
-                            <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#payroll_modal">
-                                <i class="fa fa-plus"></i> @lang( 'messages.add' )</button>
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#payroll_tab" data-toggle="tab" aria-expanded="true">
+                            <i class="fas fa-coins" aria-hidden="true"></i>
+                            @lang('essentials::lang.all_payrolls')
+                        </a>
+                    </li>
+                    @if($is_admin)
+                        <li>
+                            <a href="#payroll_group_tab" data-toggle="tab" aria-expanded="true">
+                                <i class="fas fa-layer-group" aria-hidden="true"></i>
+                                @lang('essentials::lang.all_payroll_groups')
+                            </a>
+                        </li>
+                    @endif
+                    @if(auth()->user()->can('essentials.view_allowance_and_deduction') || auth()->user()->can('essentials.add_allowance_and_deduction'))
+                        <li>
+                            <a href="#pay_component_tab" data-toggle="tab" aria-expanded="true">
+                                <i class="fab fa-gg-circle" aria-hidden="true"></i>
+                                @lang( 'essentials::lang.pay_components' )
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="payroll_tab">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @component('components.filters', ['title' => __('report.filters'), 'class' => 'box-solid', 'closed' => true])
+                                    @if($is_admin)
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                {!! Form::label('user_id_filter', __('essentials::lang.employee') . ':') !!}
+                                                {!! Form::select('user_id_filter', $employees, null, ['class' => 'form-control select2', 'style' => 'width:100%', 'placeholder' => __('lang_v1.all')]); !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                {!! Form::label('department_id', __('essentials::lang.department') . ':') !!}
+                                                {!! Form::select('department_id', $departments, null, ['class' => 'form-control select2', 'style' => 'width:100%', 'placeholder' => __('lang_v1.all')]); !!}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                {!! Form::label('designation_id', __('essentials::lang.designation') . ':') !!}
+                                                {!! Form::select('designation_id', $designations, null, ['class' => 'form-control select2', 'style' => 'width:100%', 'placeholder' => __('lang_v1.all')]); !!}
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            {!! Form::label('month_year_filter', __( 'essentials::lang.month_year' ) . ':') !!}
+                                            <div class="input-group">
+                                                {!! Form::text('month_year_filter', null, ['class' => 'form-control', 'placeholder' => __( 'essentials::lang.month_year' ) ]); !!}
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endcomponent
+                            </div>
                         </div>
-                    @endslot
-                @endif
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped" id="payrolls_table">
-                        <thead>
-                            <tr>
-                                <th>@lang( 'essentials::lang.employee' )</th>
-                                <th>@lang( 'essentials::lang.department' )</th>
-                                <th>@lang( 'essentials::lang.designation' )</th>
-                                <th>@lang( 'essentials::lang.month_year' )</th>
-                                <th>@lang( 'purchase.ref_no' )</th>
-                                <th>@lang( 'sale.total_amount' )</th>
-                                <th>@lang( 'sale.payment_status' )</th>
-                                <th>@lang( 'messages.action' )</th>
-                            </tr>
-                        </thead>
-                    </table>
+                        <div class="row">
+                            @if($is_admin)
+                                <div class="col-md-12">
+                                    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#payroll_modal">
+                                        <i class="fa fa-plus"></i>
+                                        @lang( 'messages.add' )
+                                    </button>
+                                </div>
+                                <br><br><br>
+                            @endif
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped" id="payrolls_table" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>@lang( 'essentials::lang.employee' )</th>
+                                                <th>@lang( 'essentials::lang.department' )</th>
+                                                <th>@lang( 'essentials::lang.designation' )</th>
+                                                <th>@lang( 'essentials::lang.month_year' )</th>
+                                                <th>@lang( 'purchase.ref_no' )</th>
+                                                <th>@lang( 'sale.total_amount' )</th>
+                                                <th>@lang( 'sale.payment_status' )</th>
+                                                <th>@lang( 'messages.action' )</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                    @if($is_admin)
+                        <div class="tab-pane" id="payroll_group_tab">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped" id="payroll_group_table" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th>@lang('essentials::lang.name')</th>
+                                                    <th>@lang('sale.status')</th>
+                                                    <th>@lang( 'sale.payment_status' )</th>
+                                                    <th>@lang('essentials::lang.total_gross_amount')</th>
+                                                    <th>@lang('lang_v1.added_by')</th>
+                                                    <th>@lang('lang_v1.created_at')</th>
+                                                    <th>@lang( 'messages.action' )</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    @if(auth()->user()->can('essentials.view_allowance_and_deduction') || auth()->user()->can('essentials.add_allowance_and_deduction'))
+                        <div class="tab-pane" id="pay_component_tab">
+                            <div class="row">
+                                @can('essentials.add_allowance_and_deduction')
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary btn-modal pull-right" data-href="{{action('\Modules\Essentials\Http\Controllers\EssentialsAllowanceAndDeductionController@create')}}" data-container="#add_allowance_deduction_modal">
+                                                <i class="fa fa-plus"></i> @lang( 'messages.add' )
+                                        </button>
+                                    </div><br><br><br>
+                                @endcan
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped" id="ad_pc_table" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th>@lang( 'lang_v1.description' )</th>
+                                                    <th>@lang( 'lang_v1.type' )</th>
+                                                    <th>@lang( 'sale.amount' )</th>
+                                                    <th>@lang( 'essentials::lang.applicable_date' )</th>
+                                                    <th>@lang( 'essentials::lang.employee' )</th>
+                                                    <th>@lang( 'messages.action' )</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="user_leave_summary"></div>
+                        </div>
+                    @endif
                 </div>
-            @endcomponent
+            </div>
         </div>
     </div>
     @if($is_admin)
         @includeIf('essentials::payroll.payroll_modal')
     @endif
-
+    <div class="modal fade" id="add_allowance_deduction_modal" tabindex="-1" role="dialog"
+ aria-labelledby="gridSystemModalLabel"></div>
 </section>
 <!-- /.content -->
 <!-- /.content -->
@@ -119,6 +206,7 @@
                         searchable: false,
                     },
                 ],
+                aaSorting: [[4, 'desc']],
                 columns: [
                     { data: 'user', name: 'user' },
                     { data: 'department', name: 'dept.name' },
@@ -184,6 +272,103 @@
                     }
                 });
             });
+
+            //pay components
+            @if(auth()->user()->can('essentials.view_allowance_and_deduction') || auth()->user()->can('essentials.add_allowance_and_deduction'))
+                $('#add_allowance_deduction_modal').on('shown.bs.modal', function(e) {
+                    var $p = $(this);
+                    $('#add_allowance_deduction_modal .select2').select2({dropdownParent:$p});
+                    $('#add_allowance_deduction_modal #applicable_date').datepicker();
+                    
+                });
+
+                $(document).on('submit', 'form#add_allowance_form', function(e) {
+                    e.preventDefault();
+                    $(this).find('button[type="submit"]').attr('disabled', true);
+                    var data = $(this).serialize();
+
+                    $.ajax({
+                        method: $(this).attr('method'),
+                        url: $(this).attr('action'),
+                        dataType: 'json',
+                        data: data,
+                        success: function(result) {
+                            if (result.success == true) {
+                                $('div#add_allowance_deduction_modal').modal('hide');
+                                toastr.success(result.msg);
+                                ad_pc_table.ajax.reload();
+                            } else {
+                                toastr.error(result.msg);
+                            }
+                        },
+                    });
+                });
+                
+                ad_pc_table = $('#ad_pc_table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{action('\Modules\Essentials\Http\Controllers\EssentialsAllowanceAndDeductionController@index')}}",
+                    columns: [
+                        { data: 'description', name: 'description' },
+                        { data: 'type', name: 'type' },
+                        { data: 'amount', name: 'amount' },
+                        { data: 'applicable_date', name: 'applicable_date' },
+                        { data: 'employees', searchable: false, orderable: false },
+                        { data: 'action', name: 'action' }
+                    ],
+                    fnDrawCallback: function(oSettings) {
+                        __currency_convert_recursively($('#ad_pc_table'));
+                    },
+                });
+
+                $(document).on('click', '.delete-allowance', function(e) {
+                    e.preventDefault();
+                    swal({
+                        title: LANG.sure,
+                        icon: 'warning',
+                        buttons: true,
+                        dangerMode: true,
+                    }).then(willDelete => {
+                        if (willDelete) {
+                            var href = $(this).data('href');
+                            var data = $(this).serialize();
+
+                            $.ajax({
+                                method: 'DELETE',
+                                url: href,
+                                dataType: 'json',
+                                data: data,
+                                success: function(result) {
+                                    if (result.success == true) {
+                                        toastr.success(result.msg);
+                                        ad_pc_table.ajax.reload();
+                                    } else {
+                                        toastr.error(result.msg);
+                                    }
+                                },
+                            });
+                        }
+                    });
+                });
+            @endif
+            //payroll groups
+            @if($is_admin)
+                payroll_group_table = $('#payroll_group_table').DataTable({
+                        processing: true,
+                        serverSide: true,
+                        ajax: "{{action('\Modules\Essentials\Http\Controllers\PayrollController@payrollGroupDatatable')}}",
+                        aaSorting: [[5, 'desc']],
+                        columns: [
+                            { data: 'name', name: 'name' },
+                            { data: 'status', name: 'essentials_payroll_groups.status' },
+                            { data: 'payment_status', name: 'essentials_payroll_groups.payment_status' },
+                            { data: 'gross_total', name: 'essentials_payroll_groups.gross_total' },
+                            { data: 'added_by', name: 'added_by' },
+                            { data: 'created_at', name: 'essentials_payroll_groups.created_at', searchable: false},
+                            { data: 'action', name: 'action', searchable: false, orderable: false}
+                        ]
+                    });
+            @endif
         });
     </script>
     <script src="{{ asset('js/payment.js?v=' . $asset_v) }}"></script>

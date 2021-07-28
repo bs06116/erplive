@@ -5,7 +5,7 @@
 
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title">@lang( 'essentials::lang.add_allowance_and_deduction' )</h4>
+      <h4 class="modal-title">@lang( 'essentials::lang.add_pay_component' )</h4>
     </div>
 
     <div class="modal-body">
@@ -21,8 +21,8 @@
 	      	</div>
 
 	      	<div class="form-group col-md-12">
-	        	{!! Form::label('employees', __('essentials::lang.employee') . ':*') !!}
-	          	{!! Form::select('employees[]', $users, null, ['class' => 'form-control select2', 'required', 'multiple' ]); !!}
+	        	{!! Form::label('employees', __('essentials::lang.employee') . ':') !!}
+	          	{!! Form::select('employees[]', $users, null, ['class' => 'form-control select2', 'multiple' ]); !!}
 	      	</div>
 
 	      	<div class="form-group col-md-6">

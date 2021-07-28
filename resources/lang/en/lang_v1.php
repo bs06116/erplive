@@ -481,6 +481,7 @@ return [
     'total_return_tax' => 'Total Return Tax',
     'purchase_return_added_success' => 'Purchase return added successfully',
     'list_purchase_return' => 'List Purchase Return',
+    'import_purchase' => 'Import Purchase',
     'all_purchase_returns' => 'All Purchase Returns',
     'parent_purchase' => 'Parent Purchase',
     'purchase_return_details' => 'Purchase Return Details',
@@ -986,6 +987,8 @@ return [
     'quantity_is_required' => 'Quantity is required',
     'unit_price_is_required' => 'Unit price is required',
     'sales_imported_successfully' => 'Sales imported successfully',
+    'purchase_imported_successfully' => 'Purchase_ imported successfully',
+
     'upload_data_in_excel_format' => 'Upload sales data in excel format',
     'map_columns_with_respective_sales_fields' => 'Choose respective sales fields for each column',
     'choose_location_and_group_by' => 'Choose business location and column by which sell lines will be grouped',

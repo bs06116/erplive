@@ -60,8 +60,12 @@ class EssentialsLeaveController extends Controller
         if (!(auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'essentials_module'))) {
             abort(403, 'Unauthorized action.');
         }
-        $is_admin = $this->moduleUtil->is_admin(auth()->user(), $business_id);
+        $can_crud_all_leave = auth()->user()->can('essentials.crud_all_leave');
+        $can_crud_own_leave = auth()->user()->can('essentials.crud_own_leave');
 
+        if (!$can_crud_all_leave && !$can_crud_own_leave) {
+            abort(403, 'Unauthorized action.');
+        }
         if (request()->ajax()) {
             $leaves = EssentialsLeave::where('essentials_leaves.business_id', $business_id)
                         ->join('users as u', 'u.id', '=', 'essentials_leaves.user_id')
@@ -83,7 +87,7 @@ class EssentialsLeaveController extends Controller
                 $leaves->where('essentials_leaves.user_id', request()->input('user_id'));
             }
 
-            if (!$is_admin && !auth()->user()->can('essentials.approve_leave')) {
+            if (!$can_crud_all_leave && $can_crud_own_leave) {
                 $leaves->where('essentials_leaves.user_id', auth()->user()->id);
             }
 
@@ -105,9 +109,9 @@ class EssentialsLeaveController extends Controller
             return Datatables::of($leaves)
                 ->addColumn(
                     'action',
-                    function ($row) use ($is_admin) {
+                    function ($row) {
                         $html = '';
-                        if ($is_admin) {
+                        if (auth()->user()->can('essentials.crud_all_leave')) {
                             $html .= '<button class="btn btn-xs btn-danger delete-leave" data-href="' . action('\Modules\Essentials\Http\Controllers\EssentialsLeaveController@destroy', [$row->id]) . '"><i class="fa fa-trash"></i> ' . __("messages.delete") . '</button>';
                         }
 
@@ -124,13 +128,13 @@ class EssentialsLeaveController extends Controller
                     $diff += 1;
                     $start_date_formated = $this->moduleUtil->format_date($start_date);
                     $end_date_formated = $this->moduleUtil->format_date($end_date);
-                    return $start_date_formated . ' - ' . $end_date_formated . ' (' . $diff . str_plural(__('lang_v1.day'), $diff).')';
+                    return $start_date_formated . ' - ' . $end_date_formated . ' (' . $diff . \Str::plural(__('lang_v1.day'), $diff).')';
                 })
-                ->editColumn('status', function ($row) use ($is_admin) {
+                ->editColumn('status', function ($row) {
                     $status = '<span class="label ' . $this->leave_statuses[$row->status]['class'] . '">'
                     . $this->leave_statuses[$row->status]['name'] . '</span>';
 
-                    if ($is_admin || auth()->user()->can('essentials.approve_leave')) {
+                    if (auth()->user()->can('essentials.crud_all_leave') || auth()->user()->can('essentials.approve_leave')) {
                         $status = '<a href="#" class="change_status" data-status_note="' . $row->status_note . '" data-leave-id="' . $row->id . '" data-orig-value="' . $row->status . '" data-status-name="' . $this->leave_statuses[$row->status]['name'] . '"> ' . $status . '</a>';
                     }
                     return $status;
@@ -143,14 +147,14 @@ class EssentialsLeaveController extends Controller
                 ->make(true);
         }
         $users = [];
-        if ($is_admin || auth()->user()->can('essentials.approve_leave')) {
+        if ($can_crud_all_leave || auth()->user()->can('essentials.approve_leave')) {
             $users = User::forDropdown($business_id, false);
         }
         $leave_statuses = $this->leave_statuses;
 
         $leave_types = EssentialsLeaveType::forDropdown($business_id);
 
-        return view('essentials::leave.index')->with(compact('leave_statuses', 'users', 'leave_types', 'is_admin'));
+        return view('essentials::leave.index')->with(compact('leave_statuses', 'users', 'leave_types'));
     }
 
     /**
@@ -169,7 +173,7 @@ class EssentialsLeaveController extends Controller
         $instructions = !empty($settings['leave_instructions']) ? $settings['leave_instructions'] : '';
 
         $employees = [];
-        if (auth()->user()->can('essentials.approve_leave')) {
+        if (auth()->user()->can('essentials.crud_all_leave')) {
             $employees = User::forDropdown($business_id, false, false, false, true);
         }
 
@@ -188,6 +192,12 @@ class EssentialsLeaveController extends Controller
         if (!(auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'essentials_module'))) {
             abort(403, 'Unauthorized action.');
         }
+        $can_crud_all_leave = auth()->user()->can('essentials.crud_all_leave');
+        $can_crud_own_leave = auth()->user()->can('essentials.crud_own_leave');
+
+        if (!$can_crud_all_leave && !$can_crud_own_leave) {
+            abort(403, 'Unauthorized action.');
+        }
 
         try {
             $input = $request->only(['essentials_leave_type_id', 'start_date', 'end_date', 'reason']);
@@ -198,7 +208,7 @@ class EssentialsLeaveController extends Controller
             $input['end_date'] = $this->moduleUtil->uf_date($input['end_date']);
 
             DB::beginTransaction();
-            if (auth()->user()->can('essentials.approve_leave') && !empty($request->input('employees'))) {
+            if (auth()->user()->can('essentials.crud_all_leave') && !empty($request->input('employees'))) {
                 foreach ($request->input('employees') as $user_id) {
                     $this->__addLeave($input, $user_id);
                 }
@@ -282,21 +292,18 @@ class EssentialsLeaveController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
+        if (!auth()->user()->can('essentials.crud_all_leave')) {
+            abort(403, 'Unauthorized action.');
+        }
+
         if (request()->ajax()) {
             try {
-                $is_admin = $this->moduleUtil->is_admin(auth()->user(), $business_id);
 
-                if ($is_admin) {
-                    EssentialsLeave::where('business_id', $business_id)->where('id', $id)->delete();
+                EssentialsLeave::where('business_id', $business_id)->where('id', $id)->delete();
 
-                    $output = ['success' => true,
+                $output = ['success' => true,
                                 'msg' => __("lang_v1.deleted_success")
                             ];
-                } else {
-                    $output = ['success' => false,
-                            'msg' => __("messages.something_went_wrong")
-                        ];
-                }
             } catch (\Exception $e) {
                 \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
             

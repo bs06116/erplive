@@ -173,7 +173,7 @@
                 get_leave_summary();
             });
 
-            @if(!$is_admin)
+            @if(!auth()->user()->can('essentials.crud_all_leave'))
                 get_leave_summary();
             @endif
         });

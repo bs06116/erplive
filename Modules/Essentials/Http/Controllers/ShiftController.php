@@ -119,6 +119,12 @@ class ShiftController extends Controller
                 $input['end_time'] = null;
             }
 
+            $input['is_allowed_auto_clockout'] = !empty($request->input('is_allowed_auto_clockout')) ? 1 : 0;
+
+            if (!empty($request->input('auto_clockout_time'))) {
+                $input['auto_clockout_time'] = $this->moduleUtil->uf_time($request->input('auto_clockout_time'));
+            }
+
             $input['business_id'] = $business_id;
 
             Shift::create($input);
@@ -193,6 +199,12 @@ class ShiftController extends Controller
             } else {
                 $input['start_time'] = null;
                 $input['end_time'] = null;
+            }
+
+            $input['is_allowed_auto_clockout'] = !empty($request->input('is_allowed_auto_clockout')) ? 1 : 0;
+
+            if (!empty($request->input('auto_clockout_time'))) {
+                $input['auto_clockout_time'] = $this->moduleUtil->uf_time($request->input('auto_clockout_time'));
             }
 
             if (!empty($input['holidays'])) {

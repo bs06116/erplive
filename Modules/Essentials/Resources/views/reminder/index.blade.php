@@ -64,6 +64,11 @@
 					format: moment_time_format,
 	                ignoreReadonly: true,
 	        });
+
+	        $('form#reminder_form input#end_time').datetimepicker({
+					format: moment_time_format,
+	                ignoreReadonly: true,
+	        });
 		});
 
 		//on hide reset reminder_form

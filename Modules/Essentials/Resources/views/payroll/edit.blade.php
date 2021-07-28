@@ -62,14 +62,14 @@
                             $total_allowances = 0;
                         @endphp
                         @forelse($allowances['allowance_names'] as $key => $value)
-                            @include('essentials::payroll.allowance_and_deduction_row', ['add_button' => $loop->index == 0 ? true : false, 'type' => 'allowance', 'name' => $value, 'value' => $allowances['allowance_amounts'][$key], 'amount_type' => !empty($allowances['allowance_types'][$key]) ? $allowances['allowance_types'][$key] : 'fixed',
+                            @include('essentials::payroll.edit_allowance_and_deduction_row', ['add_button' => $loop->index == 0 ? true : false, 'type' => 'allowance', 'name' => $value, 'value' => $allowances['allowance_amounts'][$key], 'amount_type' => !empty($allowances['allowance_types'][$key]) ? $allowances['allowance_types'][$key] : 'fixed',
                             'percent' => !empty($allowances['allowance_percents'][$key]) ? $allowances['allowance_percents'][$key] : 0])
 
                             @php
                                 $total_allowances += !empty($allowances['allowance_amounts'][$key]) ? $allowances['allowance_amounts'][$key] : 0;
                             @endphp
                         @empty
-                            @include('essentials::payroll.allowance_and_deduction_row', ['add_button' => true, 'type' => 'allowance'])
+                            @include('essentials::payroll.edit_allowance_and_deduction_row', ['add_button' => true, 'type' => 'allowance'])
                         @endforelse
                     </tbody>
                     <tfoot>
@@ -99,14 +99,14 @@
                             $total_deductions = 0;
                         @endphp
                         @forelse($deductions['deduction_names'] as $key => $value)
-                            @include('essentials::payroll.allowance_and_deduction_row', ['add_button' => $loop->index == 0 ? true : false, 'type' => 'deduction', 'name' => $value, 'value' => $deductions['deduction_amounts'][$key], 
+                            @include('essentials::payroll.edit_allowance_and_deduction_row', ['add_button' => $loop->index == 0 ? true : false, 'type' => 'deduction', 'name' => $value, 'value' => $deductions['deduction_amounts'][$key], 
                             'amount_type' => !empty($deductions['deduction_types'][$key]) ? $deductions['deduction_types'][$key] : 'fixed', 'percent' => !empty($deductions['deduction_percents'][$key]) ? $deductions['deduction_percents'][$key] : 0 ])
 
                             @php
                                 $total_deductions += !empty($deductions['deduction_amounts'][$key]) ? $deductions['deduction_amounts'][$key] : 0;
                             @endphp
                         @empty
-                            @include('essentials::payroll.allowance_and_deduction_row', ['add_button' => true, 'type' => 'deduction'])
+                            @include('essentials::payroll.edit_allowance_and_deduction_row', ['add_button' => true, 'type' => 'deduction'])
                         @endforelse
                     </tbody>
                     <tfoot>
@@ -133,5 +133,5 @@
 {!! Form::close() !!}
 @stop
 @section('javascript')
-    @includeIf('essentials::payroll.form_script')
+    @includeIf('essentials::payroll.edit_form_script')
 @endsection

@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="container">
-    
+
     <div class="row">
       <h3 class="text-center">{{ config('app.name', 'POS') }} Installation <small>Step 1 of 3</small></h3>
 
@@ -21,7 +21,7 @@
 
               <ol>
                 <li>
-                  <b>Step-by-Step document</b> - <a href="https://ultimatefosters.com/docs/ultimatepos/getting-started/installing-ultimatepos/" target="_blank">Documentation</a>
+                  {{-- <b>Step-by-Step document</b> - <a href="https://ultimatefosters.com/docs/ultimatepos/getting-started/installing-ultimatepos/" target="_blank">Documentation</a> --}}
                 </li>
                 <li>
                   <b>Application Name</b> - Something short & Meaningful.
@@ -52,7 +52,7 @@
               @include('install.partials.i_service')
 
               @include('install.partials.e_license')
-              
+
               <a href="{{route('install.details')}}" class="btn btn-primary pull-right">I Agree, Let's Go!</a>
             </div>
           <!-- /.box-body -->

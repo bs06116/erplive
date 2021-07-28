@@ -41,7 +41,7 @@
 	@component('components.widget', ['title' => __('essentials::lang.todo_list'), 'icon' => '<i class="ion ion-clipboard"></i>', 'class' => 'box-solid'])
 		@slot('tool')
 			<div class="box-tools">
-				<button class="btn btn-block btn-primary btn-modal" data-href="{{action('\Modules\Essentials\Http\Controllers\ToDoController@create')}}"
+				<button class="btn btn-block btn-primary btn-modal" data-href="{{action('\Modules\Essentials\Http\Controllers\ToDoController@create')}}" 
 				data-container="#task_modal">
 					<i class="fa fa-plus"></i> @lang( 'messages.add' )</a>
 				</button>
@@ -56,7 +56,8 @@
 						<th class="col-md-2"> @lang('essentials::lang.task')</th>
 						<th> @lang('sale.status')</th>
 						<th> @lang('business.start_date')</th>
-						<th>@lang('essentials::lang.end_date')</th>
+						<th> @lang('essentials::lang.end_date')</th>
+						<th> @lang('essentials::lang.estimated_hours')</th>
 						<th> @lang('essentials::lang.assigned_by')</th>
 						<th> @lang('essentials::lang.assigned_to')</th>
 						<th> @lang('essentials::lang.action')</th>
@@ -66,30 +67,12 @@
 		</div>
 	@endcomponent
 </section>
-<div class="modal fade" id="task_modal" tabindex="-1" role="dialog"
-    	aria-labelledby="gridSystemModalLabel">
-</div>
 @include('essentials::todo.update_task_status_modal')
 @endsection
 
 @section('javascript')
 <script type="text/javascript">
-function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
-    if (month.length < 2)
-        month = '0' + month;
-    if (day.length < 2)
-        day = '0' + day;
-
-    return [year, month,day ].join('-');
-}
 	$(document).ready(function(){
-		var startDayYear= formatDate(moment().startOf('month'));
-		var endDayYear= formatDate(moment().endOf('month'));
 		task_table = $('#task_table').DataTable({
 	        processing: true,
 	        serverSide: true,
@@ -99,8 +82,8 @@ function formatDate(date) {
 	        		d.user_id = $('#user_id_filter').length ? $('#user_id_filter').val() : '';
 	        		d.priority = $('#priority_filter').val();
 	        		d.status = $('#status_filter').val();
-	        		var start = startDayYear ;
-	                var end = endDayYear;
+	        		var start = '';
+	                var end = '';
 	                if ($('#date_range_filter').val()) {
 	                    start = $('input#date_range_filter')
 	                        .data('daterangepicker')
@@ -115,7 +98,7 @@ function formatDate(date) {
 	        },
 	        columnDefs: [
 	            {
-	                targets: [6, 7, 8],
+	                targets: [7, 8, 9],
 	                orderable: false,
 	                searchable: false,
 	            },
@@ -128,6 +111,7 @@ function formatDate(date) {
 	            { data: 'status', name: 'status' },
 	            { data: 'date', name: 'date' },
 	            { data: 'end_date', name: 'end_date' },
+	            { data: 'estimated_hours', name: 'estimated_hours' },
 	            { data: 'assigned_by'},
 	            { data: 'users'},
 	            { data: 'action', name: 'action' },
@@ -135,23 +119,14 @@ function formatDate(date) {
 	    });
 
 	    $('#date_range_filter').daterangepicker(
-			// {
-            //         ranges: ranges,
-            //         autoUpdateInput: true,
-            //         startDate: moment().startOf('month'),
-            //         endDate: moment().endOf('month'),
-            //         locale: {
-            //             format: moment_date_format
-            //         }
-            //     },
         dateRangeSettings,
 	        function (start, end) {
-	           $('#date_range_filter').val(start.format(moment_date_format) + ' ~ ' + end.format(moment_date_format));
+	            $('#date_range_filter').val(start.format(moment_date_format) + ' ~ ' + end.format(moment_date_format));
 	           task_table.ajax.reload();
 	        }
 	    );
 	    $('#date_range_filter').on('cancel.daterangepicker', function(ev, picker) {
-	       $('#date_range_filter').val('');
+	        $('#date_range_filter').val('');
 	        task_table.ajax.reload();
 	    });
 
@@ -179,7 +154,7 @@ function formatDate(date) {
 							}
 						}
 					});
-				   }
+				   }	
 			  });
 		});
 
@@ -188,51 +163,6 @@ function formatDate(date) {
 			task_table.ajax.reload();
 		});
 	});
-
-$('#task_modal').on('shown.bs.modal', function() {
-	$('form#task_form .datepicker').datepicker({
-        autoclose: true,
-        format:datepicker_date_format
-    });
-    $('form#task_form .select2').select2({ dropdownParent: $(this) });
-
-	tinymce.init({
-        selector: 'textarea#to_do_description',
-    });
-
-	 //form validation
-	 $("form#task_form").validate();
-});
-
-$('#task_modal').on('hide.bs.modal', function(){
-	tinymce.remove("textarea#to_do_description");
-});
-
-//form submit
-$(document).on('submit', 'form#task_form', function(e){
-	e.preventDefault();
-	var url = $(this).attr("action");
-	var method = $(this).attr("method");
-	var data = $("form#task_form").serialize();
-	var ladda = Ladda.create(document.querySelector('.ladda-button'));
-	ladda.start();
-	$.ajax({
-		method: method,
-		url: url,
-		data: data,
-		dataType: "json",
-		success: function(result){
-			ladda.stop();
-			if(result.success == true){
-				$("#task_modal").modal('hide');
-				toastr.success(result.msg);
-				task_table.ajax.reload();
-			} else {
-				toastr.error(result.msg);
-			}
-		}
-	});
-});
 
 $(document).on('click', '.change_status', function(e){
 	e.preventDefault();
@@ -265,6 +195,18 @@ $(document).on('click', '#update_status_btn', function(){
 		}
 	});
 
+});
+
+$(document).on('click', '.view-shared-docs', function () {
+	var url = $(this).data('href');
+	$.ajax({
+		method: "get",
+		url: url,
+		dataType: "html",
+		success: function(result){
+			$('.view_modal').html(result).modal('show');
+		}
+	});
 });
 </script>
 @endsection

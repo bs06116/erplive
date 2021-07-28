@@ -24,7 +24,8 @@ Route::group(['middleware' => ['web', 'authh', 'auth', 'SetSessionData', 'langua
         Route::get('todo/delete-comment/{id}', 'ToDoController@deleteComment');
         Route::get('todo/delete-document/{id}', 'ToDoController@deleteDocument');
         Route::post('todo/upload-document', 'ToDoController@uploadDocument');
-
+        Route::get('view-todo-{id}-share-docs', 'ToDoController@viewSharedDocs');
+        
         //reminder controller
         Route::resource('reminder', 'ReminderController')->only(['index', 'store', 'edit', 'update', 'destroy', 'show']);
 
@@ -34,6 +35,12 @@ Route::group(['middleware' => ['web', 'authh', 'auth', 'SetSessionData', 'langua
 
         //Allowance and deduction controller
         Route::resource('allowance-deduction', 'EssentialsAllowanceAndDeductionController');
+
+        Route::resource('knowledge-base', 'KnowledgeBaseController');
+
+        Route::get('user-location/{latlng}', 'AttendanceController@getUserLocation');
+
+
     });
 
     Route::group(['prefix' => 'hrm'], function () {
@@ -62,6 +69,13 @@ Route::group(['middleware' => ['web', 'authh', 'auth', 'SetSessionData', 'langua
             'AttendanceController@getUserAttendanceSummary'
         );
 
+        Route::get('/get-allowance-deduction-row', 'PayrollController@getAllowanceAndDeductionRow');
+        Route::get('/payroll-group-datatable', 'PayrollController@payrollGroupDatatable');
+        Route::get('/view/{id}/payroll-group', 'PayrollController@viewPayrollGroup');
+        Route::get('/edit/{id}/payroll-group', 'PayrollController@getEditPayrollGroup');
+        Route::post('/update-payroll-group', 'PayrollController@getUpdatePayrollGroup');
+        Route::get('/payroll-group/{id}/add-payment', 'PayrollController@addPayment');
+        Route::post('/post-payment-payroll-group', 'PayrollController@postAddPayment');
         Route::resource('/payroll', 'PayrollController');
         Route::resource('/holiday', 'EssentialsHolidayController');
 
