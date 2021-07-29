@@ -109,7 +109,7 @@
                     @endcan
                     <div class="tab-pane @if(!auth()->user()->can('essentials.crud_all_attendance')) active @endif" id="attendance_tab">
                         <div class="row">
-                            @can('essentials.crud_all_attendance')
+                         @can('essentials.crud_all_attendance')
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         {!! Form::label('employee_id', __('essentials::lang.employee') . ':') !!}
@@ -140,7 +140,7 @@
                         </div>
                         <br><br>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped" id="shift_table" style="width: 100%;">
+                            <table class="table table-bordered table-striped" id="attendance_table" style="width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>@lang( 'lang_v1.date' )</th>
