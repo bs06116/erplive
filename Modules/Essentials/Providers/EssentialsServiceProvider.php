@@ -5,7 +5,7 @@ namespace Modules\Essentials\Providers;
 use App\Utils\ModuleUtil;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Facades\View;
-
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\ServiceProvider;
 use Modules\Essentials\Entities\EssentialsAttendance;
 
@@ -53,16 +53,18 @@ class EssentialsServiceProvider extends ServiceProvider
             $module_util = new ModuleUtil();
             if($module_util->isModuleInstalled('Essentials')){
                 $business_id = session()->get('user.business_id');
-                $settings = session()->get('business.essentials_settings');
-                $settings = !empty($settings) ? json_decode($settings, true) : [];
-
-                //Check settings if employee are allowed or not.
-                $is_employee_allowed = !empty($settings['allow_users_for_attendance']) ? true : false;
+                
+                //Check if employee are allowed or not to enter own attendance.
+                $is_employee_allowed = auth()->user()->can('essentials.allow_users_for_attendance_from_web');
 
                 //Check if clocked in or not.
-                $clock_in = EssentialsAttendance::where('business_id', $business_id)
+                $clock_in = EssentialsAttendance::where('essentials_attendances.business_id', $business_id)
+                                ->leftjoin('essentials_shifts as es', 'es.id', '=', 'essentials_attendances.essentials_shift_id')
                                 ->where('user_id', auth()->user()->id)
                                 ->whereNull('clock_out_time')
+                                ->select([
+                                    'clock_in_time', 'es.name as shift_name', 'es.start_time', 'es.end_time'
+                                ])
                                 ->first();
             }
 
@@ -71,11 +73,29 @@ class EssentialsServiceProvider extends ServiceProvider
 
         view::composer(['essentials::attendance.clock_in_clock_out_modal',
             'essentials::attendance.create'], function ($view) {
-                $util = new \App\Utils\Util();
-                $ip_address = $util->getUserIpAddr();
+            $util = new \App\Utils\Util();
+            $ip_address = $util->getUserIpAddr();
+            
+            $settings = session()->get('business.essentials_settings');
+            $settings = !empty($settings) ? json_decode($settings, true) : [];
+            $is_location_required = !empty($settings['is_location_required']) ? true : false;
 
-                $view->with(compact('ip_address'));
+            $view->with(compact('ip_address', 'is_location_required'));
+        });
+
+        $this->registerScheduleCommands();
+    }
+
+    public function registerScheduleCommands()
+    {
+        $env = config('app.env');
+        //schedule command for auto clock out user
+        if ($env === 'live') {
+            $this->app->booted(function () {
+                $schedule = $this->app->make(Schedule::class);
+                $schedule->command('pos:autoClockOutUser')->everyThirtyMinutes();
             });
+        }
     }
 
     /**
@@ -85,7 +105,7 @@ class EssentialsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->registerCommands();
     }
 
     /**
@@ -160,5 +180,17 @@ class EssentialsServiceProvider extends ServiceProvider
     public function provides()
     {
         return [];
+    }
+
+    /**
+     * Register commands.
+     *
+     * @return void
+     */
+    protected function registerCommands()
+    {
+        $this->commands([
+            \Modules\Essentials\Console\AutoClockOutUser::class
+        ]);
     }
 }

@@ -64,4 +64,13 @@ class ToDo extends Model
 
         return $priorities;
     }
+
+    /**
+     * Attributes to be logged for activity
+     */
+    public function getLogPropertiesAttribute() {
+        $properties = ['status'];
+
+        return $properties;
+    }
 }

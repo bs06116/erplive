@@ -20,10 +20,15 @@
                         ];
             @endphp
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
               {!! Form::label('name', __('essentials::lang.event_name') . ":*") !!}
 
                       {!! Form::text('name', null, ['class' => 'form-control', 'required']) !!}
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-6">
+              {!! Form::label('repeat', __('essentials::lang.repeat') . ':*') !!}
+              {!! Form::select('repeat', $repeat, null, ['class' => 'form-control','required']) !!}
             </div>
             <div class="col-md-6">
               <div class="form-group">
@@ -38,17 +43,24 @@
             </div>
             <div class="clearfix"></div>
             <div class="col-md-6">
-              {!! Form::label('repeat', __('essentials::lang.repeat') . ':*') !!}
-              {!! Form::select('repeat', $repeat, null, ['class' => 'form-control','required']) !!}
-            </div>
-            <div class="col-md-6">
               <div class="form-group">
-                {!! Form::label('time', __('essentials::lang.time') . ':*') !!}
+                {!! Form::label('time', __('restaurant.start_time') . ':*') !!}
                       <div class='input-group'>
                         <span class="input-group-addon">
                               <span class="glyphicon glyphicon-time"></span>
                           </span>
                 {!! Form::text('time', @format_time('now'), ['class' => 'form-control', 'required', 'id' => 'time', 'readonly']); !!}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                {!! Form::label('time', __('restaurant.end_time') . ':') !!}
+                      <div class='input-group'>
+                        <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-time"></span>
+                          </span>
+                {!! Form::text('end_time', @format_time('now'), ['class' => 'form-control', 'id' => 'end_time', 'readonly']); !!}
                 </div>
               </div>
             </div>

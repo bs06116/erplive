@@ -10,7 +10,6 @@ use Illuminate\Routing\Controller;
 use Modules\Essentials\Entities\Document;
 use Modules\Essentials\Entities\DocumentShare;
 use Modules\Essentials\Notifications\DocumentShareNotification;
-use Spatie\Permission\Models\Role;
 
 class DocumentShareController extends Controller
 {
@@ -46,24 +45,22 @@ class DocumentShareController extends Controller
 
             $users = User::forDropdown($business_id, false);
 
-            $users_role = Role::where('business_id', $business_id)
-                          ->pluck('name', 'id');
+            $roles = $this->moduleUtil->getDropdownForRoles($business_id);
+            
+            $shared_documents = DocumentShare::where('document_id', $id)
+                                ->get()
+                                ->groupBy('value_type');
 
-            $roles = [];
-            foreach ($users_role as $key => $value) {
-                $roles[$key] = str_replace("#".$business_id, '', $value);
+            $shared_role = [];
+            if (!empty($shared_documents['role'])) {
+                $shared_role = $shared_documents['role']->pluck('value')->toArray();
             }
-            
-            //document shared_user
-            $shared_user = DocumentShare::where('document_id', $id)
-                                  ->where('value_type', 'user')
-                                  ->pluck('value');
 
-            //document shared_role
-            $shared_role = DocumentShare::where('document_id', $id)
-                                  ->where('value_type', 'role')
-                                  ->pluck('value');
-            
+            $shared_user = [];
+            if (!empty($shared_documents['user'])) {
+                $shared_user = $shared_documents['user']->pluck('value')->toArray();
+            }
+                        
             return view('essentials::document_share.edit')
                     ->with(compact('users', 'id', 'roles', 'shared_user', 'shared_role', 'type'));
         }

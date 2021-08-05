@@ -50,7 +50,7 @@
 						<span class="input-group-addon">
 							<i class="fa fa-calendar"></i>
 						</span>
-						{!! Form::text('date', @format_date($todo->date), ['class' => 'form-control datepicker text-center', 'required', 'readonly']); !!}
+						{!! Form::text('date', @format_datetime($todo->date), ['class' => 'form-control datepicker text-center', 'required', 'readonly']); !!}
 					</div>
 				</div>
 			</div>
@@ -61,7 +61,7 @@
 						<span class="input-group-addon">
 							<i class="fa fa-calendar"></i>
 						</span>
-						{!! Form::text('end_date', !empty($todo->end_date) ? @format_date($todo->end_date) : '', ['class' => 'form-control datepicker text-center', 'readonly']); !!}
+						{!! Form::text('end_date', !empty($todo->end_date) ? @format_datetime($todo->end_date) : '', ['class' => 'form-control datepicker text-center', 'readonly']); !!}
 					</div>
 				</div>
 			</div>
@@ -85,6 +85,19 @@
 					{!! Form::textarea('description', $todo->description, ['id' => 'to_do_description']); !!}
 				</div>
 	    	</div>
+	    	<div class="col-md-12">
+	        	<div class="form-group">
+                    <label for="media_upload">
+                        @lang('lang_v1.upload_documents'):
+                    </label>
+                    <div class="dropzone" id="media_upload"></div>
+                    {{-- params for media upload --}}
+				    <input type="hidden" id="media_upload_url" value="{{route('attach.medias.to.model')}}">
+				    <input type="hidden" id="model_id" value="{{$todo->id}}">
+				    <input type="hidden" id="model_type" value="Modules\Essentials\Entities\ToDo">
+				    <input type="hidden" id="model_media_type" value="">
+                </div>
+	        </div>
     	</div>
     </div>
 

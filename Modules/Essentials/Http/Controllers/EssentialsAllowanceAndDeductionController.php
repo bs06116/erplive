@@ -40,7 +40,11 @@ class EssentialsAllowanceAndDeductionController extends Controller
     {
         $business_id = request()->session()->get('user.business_id');
 
-        if (!(auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'essentials_module')) || !auth()->user()->can('essentials.add_allowance_and_deduction')) {
+        if (!(auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'essentials_module'))) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        if (!auth()->user()->can('essentials.add_allowance_and_deduction') && !auth()->user()->can('essentials.view_allowance_and_deduction')) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -52,9 +56,11 @@ class EssentialsAllowanceAndDeductionController extends Controller
                     'action',
                     function ($row) {
                         $html = '';
-                        $html .= '<button data-href="' . action('\Modules\Essentials\Http\Controllers\EssentialsAllowanceAndDeductionController@edit', [$row->id]) . '" data-container="#add_allowance_deduction_modal" class="btn-modal btn btn-primary btn-xs"><i class="fa fa-edit" aria-hidden="true"></i> ' . __("messages.edit") . '</button>';
+                        if (auth()->user()->can('essentials.add_allowance_and_deduction')) {
+                            $html .= '<button data-href="' . action('\Modules\Essentials\Http\Controllers\EssentialsAllowanceAndDeductionController@edit', [$row->id]) . '" data-container="#add_allowance_deduction_modal" class="btn-modal btn btn-primary btn-xs"><i class="fa fa-edit" aria-hidden="true"></i> ' . __("messages.edit") . '</button>';
 
-                        $html .= '&nbsp; <button data-href="' . action('\Modules\Essentials\Http\Controllers\EssentialsAllowanceAndDeductionController@destroy', [$row->id]) . '" class="delete-allowance btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i> ' . __("messages.delete") . '</button>';
+                            $html .= '&nbsp; <button data-href="' . action('\Modules\Essentials\Http\Controllers\EssentialsAllowanceAndDeductionController@destroy', [$row->id]) . '" class="delete-allowance btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i> ' . __("messages.delete") . '</button>';
+                        }
 
                         return $html;
                     }
@@ -74,8 +80,6 @@ class EssentialsAllowanceAndDeductionController extends Controller
                 ->rawColumns(['action', 'amount'])
                 ->make(true);
         }
-
-        return view('essentials::allowance_deduction.index');
     }
 
     /**

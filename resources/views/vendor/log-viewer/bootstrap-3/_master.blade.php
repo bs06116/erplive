@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        {{ config('app.name', 'ultimatePOS') }}
+        {{ config('app.name', 'erp.live') }}
     </title>
     <meta name="description" content="LogViewer">
     <meta name="author" content="ARCANEDEV">
@@ -295,7 +295,7 @@
                 </button>
                 <a href="{{ route('log-viewer::dashboard') }}" class="navbar-brand">
                     <i class="fa fa-fw fa-book"></i>
-                    {{config('app.name', 'ultimatePOS')}}
+                    {{config('app.name', 'erp.live')}}
                     Log Viewer
                 </a>
             </div>
@@ -326,7 +326,7 @@
         <div class="container">
             <p class="text-muted pull-right">
                 <small>
-                    {{ config('app.name', 'ultimatePOS') }} - V{{config('author.app_version')}} | Copyright &copy; {{ date('Y') }} All rights reserved.
+                    {{ config('app.name', 'erp.live') }} - V{{config('author.app_version')}} | Copyright &copy; {{ date('Y') }} All rights reserved.
                 </small>
             </p>
         </div>

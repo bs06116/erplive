@@ -40,57 +40,15 @@ class ReminderController extends Controller
         $user_id = request()->session()->get('user.id');
 
         if (request()->ajax()) {
-            $start_date = request()->start;
-            $end_date = request()->end;
-         
-            //reminders
-            $reminders = Reminder::where('business_id', $business_id)
-                               ->where('user_id', $user_id)
-                               ->get();
 
-            $events = [];
-            foreach ($reminders as $reminder) {
-                $reminder_date = $reminder->date;
-                // $time = $this->commonUtil->format_time($reminder->time);
+            $data = [
+                'start_date' => request()->start,
+                'end_date' => request()->end,
+                'user_id' => $user_id,
+                'business_id' => $business_id
+            ];
 
-                if ($reminder->repeat == "every_day" || $reminder->repeat == "every_month" || $reminder->repeat == "every_week") {
-                    while ($reminder_date <= $end_date) {
-                        $date = $reminder_date.' '.$reminder->time;
-                        $events[] = [
-                              'title' => $reminder->name,
-                              'start' => $date,
-                              'end' => $date,
-                              'name' => $reminder->name,
-                              // 'time' => $time,
-                              'repeat' => $reminder->repeat,
-                              'url' => action('\Modules\Essentials\Http\Controllers\ReminderController@show', [$reminder->id]),
-                              'allDay' => false,
-                              ];
-
-                        $dt = strtotime($reminder_date);
-
-                        if ($reminder->repeat == "every_day") {
-                            $reminder_date= date("Y-m-d", strtotime("+1 day", $dt));
-                        } elseif ($reminder->repeat == "every_month") {
-                            $reminder_date= date("Y-m-d", strtotime("+1 month", $dt));
-                        } elseif ($reminder->repeat == "every_week") {
-                            $reminder_date= date("Y-m-d", strtotime("+1 weeks", $dt));
-                        }
-                    }
-                } elseif ($reminder->repeat == "one_time") {
-                    $date = $reminder_date.' '.$reminder->time;
-                    $events[] = [
-                            'title' => $reminder->name,
-                            'start' => $date,
-                            'end' => $date,
-                            'name' => $reminder->name,
-                            // 'time' => $time,
-                            'repeat' => $reminder->repeat,
-                            'url' => action('\Modules\Essentials\Http\Controllers\ReminderController@show', [$reminder->id]),
-                            'allDay' => false,
-                            ];
-                }
-            }
+            $events = Reminder::getReminders($data);
           
             return $events;
         }
@@ -114,12 +72,14 @@ class ReminderController extends Controller
             try {
                 $user_id = $request->session()->get('user.id');
 
-                $input = $request->only(['name', 'date', 'repeat', 'time']);
+                $input = $request->only(['name', 'date', 'repeat', 'time', 
+                  'end_time']);
             
                 $reminder['date'] = $this->commonUtil->uf_date($input['date']);
+                $reminder['time'] = $this->commonUtil->uf_time($input['time']);
+                $reminder['end_time'] = !empty($input['end_time']) ? $this->commonUtil->uf_time($input['end_time']) : null;
                 $reminder['name'] = $input['name'];
                 $reminder['repeat'] = $input['repeat'];
-                $reminder['time'] = $input['time'];
                 $reminder['user_id'] = $user_id;
                 $reminder['business_id'] = $business_id;
 

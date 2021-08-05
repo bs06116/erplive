@@ -1,17 +1,15 @@
-Manufacturing Module for UltimatePOS
+Manufacturing Module for erp.live
 End User License Agreement
-Copyright, The Web Fosters,UltimateFosters (https://ultimatefosters.com/product/manufacturing-module-for-ultimatepos/)
 All rights reserved.
 
-By using the software, you agree to be bound by the terms of this license. If you have any questions 
+By using the software, you agree to be bound by the terms of this license. If you have any questions
 about the terms below, please contact nsp-code.com for clarification.
 
 
-1.) You must have paid https://ultimatefosters.com/ to use the software.
 
 2.) The copyright holder retains all intellectual property rights to the software.
 
-3.) You are granted the right to install the software on a website as per your license type. 
+3.) You are granted the right to install the software on a website as per your license type.
 	1 Site License, SaaS-Not-Compatible = Install in 1 website without SaaS module
 	3 Site License, SaaS-Not-Compatible = Install in 1 website without SaaS module
 	1 Site License, SaaS-Compatible = Install in 1 website with SaaS Module

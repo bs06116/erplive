@@ -29,7 +29,19 @@
 	    data-placement="bottom"
 	    data-html="true"
 	    title="@lang('essentials::lang.clock_out') @if(!empty($clock_in))
-                    <br><small>(@lang('essentials::lang.clocked_in_at'): {{@format_datetime($clock_in->clock_in_time)}})</small>
+                    <br>
+                    <small>
+                    	<b>@lang('essentials::lang.clocked_in_at'):</b> {{@format_datetime($clock_in->clock_in_time)}}
+                    </small>
+                    <br>
+                    <small><b>@lang('essentials::lang.shift'):</b> {{ucfirst($clock_in->shift_name)}}</small>
+                    @if(!empty($clock_in->start_time) && !empty($clock_in->end_time))
+                    	<br>
+                    	<small>
+                    		<b>@lang('restaurant.start_time'):</b> {{@format_time($clock_in->start_time)}}<br>
+                    		<b>@lang('restaurant.end_time'):</b> {{@format_time($clock_in->end_time)}}
+                    	</small>
+                    @endif
                 @endif" 
 	    >
 	    <i class="fas fa-hourglass-half fa-spin"></i>

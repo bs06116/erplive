@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'ultimatePOS'),
+    'name' => env('APP_NAME', 'erp.live'),
 
     /*
     |--------------------------------------------------------------------------
@@ -118,7 +118,7 @@ return [
     'key' => env('APP_KEY', 'base64:W8UqtE9LHZW+gRag78o4BCbN1M0w4HdaIFdLqHJ/9PA='),
 
     'cipher' => 'AES-256-CBC',
-    
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

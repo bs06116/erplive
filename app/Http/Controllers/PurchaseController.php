@@ -413,6 +413,7 @@ class PurchaseController extends Controller
      */
     public function show($id)
     {
+
         // if (!auth()->user()->can('purchase.view')) {
         //     abort(403, 'Unauthorized action.');
         // }

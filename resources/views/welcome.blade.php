@@ -1,5 +1,5 @@
 @extends('layouts.home')
-@section('title', config('app.name', 'ultimatePOS'))
+@section('title', config('app.name', 'erp.live'))
 
 @section('content')
 
@@ -590,7 +590,7 @@
         }
     </style>
     <div class="title flex-center" style="font-weight: 600 !important;">
-        {{ config('app.name', 'ultimatePOS') }}
+        {{ config('app.name', 'erp.live') }}
     </div>
     <p class="tagline">
         {{ env('APP_TITLE', '') }}

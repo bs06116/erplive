@@ -25,6 +25,7 @@
                     @if (auth()->user()->can('essentials.view_message') || auth()->user()->can('essentials.create_message'))
                         <li @if(request()->segment(2) == 'messages') class="active" @endif><a href="{{action('\Modules\Essentials\Http\Controllers\EssentialsMessageController@index')}}">@lang('essentials::lang.messages')</a></li>
                     @endif
+                    <li @if(request()->segment(2) == 'knowledge-base') class="active" @endif><a href="{{action('\Modules\Essentials\Http\Controllers\KnowledgeBaseController@index')}}">@lang('essentials::lang.knowledge_base')</a></li>
                     @if (auth()->user()->can('edit_essentials_settings'))
                         <li @if(request()->segment(2) == 'hrm' && request()->segment(2) == 'settings') class="active" @endif><a href="{{action('\Modules\Essentials\Http\Controllers\EssentialsSettingsController@edit')}}">@lang('business.settings')</a></li>
                     @endif

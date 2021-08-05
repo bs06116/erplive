@@ -23,7 +23,22 @@
 		        	{!! Form::label('clock_out_note', __( 'essentials::lang.clock_out_note' ) . ':') !!}
 		        	{!! Form::textarea('clock_out_note', null, ['class' => 'form-control', 'placeholder' => __( 'essentials::lang.clock_out_note'), 'rows' => 3 ]); !!}
 		      	</div>
+		      	<input type="hidden" name="clock_in_out_location" id="clock_in_out_location" value="">
 	    	</div>
+	    	@if($is_location_required)
+		    	<div class="row">
+		    		<div class="col-md-12">
+		    			<b>@lang('messages.location'):</b> <span class="clock_in_out_location"></span>
+		    		</div>
+		    		<div class="col-md-12 ask_location" style="display: none;">
+		    			<span class="location_required error"></span>
+		    			{{-- <button type="button" class="btn btn-sm btn-primary allow_location">
+		    				<i class="fas fa-map-marker"></i>
+		    				@lang('essentials::lang.allow_location')
+		    			</button> --}}
+		    		</div>
+		    	</div>
+		    @endif
 	    </div>
 
 	    <div class="modal-footer">

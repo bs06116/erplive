@@ -42,11 +42,22 @@ class AttendanceController extends Controller
     public function index()
     {
         $business_id = request()->session()->get('user.business_id');
-        $is_admin = $this->moduleUtil->is_admin(auth()->user(), $business_id);
-
         if (!(auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'essentials_module'))) {
             abort(403, 'Unauthorized action.');
         }
+        $is_admin = $this->moduleUtil->is_admin(auth()->user(), $business_id);
+
+        $can_crud_all_attendance = auth()->user()->can('essentials.crud_all_attendance');
+        $can_view_own_attendance = auth()->user()->can('essentials.view_own_attendance');
+
+        if (!$can_crud_all_attendance && !$can_view_own_attendance) {
+            abort(403, 'Unauthorized action.');
+        }
+        
+            if (!$is_admin) {
+                $attendance->where('essentials_attendances.user_id', auth()->user()->id);
+            }
+
 
         if (request()->ajax()) {
             $attendance = EssentialsAttendance::where('essentials_attendances.business_id', $business_id)
@@ -61,7 +72,7 @@ class AttendanceController extends Controller
                                 'ip_address',
                                 DB::raw('DATE(clock_in_time) as date'),
                                 DB::raw("CONCAT(COALESCE(u.surname, ''), ' ', COALESCE(u.first_name, ''), ' ', COALESCE(u.last_name, '')) as user"),
-                                'es.name as shift_name'
+                                'es.name as shift_name', 'clock_in_location', 'clock_out_location'
                             ]);
 
             if (!empty(request()->input('employee_id'))) {
@@ -74,25 +85,17 @@ class AttendanceController extends Controller
                             ->whereDate('clock_in_time', '<=', $end);
             }
 
-            if (!$is_admin) {
+            if (!$can_crud_all_attendance && $can_view_own_attendance) {
                 $attendance->where('essentials_attendances.user_id', auth()->user()->id);
             }
 
             return Datatables::of($attendance)
                     ->addColumn(
                         'action',
-                        '<button data-href="{{action(\'\Modules\Essentials\Http\Controllers\AttendanceController@edit\', [$id])}}" class="btn btn-xs btn-primary btn-modal" data-container="#edit_attendance_modal"><i class="glyphicon glyphicon-edit"></i> @lang("messages.edit")</button>
-                        <button class="btn btn-xs btn-danger delete-attendance" data-href="{{action(\'\Modules\Essentials\Http\Controllers\AttendanceController@destroy\', [$id])}}"><i class="fa fa-trash"></i> @lang("messages.delete")</button>
+                        '@can("essentials.crud_all_attendance") <button data-href="{{action(\'\Modules\Essentials\Http\Controllers\AttendanceController@edit\', [$id])}}" class="btn btn-xs btn-primary btn-modal" data-container="#edit_attendance_modal"><i class="glyphicon glyphicon-edit"></i> @lang("messages.edit")</button>
+                        <button class="btn btn-xs btn-danger delete-attendance" data-href="{{action(\'\Modules\Essentials\Http\Controllers\AttendanceController@destroy\', [$id])}}"><i class="fa fa-trash"></i> @lang("messages.delete")</button> @endcan
                         '
                     )
-                    ->addColumn('clock_in_clock_out', function ($row) {
-                        $html = $this->moduleUtil->format_date($row->clock_in_time, true);
-                        if (!empty($row->clock_out_time)) {
-                            $html .= ' - ' . $this->moduleUtil->format_date($row->clock_out_time, true);
-                        }
-
-                        return $html;
-                    })
                     ->editColumn('work_duration', function ($row) {
                         $clock_in = \Carbon::parse($row->clock_in_time);
                         if (!empty($row->clock_out_time)) {
@@ -105,8 +108,32 @@ class AttendanceController extends Controller
 
                         return $html;
                     })
+                    ->editColumn('clock_in', function($row) {
+                        $html = $this->moduleUtil->format_date($row->clock_in_time, true);
+                        if (!empty($row->clock_in_location)) {
+                            $html .= '<br>' .$row->clock_in_location .'<br>';
+                        }
+
+                        if (!empty($row->clock_in_note)) {
+                            $html .= '<br>' . $row->clock_in_note .'<br>';
+                        }
+
+                        return $html;
+                    })
+                    ->editColumn('clock_out', function($row) {
+                        $html = $this->moduleUtil->format_date($row->clock_out_time, true);
+                        if (!empty($row->clock_out_location)) {
+                            $html .= '<br>' . $row->clock_out_location .'<br>';
+                        }
+
+                        if (!empty($row->clock_out_note)) {
+                            $html .= '<br>' . $row->clock_out_note .'<br>';
+                        }
+
+                        return $html;
+                    })
                     ->editColumn('date', '{{@format_date($date)}}')
-                    ->rawColumns(['action', 'clock_in_clock_out', 'work_duration'])
+                    ->rawColumns(['action', 'clock_in', 'work_duration', 'clock_out'])
                     ->filterColumn('user', function ($query, $keyword) {
                         $query->whereRaw("CONCAT(COALESCE(u.surname, ''), ' ', COALESCE(u.first_name, ''), ' ', COALESCE(u.last_name, '')) like ?", ["%{$keyword}%"]);
                     })
@@ -116,20 +143,22 @@ class AttendanceController extends Controller
         $settings = request()->session()->get('business.essentials_settings');
         $settings = !empty($settings) ? json_decode($settings, true) : [];
 
-        $is_employee_allowed = !empty($settings['allow_users_for_attendance']) ? true : false;
+        $is_employee_allowed = auth()->user()->can('essentials.allow_users_for_attendance_from_web');
         $clock_in = EssentialsAttendance::where('business_id', $business_id)
                                 ->where('user_id', auth()->user()->id)
                                 ->whereNull('clock_out_time')
                                 ->first();
         $employees = [];
-        if ($is_admin) {
+        if ($can_crud_all_attendance) {
             $employees = User::forDropdown($business_id, false);
         }
 
         $days = $this->moduleUtil->getDays();
-
+        if ($is_admin) {
+            $employees = User::forDropdown($business_id, false);
+        }
         return view('essentials::attendance.index')
-            ->with(compact('is_admin', 'is_employee_allowed', 'clock_in', 'employees', 'days'));
+            ->with(compact('is_admin','is_employee_allowed', 'clock_in', 'employees', 'days'));
     }
 
     /**
@@ -311,84 +340,42 @@ class AttendanceController extends Controller
         //Check if employees allowed to add their own attendance
         $settings = request()->session()->get('business.essentials_settings');
         $settings = !empty($settings) ? json_decode($settings, true) : [];
-        if (empty($settings['allow_users_for_attendance'])) {
+        if (!auth()->user()->can('essentials.allow_users_for_attendance_from_web')) {
             return ['success' => false,
                         'msg' => __("essentials::lang.not_allowed")
                     ];
+        } elseif ((!empty($settings['is_location_required']) && $settings['is_location_required']) && empty($request->input('clock_in_out_location'))) {
+            return ['success' => false,
+                'msg' => __("essentials::lang.you_must_enable_location")
+            ];
         }
 
         try {
             $type = $request->input('type');
 
             if ($type == 'clock_in') {
-                //Check user can clockin
-                $shift = $this->essentialsUtil->checkUserShift(auth()->user()->id, $settings);
+                $data = [
+                    'business_id' => $business_id,
+                    'user_id' => auth()->user()->id,
+                    'clock_in_time' => \Carbon::now(),
+                    'clock_in_note' => $request->input('clock_in_note'),
+                    'ip_address' => $this->moduleUtil->getUserIpAddr(),
+                    'clock_in_location' => $request->input('clock_in_out_location')
+                ];
 
-                if (empty($shift)) {
-                    $output = ['success' => false,
-                            'msg' => __("essentials::lang.shift_not_allocated"),
-                            'type' => $type
-                        ];
-                    return $output;
-                }
-                //Check if already clocked in
-                $count = EssentialsAttendance::where('business_id', $business_id)
-                                        ->where('user_id', auth()->user()->id)
-                                        ->whereNull('clock_out_time')
-                                        ->count();
-                if ($count == 0) {
-                    $data = [
-                        'business_id' => $business_id,
-                        'user_id' => auth()->user()->id,
-                        'clock_in_time' => \Carbon::now(),
-                        'clock_in_note' => $request->input('clock_in_note'),
-                        'ip_address' => $this->moduleUtil->getUserIpAddr(),
-                        'essentials_shift_id' => $shift
-                    ];
-
-                    EssentialsAttendance::create($data);
-
-                    $output = ['success' => true,
-                            'msg' => __("essentials::lang.clock_in_success"),
-                            'type' => 'clock_in'
-                        ];
-                } else {
-                    $output = ['success' => false,
-                            'msg' => __("messages.something_went_wrong"),
-                            'type' => $type
-                        ];
-                }
+                $output = $this->essentialsUtil->clockin($data, $settings);
+                
             } elseif ($type == 'clock_out') {
-                //Get clock in
-                $clock_in = EssentialsAttendance::where('business_id', $business_id)
-                                        ->where('user_id', auth()->user()->id)
-                                        ->whereNull('clock_out_time')
-                                        ->first();
 
-                $can_clockout = $this->essentialsUtil->canClockOut($clock_in, $settings);
-                if (!$can_clockout) {
-                    $output = ['success' => false,
-                            'msg' => __("essentials::lang.shift_not_over"),
-                            'type' => $type
-                        ];
-                    return $output;
-                }
+                $data = [
+                    'business_id' => $business_id,
+                    'user_id' => auth()->user()->id,
+                    'clock_out_time' => \Carbon::now(),
+                    'clock_out_note' => $request->input('clock_out_note'),
+                    'clock_out_location' => $request->input('clock_in_out_location')
+                ];
 
-                if (!empty($clock_in)) {
-                    $clock_in->clock_out_time = \Carbon::now();
-                    $clock_in->clock_out_note = $request->input('clock_out_note');
-                    $clock_in->save();
-
-                    $output = ['success' => true,
-                            'msg' => __("essentials::lang.clock_out_success"),
-                            'type' => 'clock_out'
-                        ];
-                } else {
-                    $output = ['success' => false,
-                            'msg' => __("messages.something_went_wrong"),
-                            'type' => $type
-                        ];
-                }
+                $output = $this->essentialsUtil->clockout($data, $settings);
             }
         } catch (\Exception $e) {
             \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
@@ -712,5 +699,14 @@ class AttendanceController extends Controller
                     ->pluck('essentials_shifts.name', 'essentials_shifts.id');
 
         return view('essentials::attendance.attendance_row')->with(compact('attendance', 'shifts', 'user'));
+    }
+
+    public function getUserLocation($latlng)
+    {
+        $latlng_array = explode(',', $latlng);
+
+        $response = $this->moduleUtil->getLocationFromCoordinates($latlng_array[0], $latlng_array[1]);
+
+        return $response;
     }
 }

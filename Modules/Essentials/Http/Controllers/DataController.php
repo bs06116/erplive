@@ -10,6 +10,13 @@ use Illuminate\Routing\Controller;
 use Menu;
 use Modules\Essentials\Entities\EssentialsTodoComment;
 use Modules\Essentials\Entities\DocumentShare;
+use Illuminate\Support\Facades\DB;
+use Modules\Essentials\Entities\ToDo;
+use Modules\Essentials\Entities\EssentialsHoliday;
+use Modules\Essentials\Entities\EssentialsLeave;
+use Modules\Essentials\Entities\Reminder;
+use Modules\Essentials\Entities\EssentialsAllowanceAndDeduction;
+use Modules\Essentials\Entities\EssentialsUserAllowancesAndDeduction;
 
 class DataController extends Controller
 {
@@ -165,6 +172,71 @@ class DataController extends Controller
     {
         return [
             [
+                'value' => 'essentials.crud_leave_type',
+                'label' => __('essentials::lang.crud_leave_type'),
+                'default' => false
+            ],
+            [
+                'value' => 'essentials.crud_all_leave',
+                'label' => __('essentials::lang.crud_all_leave'),
+                'default' => false
+            ],
+            [
+                'value' => 'essentials.crud_own_leave',
+                'label' => __('essentials::lang.crud_own_leave'),
+                'default' => false
+            ],
+            [
+                'value' => 'essentials.approve_leave',
+                'label' => __('essentials::lang.approve_leave'),
+                'default' => false
+            ],
+            [
+                'value' => 'essentials.crud_all_attendance',
+                'label' => __('essentials::lang.crud_all_attendance'),
+                'default' => false
+            ],
+            [
+                'value' => 'essentials.view_own_attendance',
+                'label' => __('essentials::lang.view_own_attendance'),
+                'default' => false
+            ],
+            [
+                'value' => 'essentials.allow_users_for_attendance_from_web',
+                'label' => __('essentials::lang.allow_users_for_attendance_from_web'),
+                'default' => false
+            ],
+            [
+                'value' => 'essentials.allow_users_for_attendance_from_api',
+                'label' => __('essentials::lang.allow_users_for_attendance_from_api'),
+                'default' => false
+            ],
+            [
+                'value' => 'essentials.view_allowance_and_deduction',
+                'label' => __('essentials::lang.view_pay_component'),
+                'default' => false
+            ],
+            [
+                'value' => 'essentials.add_allowance_and_deduction',
+                'label' => __('essentials::lang.add_pay_component'),
+                'default' => false
+            ],
+            [
+                'value' => 'essentials.crud_department',
+                'label' => __('essentials::lang.crud_department'),
+                'default' => false
+            ],
+            [
+                'value' => 'essentials.crud_designation',
+                'label' => __('essentials::lang.crud_designation'),
+                'default' => false
+            ],
+            [
+                'value' => 'essentials.assign_todos',
+                'label' => __('essentials::lang.assign_todos'),
+                'default' => false
+            ],
+            [
                 'value' => 'essentials.create_message',
                 'label' => __('essentials::lang.create_message'),
                 'default' => false
@@ -174,21 +246,6 @@ class DataController extends Controller
                 'label' => __('essentials::lang.view_message'),
                 'default' => false
             ],
-            [
-                'value' => 'essentials.approve_leave',
-                'label' => __('essentials::lang.approve_leave'),
-                'default' => false
-            ],
-            [
-                'value' => 'essentials.assign_todos',
-                'label' => __('essentials::lang.assign_todos'),
-                'default' => false
-            ],
-            [
-                'value' => 'essentials.add_allowance_and_deduction',
-                'label' => __('essentials::lang.add_allowance_and_deduction'),
-                'default' => false
-            ]
         ];
     }
 
@@ -278,16 +335,26 @@ class DataController extends Controller
             $business_id = session()->get('business.id');
             $departments = Category::forDropdown($business_id, 'hrm_department');
             $designations = Category::forDropdown($business_id, 'hrm_designation');
+            $pay_comoponenets = EssentialsAllowanceAndDeduction::forDropdown($business_id);
 
             $user = !empty($data['user']) ? $data['user'] : null;
 
-            return view('essentials::partials.user_form_part', compact('departments', 'designations', 'user'))->render();
+            $allowance_deduction_ids = [];
+            if (!empty($user)) {
+                $allowance_deduction_ids = EssentialsUserAllowancesAndDeduction::where('user_id', $user->id)
+                                            ->pluck('allowance_deduction_id')
+                                            ->toArray();
+            }
+
+            return view('essentials::partials.user_form_part', compact('departments', 'designations', 'user', 'pay_comoponenets', 'allowance_deduction_ids'))
+                ->render();
         } elseif ($data['view'] == 'manage_user.show') {
             $user = !empty($data['user']) ? $data['user'] : null;
             $user_department = Category::find($user->essentials_department_id);
             $user_designstion = Category::find($user->essentials_designation_id);
 
-            return view('essentials::partials.user_details_part', compact('user_department', 'user_designstion'))->render();
+            return view('essentials::partials.user_details_part', compact('user_department', 'user_designstion', 'user'))
+                ->render();
         }
     }
 
@@ -297,12 +364,30 @@ class DataController extends Controller
     *
     */
     public function afterModelSaved($data)
-    {
+    {   
         if ($data['event'] = 'user_saved') {
             $user = $data['model_instance'];
             $user->essentials_department_id = request()->input('essentials_department_id');
             $user->essentials_designation_id = request()->input('essentials_designation_id');
+            $user->essentials_salary = request()->input('essentials_salary');
+            $user->essentials_pay_period = request()->input('essentials_pay_period');
+            $user->essentials_pay_cycle = request()->input('essentials_pay_cycle');
             $user->save();
+
+            $non_deleteable_pc_ids = $this->getNonDeletablePayComponents($user->business_id, $user->id);
+
+            //delete  existing pay component
+            EssentialsUserAllowancesAndDeduction::where('user_id', $user->id)
+                    ->whereNotIn('allowance_deduction_id', $non_deleteable_pc_ids)
+                    ->delete();
+
+            //if pay component exist add to db
+            if (!empty(request()->input('pay_components'))) {
+                $pay_components = request()->input('pay_components');
+                foreach ($pay_components as $key => $pay_component) {
+                    EssentialsUserAllowancesAndDeduction::insert(['user_id' => $user->id, 'allowance_deduction_id' => $pay_component]);
+                }
+            }
         }
     }
 
@@ -312,12 +397,14 @@ class DataController extends Controller
         $location_id = !empty($data['location_id']) ? $data['location_id'] : null;
         $start_date = !empty($data['start_date']) ? $data['start_date'] : null;
         $end_date = !empty($data['end_date']) ? $data['end_date'] : null;
+        $user_id = !empty($data['user_id']) ? $data['user_id'] : null;
 
         $total_payroll = $this->__getTotalPayroll(
             $business_id,
             $start_date,
             $end_date,
-            $location_id
+            $location_id,
+            $user_id
         );
 
         $report_data = [
@@ -351,7 +438,8 @@ class DataController extends Controller
         $business_id,
         $start_date = null,
         $end_date = null,
-        $location_id = null
+        $location_id = null,
+        $user_id = null
         ) {
         $transactionUtil = new TransactionUtil();
 
@@ -360,9 +448,227 @@ class DataController extends Controller
             ['payroll'],
             $start_date,
             $end_date,
-            $location_id
+            $location_id,
+            $user_id
             );
 
         return $transaction_totals['total_payroll'];
+    }
+
+    /**
+     * Fetches all calender events for the module
+     *
+     * @param  array $data
+     *
+     * @return array
+     */
+    public function calendarEvents($data)
+    {
+        $events = [];
+        if (in_array('todo', $data['events'])) {
+            $todos = ToDo::where('business_id', $data['business_id'])
+                            ->with(['users'])
+                            ->where(function ($query) use ($data) {
+                                $query->where('created_by', $data['user_id'])
+                                    ->orWhereHas('users', function ($q) use ($data) {
+                                        $q->where('user_id', $data['user_id']);
+                                    });
+                            })
+                            ->whereBetween(DB::raw('date(date)'), [$data['start_date'], $data['end_date']])
+                            ->get();
+
+            foreach ($todos as $todo) {
+                $events[] = [
+                    'title' => $todo->task,
+                    'start' => $todo->date,
+                    'end' => $todo->end_date,
+                    'url' => action('\Modules\Essentials\Http\Controllers\ToDoController@index'),
+                    'backgroundColor' => '#33006F',
+                    'borderColor' => '#33006F',
+                    'event_type' => 'todo',
+                    'allDay'          => false,
+                ];
+            }
+        }
+
+        if (in_array('holiday', $data['events'])) {
+            $holidays_query = EssentialsHoliday::where('business_id', $data['business_id']);
+
+            if (!empty($data['user_id'])) {
+                $user = User::where('business_id', $data['business_id'])->find($data['user_id']);
+                $permitted_locations = $user->permitted_locations();
+                if ($permitted_locations != 'all') {
+                    $holidays_query->where(function ($query) use ($permitted_locations) {
+                        $query->whereIn('location_id', $permitted_locations)
+                            ->orWhereNull('location_id');
+                    });
+                }
+            }
+
+            if (!empty($data['location_id'])) {
+                $holidays_query->where('location_id', $data['location_id']);
+            }
+
+            $holidays = $holidays_query->whereDate('start_date', '>=', 
+                            $data['start_date'])
+                            ->whereDate('start_date', '<=', $data['end_date'])
+                            ->get();
+
+            foreach ($holidays as $holiday) {
+                $events[] = [
+                    'title' => $holiday->name,
+                    'start' => $holiday->start_date,
+                    'end' => $holiday->end_date,
+                    'url' => action('\Modules\Essentials\Http\Controllers\EssentialsHolidayController@index'),
+                    'backgroundColor' => '#568203',
+                    'borderColor'     => '#568203',
+                    'allDay' => true,
+                    'event_type' => 'holiday'
+                ];
+            }
+        }
+
+        if (in_array('leaves', $data['events'])) {
+            $leaves_query = EssentialsLeave::where('essentials_leaves.business_id', $data['business_id'])
+                        ->join('users as u', 'u.id', '=', 'essentials_leaves.user_id')
+                        ->join('essentials_leave_types as lt', 'lt.id', '=', 'essentials_leaves.essentials_leave_type_id')
+                        ->select([
+                            'essentials_leaves.id',
+                            DB::raw("CONCAT(COALESCE(u.surname, ''), ' ', COALESCE(u.first_name, ''), ' ', COALESCE(u.last_name, '')) as user"),
+                            'lt.leave_type',
+                            'start_date',
+                            'end_date'
+                            ]);
+
+            if (!empty($data['user_id'])) {
+                $leaves_query->where('essentials_leaves.user_id', $data['user_id']);
+            }
+
+            $leaves = $leaves_query->whereDate('essentials_leaves.start_date', '>=', $data['start_date'])
+                            ->whereDate('essentials_leaves.start_date', '<=', $data['end_date'])
+                            ->get();
+            foreach ($leaves as $leave) {
+                $events[] = [
+                    'title' => $leave->user,
+                    'title_html' => $leave->user . '<br>' . $leave->leave_type,
+                    'start' => $leave->start_date,
+                    'end' => $leave->end_date,
+                    'url' => action('\Modules\Essentials\Http\Controllers\EssentialsLeaveController@index'),
+                    'backgroundColor' => '#BA0021',
+                    'borderColor' => '#BA0021',
+                    'allDay' => true,
+                    'event_type' => 'leaves'
+                ];
+            } 
+        }
+
+        if (in_array('reminder', $data['events'])) {
+            $reminder_events = Reminder::getReminders($data);
+            $events = array_merge($events, $reminder_events);
+        }               
+
+        return $events;
+    }
+
+    /**
+     * List of calendar event types
+     * 
+     * @return array
+     */
+    public function eventTypes()
+    {
+       return [
+            'todo' => [
+                'label' => __('essentials::lang.todo'),
+                'color' => '#33006F'
+            ], 
+            'holiday' => [ 
+                'label' => __('essentials::lang.holidays'),
+                'color' => '#568203'
+            ],
+            'leaves' => [
+                'label' => __('essentials::lang.leaves'),
+                'color' => '#BA0021'
+            ],
+            'reminder' => [
+                'label' => __('essentials::lang.reminders'),
+                'color' => '#ff851b'
+            ]
+        ];
+    }
+
+    /**
+     * Returns addtional js, css, html and files which 
+     * will be included in the app layout
+     * 
+     * @return array
+     */
+    public function get_additional_script()
+    {
+        $additional_js = '';
+        $additional_css = '';
+        $additional_html = 
+        '<div class="modal fade" id="task_modal" tabindex="-1" role="dialog" 
+        aria-labelledby="gridSystemModalLabel">
+        </div>';
+        $additional_views = ['essentials::todo.todo_javascript'];
+
+        return [
+            'additional_js' => $additional_js,
+            'additional_css' => $additional_css,
+            'additional_html' => $additional_html,
+            'additional_views' => $additional_views
+        ];
+    }
+
+    /**
+     * Returns pay components who has applicable date
+     * and assigned to given user
+     * 
+     * @return array
+     */
+    public function getNonDeletablePayComponents($business_id, $user_id)
+    {
+        $ads = EssentialsAllowanceAndDeduction::join('essentials_user_allowance_and_deductions as euad', 'euad.allowance_deduction_id', '=', 'essentials_allowances_and_deductions.id')
+                ->whereNotNull('essentials_allowances_and_deductions.applicable_date')
+                ->where('business_id', $business_id)
+                ->where('euad.user_id', $user_id)
+                ->get();
+
+        $ids = $ads->pluck('id')->toArray();
+
+        return $ids;
+    }
+
+    /**
+     * Returns todo dropdown
+     * @param $business_id
+     * @return array
+     */
+    public function getTodosDropdown($business_id)
+    {
+        $todos = ToDo::where('business_id', $business_id)
+                    ->select(DB::raw("CONCAT(task, ' (', task_id , ')') AS task_name"), 'id')
+                    ->pluck('task_name', 'id')
+                    ->toArray();
+
+        return $todos;
+    }
+
+    /**
+     * Returns task for user
+     *
+     * @param $user_id
+     *
+     * @return array
+     */
+    public function getAssignedTaskForUser($user_id)
+    {
+        $task_ids = DB::table('essentials_todos_users')
+                    ->where('user_id', $user_id)
+                    ->pluck('todo_id')
+                    ->toArray();
+
+        return $task_ids;
     }
 }

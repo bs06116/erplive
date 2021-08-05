@@ -33,4 +33,12 @@ class Shift extends Model
     {
         return $this->hasMany(\Modules\Essentials\Entities\EssentialsUserShift::class, 'essentials_shift_id');
     }
+
+    public static function getGivenShiftInfo($business_id, $shift_id)
+    {
+        $shift = Shift::where('business_id', $business_id)
+                    ->find($shift_id);
+                    
+        return $shift;
+    }
 }

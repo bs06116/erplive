@@ -10,7 +10,7 @@
 
     <div class="modal-body">
     	<div class="row">
-    		@can('essentials.approve_leave')
+    		@can('essentials.crud_all_leave')
     		<div class="form-group col-md-12">
 		        {!! Form::label('employees', __('essentials::lang.select_employee') . ':') !!}
 		        {!! Form::select('employees[]', $employees, null, ['class' => 'form-control select2', 'style' => 'width: 100%;', 'id' => 'employees', 'multiple', 'required' ]); !!}

@@ -45,9 +45,14 @@
 							@lang('essentials::lang.comments') </a>
 			        </li>
 			        <li>
-			            <a href="#documents_tab" data-toggle="tab" aria-expanded="true">
+			            <a href="#documents_tab" data-toggle="tab">
 			                <i class="fa fa-file"></i>
 						@lang('lang_v1.documents') </a>
+			        </li>
+			        <li>
+			            <a href="#activities_tab" data-toggle="tab">
+			                <i class="fa fa-pen-square"></i>
+						@lang('lang_v1.activities') </a>
 			        </li>
 			    </ul>
 			    <div class="tab-content">
@@ -130,6 +135,13 @@
 								</table>
 							</div>
 						</div>
+			    	</div>
+			    	<div class="tab-pane" id="activities_tab">
+			    		<div class="row">
+			    			<div class="col-md-12">
+			    				@include('activity_log.activities', ['activity_type' => 'sell', 'statuses' => $task_statuses])
+			    			</div>
+			    		</div>
 			    	</div>
 			    </div>
 			</div>

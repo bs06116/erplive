@@ -1,13 +1,13 @@
 <div class="pos-tab-content">
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-xs-6">
             <div class="checkbox">
                 <label>
-                    <br/>
-                    {!! Form::checkbox('allow_users_for_attendance', 1, !empty($settings['allow_users_for_attendance']), ['class' => 'input-icheck'] ); !!} @lang('essentials::lang.allow_users_for_attendance')
+                    {!! Form::checkbox('is_location_required', 1, !empty($settings['is_location_required']) ? 1 : 0, ['class' => 'input-icheck'] ); !!} @lang('essentials::lang.is_location_required')
                 </label>
             </div>
         </div>
+        <div class="clearfix"></div>
         <div class="col-xs-12">
             <strong>@lang('essentials::lang.grace_time'):</strong>
         </div>
@@ -40,4 +40,8 @@
             </div>
         </div>
     </div>
+    <p>
+        <i class="fas fa-info-circle"></i>
+      <span class="text-danger">@lang('essentials::lang.allow_users_for_attendance_moved_to_role')</span>
+    </p>
 </div>

@@ -312,7 +312,7 @@ class DocumentController extends Controller
      * @return Response
      */
     public function download(Request $request, $id)
-    {
+    {   
         $business_id = $request->session()->get('user.business_id');
         if (!(auth()->user()->can('superadmin') || $this->moduleUtil->hasThePermissionInSubscription($business_id, 'essentials_module'))) {
             abort(403, 'Unauthorized action.');
@@ -324,16 +324,16 @@ class DocumentController extends Controller
             
             $document = Document::where('business_id', $business_id)
                                 ->find($id);
-            $document_user_id = $document->user_id;
+            $creator = $document->user_id;
 
             $document_shares = DocumentShare::where('document_id', $id)
                 ->where(function ($query) use ($user_id) {
                     $query->where('essentials_document_shares.value', '=', $user_id)
-                    ->orWhere('essentials_document_shares.value_type', '=', 'user');
+                    ->where('essentials_document_shares.value_type', '=', 'user');
                 })
-                ->where(function ($query) use ($role_id) {
+                ->orWhere(function ($query) use ($role_id) {
                     $query->where('essentials_document_shares.value', '=', $role_id)
-                    ->orWhere('essentials_document_shares.value_type', '=', 'role');
+                    ->where('essentials_document_shares.value_type', '=', 'role');
                 })
                 ->first();
             
@@ -343,7 +343,7 @@ class DocumentController extends Controller
 
             $path = "documents/" . $name;
 
-            if ($user_id == $document_user_id || $role_id == $document_shares['value']) {
+            if ($user_id == $creator || $role_id == $document_shares['value'] || $user_id == $document_shares['value']) {
                 return Storage::download($path, $file_name);
             }
         } catch (\Exception $e) {

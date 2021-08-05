@@ -1,16 +1,16 @@
 @php
     if($type == 'allowance') {
-        $name_col = 'allowance_names';
-        $val_col = 'allowance_amounts';
+        $name_col = 'payrolls['.$employee.'][allowance_names]';
+        $val_col = 'payrolls['.$employee.'][allowance_amounts]';
         $val_class = 'allowance';
-        $type_col = 'allowance_types';
-        $percent_col = 'allowance_percent';
+        $type_col = 'payrolls['.$employee.'][allowance_types]';
+        $percent_col = 'payrolls['.$employee.'][allowance_percent]';
     } elseif($type == 'deduction') {
-        $name_col = 'deduction_names';
-        $val_col = 'deduction_amounts';
+        $name_col = 'payrolls['.$employee.'][deduction_names]';
+        $val_col = 'payrolls['.$employee.'][deduction_amounts]';
         $val_class = 'deduction';
-        $type_col = 'deduction_types';
-        $percent_col = 'deduction_percent';
+        $type_col = 'payrolls['.$employee.'][deduction_types]';
+        $percent_col = 'payrolls['.$employee.'][deduction_percent]';
     }
 
     $amount_type = !empty($amount_type) ? $amount_type : 'fixed';
@@ -35,7 +35,7 @@
     </td>
     <td>
         @if(!empty($add_button))
-            <button type="button" class="btn btn-primary btn-xs" @if($type == 'allowance') id="add_allowance" @elseif($type == 'deduction') id="add_deduction" @endif>
+            <button type="button" class="btn btn-primary btn-xs @if($type == 'allowance') add_allowance @elseif($type == 'deduction') add_deduction @endif">
             <i class="fa fa-plus"></i>
         @else
             <button type="button" class="btn btn-danger btn-xs remove_tr"><i class="fa fa-minus"></i></button>

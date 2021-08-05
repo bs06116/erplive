@@ -15,6 +15,7 @@
 		            {!! Form::text('task', null, ['class' => 'form-control', 'required']) !!}
 		         </div>
 		    </div>
+		    @if(!empty($users))
 		    @can('essentials.assign_todos')
 			<div class="col-md-12">
 		        <div class="form-group">
@@ -28,6 +29,7 @@
 				</div>
 			</div>
 			@endcan
+			@endif
 			<div class="clearfix"></div>
 			<div class="col-md-6">
 		        <div class="form-group">
@@ -49,7 +51,7 @@
 						<span class="input-group-addon">
 							<i class="fa fa-calendar"></i>
 						</span>
-						{!! Form::text('date', @format_date('now'), ['class' => 'form-control datepicker text-center', 'required', 'readonly']); !!}
+						{!! Form::text('date', @format_datetime('now'), ['class' => 'form-control datepicker text-center', 'required', 'readonly']); !!}
 					</div>
 				</div>
 			</div>
@@ -83,6 +85,19 @@
 					{!! Form::textarea('description', null, ['id' => 'to_do_description']); !!}
 				</div>
 	    	</div>
+	    	<div class="col-md-12">
+	        	<div class="form-group">
+                    <label for="media_upload">
+                        @lang('lang_v1.upload_documents'):
+                    </label>
+                    <div class="dropzone" id="media_upload"></div>
+                    {{-- params for media upload --}}
+				    <input type="hidden" id="media_upload_url" value="{{route('attach.medias.to.model')}}">
+				    <input type="hidden" id="model_id" value="">
+				    <input type="hidden" id="model_type" value="Modules\Essentials\Entities\ToDo">
+				    <input type="hidden" id="model_media_type" value="">
+                </div>
+	        </div>
     	</div>
     </div>
 

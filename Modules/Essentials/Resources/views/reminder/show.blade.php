@@ -10,14 +10,14 @@
       </div>
       <div class="modal-body">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <strong> @lang('essentials::lang.event_name') : </strong> {{ $reminder->name }}
             </div>
-            <div class="col-md-4">
-                <strong> @lang('essentials::lang.date') : </strong> {{ @format_date($reminder->date )}}
-            </div>
-            <div class="col-md-4">
-                <strong> @lang('essentials::lang.time') : </strong> {{ $time }}
+            <div class="col-md-6">
+                <strong> @lang('essentials::lang.date') : </strong> {{ @format_date($reminder->date )}} <br>
+
+                <strong> @lang('restaurant.start_time') : </strong> {{ $time }} <br>
+                <strong> @lang('restaurant.end_time') : </strong> @if(!empty($reminder->end_time)){{ @format_time($reminder->end_time) }} @endif
             </div>
           </div>
           <br>

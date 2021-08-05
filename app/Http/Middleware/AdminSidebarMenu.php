@@ -198,7 +198,9 @@ class AdminSidebarMenu
                 $menu->dropdown(
                     __('purchase.purchases'),
                     function ($sub) use ($common_settings) {
-                        if (!empty($common_settings['enable_purchase_order']) && (auth()->user()->can('purchase_order.view_all') || auth()->user()->can('purchase_order.view_own')) ) {
+                        if (!empty($common_settings['enable_purchase_order']) && (auth()->user()->can('purchase_order.view_all') ||
+                        auth()->user()->can('purchase_order.view_own')) ) {
+
                             $sub->url(
                                 action('PurchaseOrderController@index'),
                                 __('lang_v1.purchase_order'),
@@ -224,6 +226,11 @@ class AdminSidebarMenu
                                 action('PurchaseReturnController@index'),
                                 __('lang_v1.list_purchase_return'),
                                 ['icon' => 'fa fas fa-undo', 'active' => request()->segment(1) == 'purchase-return']
+                            );
+                            $sub->url(
+                                action('ImportPurchaseController@index'),
+                                __('lang_v1.import_purchase'),
+                                ['icon' => 'fa fas fa-undo', 'active' => request()->segment(1) == 'import-purchase']
                             );
                         }
                     },
@@ -266,7 +273,7 @@ class AdminSidebarMenu
                                         ['icon' => 'fa fas fa-list', 'active' => request()->segment(1) == 'pos' && request()->segment(2) == null]
                                     );
                                 }
-                        
+
                                 $sub->url(
                                     action('SellPosController@create'),
                                     __('sale.pos_sale'),
@@ -744,7 +751,7 @@ class AdminSidebarMenu
                 )->order(85);
             }
         });
-        
+
         //Add menus from modules
         $moduleUtil = new ModuleUtil;
         $moduleUtil->getModuleData('modifyAdminMenu');
