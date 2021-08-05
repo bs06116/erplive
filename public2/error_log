@@ -1,0 +1,114 @@
+[22-May-2021 10:57:20 Asia/Kolkata] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/erp/public_html/app/Http/Controllers/HomeController.php on line 3
+[22-May-2021 10:57:24 Asia/Kolkata] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/erp/public_html/app/Http/Controllers/HomeController.php on line 3
+[22-May-2021 10:57:26 Asia/Kolkata] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/erp/public_html/app/Http/Controllers/HomeController.php on line 3
+[22-May-2021 10:57:31 Asia/Kolkata] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/erp/public_html/app/Http/Controllers/HomeController.php on line 3
+[22-May-2021 10:57:36 Asia/Kolkata] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/erp/public_html/app/Http/Controllers/HomeController.php on line 3
+[22-May-2021 07:10:26 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:10:31 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:10:33 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:10:33 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:10:37 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:10:38 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:10:50 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:10:51 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:11:04 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:11:05 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:11:09 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:11:09 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:11:26 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:11:42 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:11:42 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:11:54 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:12:21 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:12:37 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:12:38 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:13:06 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:13:07 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:13:13 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:13:18 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:13:28 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:13:29 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:14:30 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:15:30 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:15:31 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:15:37 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:15:38 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:15:38 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[22-May-2021 07:15:39 Europe/London] PHP Warning:  ob_start(): output handler 'ob_gzhandler' conflicts with 'zlib output compression' in /home/erp/public_html/public/index.php on line 2
+[23-May-2021 14:04:01 Asia/Kolkata] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:788
+Stack trace:
+#0 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(788): ReflectionClass->__construct('view')
+#1 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\Container\Container->build('view')
+#2 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(615): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(767): Illuminate\Container\Container->make('view', Array)
+#4 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(1227): Illuminate\Foundation\Application->make('view')
+#5 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(176): Illuminate\Container\Container->offsetGet('view in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 788
+[23-May-2021 14:04:06 Asia/Kolkata] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:788
+Stack trace:
+#0 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(788): ReflectionClass->__construct('view')
+#1 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\Container\Container->build('view')
+#2 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(615): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(767): Illuminate\Container\Container->make('view', Array)
+#4 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(1227): Illuminate\Foundation\Application->make('view')
+#5 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(176): Illuminate\Container\Container->offsetGet('view in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 788
+[23-May-2021 14:04:08 Asia/Kolkata] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:788
+Stack trace:
+#0 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(788): ReflectionClass->__construct('view')
+#1 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\Container\Container->build('view')
+#2 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(615): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(767): Illuminate\Container\Container->make('view', Array)
+#4 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(1227): Illuminate\Foundation\Application->make('view')
+#5 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(176): Illuminate\Container\Container->offsetGet('view in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 788
+[23-May-2021 14:04:10 Asia/Kolkata] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:788
+Stack trace:
+#0 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(788): ReflectionClass->__construct('view')
+#1 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\Container\Container->build('view')
+#2 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(615): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(767): Illuminate\Container\Container->make('view', Array)
+#4 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(1227): Illuminate\Foundation\Application->make('view')
+#5 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(176): Illuminate\Container\Container->offsetGet('view in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 788
+[23-May-2021 14:04:11 Asia/Kolkata] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:788
+Stack trace:
+#0 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(788): ReflectionClass->__construct('view')
+#1 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\Container\Container->build('view')
+#2 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(615): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(767): Illuminate\Container\Container->make('view', Array)
+#4 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(1227): Illuminate\Foundation\Application->make('view')
+#5 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(176): Illuminate\Container\Container->offsetGet('view in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 788
+[23-May-2021 14:04:14 Asia/Kolkata] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:788
+Stack trace:
+#0 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(788): ReflectionClass->__construct('view')
+#1 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\Container\Container->build('view')
+#2 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(615): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(767): Illuminate\Container\Container->make('view', Array)
+#4 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(1227): Illuminate\Foundation\Application->make('view')
+#5 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(176): Illuminate\Container\Container->offsetGet('view in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 788
+[04-Jun-2021 13:16:14 Europe/London] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:788
+Stack trace:
+#0 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(788): ReflectionClass->__construct('view')
+#1 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\Container\Container->build('view')
+#2 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(615): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(767): Illuminate\Container\Container->make('view', Array)
+#4 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(1227): Illuminate\Foundation\Application->make('view')
+#5 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(176): Illuminate\Container\Container->offsetGet('view in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 788
+[04-Jun-2021 13:16:19 Europe/London] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:788
+Stack trace:
+#0 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(788): ReflectionClass->__construct('view')
+#1 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\Container\Container->build('view')
+#2 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(615): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(767): Illuminate\Container\Container->make('view', Array)
+#4 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(1227): Illuminate\Foundation\Application->make('view')
+#5 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(176): Illuminate\Container\Container->offsetGet('view in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 788
+[04-Jun-2021 13:16:24 Europe/London] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:788
+Stack trace:
+#0 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(788): ReflectionClass->__construct('view')
+#1 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\Container\Container->build('view')
+#2 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(615): Illuminate\Container\Container->resolve('view', Array)
+#3 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(767): Illuminate\Container\Container->make('view', Array)
+#4 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(1227): Illuminate\Foundation\Application->make('view')
+#5 /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(176): Illuminate\Container\Container->offsetGet('view in /home/erp/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 788
+[06-Jun-2021 15:36:37 Asia/Karachi] PHP Fatal error:  Out of memory (allocated 1772093440) (tried to allocate 1742737408 bytes) in /home/erp/public_html/app/Utils/ProductUtil.php on line 483
+[06-Jun-2021 15:36:52 Asia/Karachi] PHP Fatal error:  Out of memory (allocated 1772093440) (tried to allocate 1742737408 bytes) in /home/erp/public_html/app/Utils/ProductUtil.php on line 483
+[06-Jun-2021 15:37:27 Asia/Karachi] PHP Fatal error:  Out of memory (allocated 1772093440) (tried to allocate 1742737408 bytes) in /home/erp/public_html/app/Utils/ProductUtil.php on line 513
+[06-Jun-2021 15:37:29 Asia/Karachi] PHP Fatal error:  Out of memory (allocated 1772093440) (tried to allocate 1742737408 bytes) in /home/erp/public_html/app/Utils/ProductUtil.php on line 513
+[06-Jun-2021 15:37:39 Asia/Karachi] PHP Fatal error:  Out of memory (allocated 1751121920) (tried to allocate 1742737408 bytes) in /home/erp/public_html/app/Utils/ProductUtil.php on line 513
