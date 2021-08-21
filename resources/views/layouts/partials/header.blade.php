@@ -11,13 +11,11 @@
     <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        &#9776;
+       <img src="{{ asset('images/menu_ic.png') }}" alt="">
         <span class="sr-only">Toggle navigation</span>
       </a>
-
-      @if(Module::has('Superadmin'))
-        @includeIf('superadmin::layouts.partials.active_subscription')
-      @endif
+      <div class="m-8 pull-left mt-15 hidden-xs" style="color: #fff;"><strong>{{ @format_date('now') }}</strong></div>
+      
 
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
@@ -86,8 +84,9 @@
           </button>
         @endcan
 
-        <div class="m-8 pull-left mt-15 hidden-xs" style="color: #fff;"><strong>{{ @format_date('now') }}</strong></div>
-
+        @if(Module::has('Superadmin'))
+        @includeIf('superadmin::layouts.partials.active_subscription')
+      @endif
         <ul class="nav navbar-nav">
           @include('layouts.partials.header-notifications')
           <!-- User Account Menu -->
