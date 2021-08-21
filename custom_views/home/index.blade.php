@@ -48,9 +48,9 @@
     		</div>
     	</div>
     	<br>
-    <div class="row d-flex">
-        <div class="col-lg-6 col-md-6">
-      <div class="row row-custom">
+    <div class="row ">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12">
+      <div class="row row-custom filter-expance">
        
         	<div class="col-md-6 col-sm-6 col-xs-12 col-custom">
     	      <div class="info-box info-box-new-style blue">
@@ -129,65 +129,83 @@
     	      </div>
     	      <!-- /.info-box -->
     	    </div>
+
+    	    <!-- /.col -->
+          <div class="col-md-6 col-sm-6 col-xs-12 col-custom">
+    	      <div class="info-box info-box-new-style orange">
+    	        
+
+    	        <div class="info-box-content">
+    	          <span class="info-box-text">{{ __('home.invoice_due') }}</span>
+    	          <span class="info-box-number invoice_due"><i class="fas fa-sync fa-spin fa-fw margin-bottom"></i></span>
+    	        </div>
+              <span class="info-box-icon bg-yellow">
+              <i class="fal fa-file-invoice-dollar"></i>
+    	        </span>
+    	        <!-- /.info-box-content -->
+    	      </div>
+    	      <!-- /.info-box -->
+    	    </div>
+          
     	    <!-- /.col -->
       </div>
       </div>
-      <div class="col-lg-6 col-md-6 ">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 right-box ">
         <div class="body-right-side">
       	<div class="row row-custom Reminder-box ">
-          <div class="col-lg-2 ">
+          <div class="col-lg-2 col-xs-2">
            <span class="icon"> <i class="light-bg-red text-red far fa-alarm-clock"></i></span>
           </div>
-          <div class="col-lg-7">
+          <div class="col-lg-7 col-xs-7">
            <div class="Heading">
              <h3>Reminder</h3>
              <p>Mr.Asim's Birthday</p>
            </div>
            </div>
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-xs-3">
             <span class="date">23 July</span>
           </div>
         </div>
         <div class="row row-custom Reminder-box border-gray">
-         <div class="col-lg-2 ">
+         <div class="col-lg-2 col-xs-2">
            <span class="icon"> <i class="light-bg-green text-green far fa-suitcase-rolling"></i></span>
           </div>
-          <div class="col-lg-8">
+          <div class="col-lg-7 col-xs-7">
            <div class="Heading">
              <h3>Upcoming Holidays</h3>
              <p>Eid-Ul-Adha </p>
            </div>
            </div>
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-xs-3">
             <span class="date">23 July</span>
           </div>
         </div>
         <div class="row row-custom Reminder-box border-gray">
-          <div class="col-lg-2 ">
+          <div class="col-lg-2 col-xs-2">
            <span class="icon"><i class="light-bg-perpal text-perpal far fa-user-clock"></i> </span>
           </div>
-          <div class="col-lg-8">
+          <div class="col-lg-7 col-xs-7">
            <div class="Heading">
              <h3>Attendance</h3>
              <p>july 2021</p>
            </div>
            </div>
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-xs-3">
             <span class="date">23 July</span>
             <span class="absent">0 Absent</span>
           </div>
         </div>
         <div class="row row-custom Reminder-box border-gray">
-          <div class="col-lg-2 ">
+          <div class="col-lg-2 col-xs-2">
            <span class="icon"> <i class="text-orange light-bg-orange far fa-user-check"></i></span>
           </div>
-          <div class="col-lg-8">
+          <div class="col-lg- col-xs-7">
            <div class="Heading">
              <h3>Leads</h3>
              <p>In the month of July</p>
            </div>
            </div>
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-xs-3">
             <span class="date">2009</span>
           </div>
         </div>
@@ -216,7 +234,7 @@
               <span class="cercial text-dark-red "><i class="fas fa-circle"></i></span>
             
                 <p class="project-name">Midad Book Website Desing </p>
-                <span class="status text-blue light-bg-blue">In Progress</span>
+                <span class="status btn text-blue light-bg-blue">In Progress</span>
                 </div>
               <div class="col-12 priority">
               <span class="status "><p class = "light-bg-red text-dark-red">Urgent</p></span>
@@ -231,7 +249,7 @@
               <span class="cercial text-orange "><i class="fas fa-circle"></i></span>
             
                 <p class="project-name">Midad Book Website Desing </p>
-                <span class="status text-gray light-bg-gray">Not Started</span>
+                <span class="status btn text-gray light-bg-gray">Not Started</span>
                 </div>
               <div class="col-12 priority">
               <span class="status "><p class = "light-bg-orange  text-orange">Medium</p></span>
@@ -246,7 +264,7 @@
               <span class="cercial text-blue "><i class="fas fa-circle"></i></span>
             
                 <p class="project-name">Midad Book Website Desing </p>
-                <span class="status bg-gre">Compeleted</span>
+                <span class="status btn bg-gre">Compeleted</span>
                 </div>
               <div class="col-12 priority">
               <span class="status "><p class = "text-blue light-bg-blue ">Normal</p></span>
@@ -440,11 +458,11 @@
 </div>
   <div class="col-lg-6 col-md-6 my-task myactivity">
           <div class="row task-icon">
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-xs-12">
                 <i class="text-green fas fa-money-check-alt"></i>
                 <h2>Sale Payment Due </h2>
                </div>
-               <div class="col-lg-6 info-pyment">
+               <div class="col-lg-6 col-xs-12 info-pyment">
                <i class="fas fa-info-circle text-blue"></i>
                </div>
           </div>
